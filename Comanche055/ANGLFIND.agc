@@ -1,37 +1,37 @@
 ### FILE="Main.annotation"
-# Copyright:	Public domain.
-# Filename:	ANGLFIND.agc
-# Purpose:	Part of the source code for Colossus 2A, AKA Comanche 055.
-#		It is part of the source code for the Command Module's (CM)
-#		Apollo Guidance Computer (AGC), for Apollo 11.
-# Assembler:	yaYUL
-# Contact:	Ron Burkey <info@sandroid.org>.
-# Website:	www.ibiblio.org/apollo.
-# Pages:	399-411
-# Mod history:	2009-05-09 RSB	Adapted from the Colossus249/ file 
-#				of the same name, using Comanche055 page 
-#				images.
-#		2009-05-22 RSB	In NOGOM2, TC ZEROEROR corrected to 
-#				CADR ZEROEROR.
-#
-# This source code has been transcribed or otherwise adapted from digitized
-# images of a hardcopy from the MIT Museum.  The digitization was performed
-# by Paul Fjeld, and arranged for by Deborah Douglas of the Museum.  Many
-# thanks to both.  The images (with suitable reduction in storage size and
-# consequent reduction in image quality as well) are available online at
-# www.ibiblio.org/apollo.  If for some reason you find that the images are
-# illegible, contact me at info@sandroid.org about getting access to the 
-# (much) higher-quality images which Paul actually created.
-#
-# Notations on the hardcopy document read, in part:
-#
-#	Assemble revision 055 of AGC program Comanche by NASA
-#	2021113-051.  10:28 APR. 1, 1969  
-#
-#	This AGC program shall also be referred to as
-#			Colossus 2A
+## Copyright:	Public domain.
+## Filename:	ANGLFIND.agc
+## Purpose:	Part of the source code for Colossus 2A, AKA Comanche 055.
+##		It is part of the source code for the Command Module's (CM)
+##		Apollo Guidance Computer (AGC), for Apollo 11.
+## Assembler:	yaYUL
+## Contact:	Ron Burkey <info@sandroid.org>.
+## Website:	www.ibiblio.org/apollo.
+## Pages:	399-411
+## Mod history:	2009-05-09 RSB	Adapted from the Colossus249/ file 
+##				of the same name, using Comanche055 page 
+##				images.
+##		2009-05-22 RSB	In NOGOM2, TC ZEROEROR corrected to 
+##				CADR ZEROEROR.
+##
+## This source code has been transcribed or otherwise adapted from digitized
+## images of a hardcopy from the MIT Museum.  The digitization was performed
+## by Paul Fjeld, and arranged for by Deborah Douglas of the Museum.  Many
+## thanks to both.  The images (with suitable reduction in storage size and
+## consequent reduction in image quality as well) are available online at
+## www.ibiblio.org/apollo.  If for some reason you find that the images are
+## illegible, contact me at info@sandroid.org about getting access to the 
+## (much) higher-quality images which Paul actually created.
+##
+## Notations on the hardcopy document read, in part:
+##
+##	Assemble revision 055 of AGC program Comanche by NASA
+##	2021113-051.  10:28 APR. 1, 1969  
+##
+##	This AGC program shall also be referred to as
+##			Colossus 2A
 
-# Page 399
+## Page 399
 		BANK	15
 		SETLOC	KALCMON1
 		BANK
@@ -82,7 +82,7 @@ SECAD		AXC,1	CALL		# MIS AND MFS ARRAYS CALCULATED		$2
 		STOVL	TMFI	+12D
 		STADR
 		STOVL	TMFI	+6
-# Page 400
+## Page 400
 		STADR
 		STORE	TMFI		# TMFI = TRANSPOSE (MFI) SCALED BY 4
 		
@@ -133,7 +133,7 @@ CHECKMAX	DLOAD	DSU
 			LOCSKIRT
 ALTCALC		VLOAD	VAD		# IF AM GREATER THAN 170 DEGREES
 			MFI
-# Page 401
+## Page 401
 			TMFI
 		VSR1
 		STOVL	MFISYM
@@ -183,7 +183,7 @@ COFMAXGO	DLOAD	DSU
 			COF
 		DSU	BMN
 			COF	+4
-# Page 402
+## Page 402
 			METHOD3		# COFZ G COFX OR COFY
 		GOTO
 			METHOD1		# COFX G COFY OR COFZ
@@ -234,7 +234,7 @@ OKU12		DLOAD	BPL
 		GOTO
 			LOCSKIRT
 METHOD3		DLOAD	BPL		# COFZ MAX
-# Page 403
+## Page 403
 			COFSKEW	+4	# UZ
 			U3POS
 		VLOAD	VCOMP
@@ -255,7 +255,7 @@ OKU31		DLOAD	BPL
 		GOTO
 			LOCSKIRT
 
-# Page 404
+## Page 404
 # MATRIX OPERATIONS
 
 MXM3		SETPD			# MXM3 MULTIPLIES 2 3X3 MATRICES
@@ -305,7 +305,7 @@ TRNSPSPD	DLOAD	PDDL		# ENTER WITH MATRIX IN PD LIST
 		STODL	12D
 			10D
 		PDDL
-# Page 405
+## Page 405
 			14D
 		STODL	10D
 		STADR
@@ -357,7 +357,7 @@ LOOPSIN		SLOAD*	RTB
 			6
 		DMP	SL1
 			10D
-# Page 406
+## Page 406
 		STORE	0,2
 		DLOAD
 			4
@@ -408,7 +408,7 @@ LOOPSIN		SLOAD*	RTB
 			8D
 		PDDL	DMP		# (PD7 COS(PHI)SIN(THETA)SIN(PSI)) SCALE 4
 			6
-# Page 407
+## Page 407
 			0
 		DAD	SL1		# (PUSH UP 7)
 		STADR			# C7=COS(PHI)SIN(THETA)SIN(PSI)
@@ -458,7 +458,7 @@ DELCOMP		SETPD	PUSH		# MPAC CONTAINS THE ANGLE A
 		DSQ	DMP
 			4
 		DAD	SL3
-# Page 408
+## Page 408
 			2
 		BOVB
 			SIGNMPAC
@@ -509,7 +509,7 @@ DELCOMP		SETPD	PUSH		# MPAC CONTAINS THE ANGLE A
 			0
 		DAD	SL2
 			6
-# Page 409
+## Page 409
 		BOVB
 			SIGNMPAC
 		STODL	DEL	+4	# UX UZ (1-COS(A))+UY SIN(A)
@@ -566,7 +566,7 @@ DELCOMP		SETPD	PUSH		# MPAC CONTAINS THE ANGLE A
 #
 #	C =SIN(THETA)SIN(PSI)COS(PHI)+COS(THETA)SIN(PHI)
 #	 7
-# Page 410
+## Page 410
 #	C =-SIN(THETA)SIN(PSI)SIN(PHI)+COS(THETA)COS(PHI)
 #	 8
 #
@@ -615,7 +615,7 @@ SUHALFAP	DSU	GOTO
 OKPHI		DLOAD			# PUSH UP PHI
 VECOFANG	VDEF	RVQ
 
-# Page 411
+## Page 411
 # ROUTINE FOR TERMINATING AUTOMATIC MANEUVERS
 
 NOGOM2		INHINT			# THIS LOCATION ACCESSED BY A BZMF NOGO -2

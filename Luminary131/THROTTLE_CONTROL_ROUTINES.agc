@@ -1,20 +1,20 @@
 ### FILE="Main.annotation"
-# Copyright:	Public domain.
-# Filename:	THROTTLE_CONTROL_ROUTINES.agc
-# Purpose:	A section of Luminary 1C, revision 131.
-#		It is part of the source code for the Lunar Module's (LM)
-#		Apollo Guidance Computer (AGC) for Apollo 13 and Apollo 14.
-#		This file is intended to be a faithful transcription, except
-#		that the code format has been changed to conform to the
-#		requirements of the yaYUL assembler rather than the
-#		original YUL assembler.
-# Reference:	pp. 793-797 of 1729.pdf.
-# Contact:	Ron Burkey <info@sandroid.org>.
-# Website:	www.ibiblio.org/apollo/index.html
-# Mod history:	05/24/03 RSB.	Began transcribing.
-#		05/14/05 RSB	Corrected website reference above.
+## Copyright:	Public domain.
+## Filename:	THROTTLE_CONTROL_ROUTINES.agc
+## Purpose:	A section of Luminary 1C, revision 131.
+##		It is part of the source code for the Lunar Module's (LM)
+##		Apollo Guidance Computer (AGC) for Apollo 13.
+##		This file is intended to be a faithful transcription, except
+##		that the code format has been changed to conform to the
+##		requirements of the yaYUL assembler rather than the
+##		original YUL assembler.
+## Reference:	pp. 793-797 of 1729.pdf.
+## Contact:	Ron Burkey <info@sandroid.org>.
+## Website:	www.ibiblio.org/apollo/index.html
+## Mod history:	05/24/03 RSB.	Began transcribing.
+##		05/14/05 RSB	Corrected website reference above.
 
-# Page 793
+## Page 793
 		BANK	31
 		SETLOC	FTHROT
 		BANK
@@ -58,7 +58,7 @@ AFDUMP		TC	MASSMULT
 		AD	3SECS
 		EXTEND
 		BZMF	WHERETO		# BRANCH IF (TIME1-TTHROT +1) > 3 SECONDS
-# Page 794
+## Page 794
 		EXTEND
 		DCA	FWEIGHT
 		DAS	FP
@@ -107,7 +107,7 @@ FLATOUT2	TS	PIFPSET
 #		AS THERE IS ACTUALLY NO THROTTLE CHANGE.
 #
 # NOTE2		HERE, SINCE WE ARE ABOUT TO RETURN TO THE THROTTLEABLE REGION
-# Page 795
+## Page 795
 #		(BELOW 55%) THE QUANTITY -(FMAXODD-FP) IS COMPUTED AND PUT
 #		INTO PIFPSET TO COMPENSATE FOR THE DIFFERENCE BETWEEN THE
 #		NUMBER OF BITS CORRESPONDING TO FULL THROTTLE (FMAXODD) AND THE
@@ -155,7 +155,7 @@ DOIT		CA	PIF
 		TS	BUF
 		CAF	4SECS
 		TCF	FWCOMP +1
-# Page 796
+## Page 796
 
 FWCOMP		CAF	2SECS
  +1		TS	Q
@@ -204,7 +204,7 @@ MASSMULT	EXTEND
 		DXCH	MPAC
 		TC	DMP
 		ADRES	MASS
-# Page 797
+## Page 797
 		TC	DMP		# LEAVES PROPERLY SCALED FORCE IN MPAC
 		ADRES	SCALEFAC
 		TC	TPAGREE

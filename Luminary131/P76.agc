@@ -1,19 +1,19 @@
 ### FILE="Main.annotation"
-# Copyright:	Public domain.
-# Filename:	P76.agc
-# Purpose:	A section of Luminary 1C, revision 131.
-#		It is part of the source code for the Lunar Module's (LM)
-#		Apollo Guidance Computer (AGC) for Apollo 13 and Apollo 14.
-#		This file is intended to be a faithful transcription, except
-#		that the code format has been changed to conform to the
-#		requirements of the yaYUL assembler rather than the
-#		original YUL assembler.
-# Reference:	pp. 716-718 of 1729.pdf.
-# Contact:	Ron Burkey <info@sandroid.org>.
-# Website:	www.ibiblio.org/apollo
-# Mod history:	05/24/03 RSB.	Began transcribing.
+## Copyright:	Public domain.
+## Filename:	P76.agc
+## Purpose:	A section of Luminary 1C, revision 131.
+##		It is part of the source code for the Lunar Module's (LM)
+##		Apollo Guidance Computer (AGC) for Apollo 13.
+##		This file is intended to be a faithful transcription, except
+##		that the code format has been changed to conform to the
+##		requirements of the yaYUL assembler rather than the
+##		original YUL assembler.
+## Reference:	pp. 716-718 of 1729.pdf.
+## Contact:	Ron Burkey <info@sandroid.org>.
+## Website:	www.ibiblio.org/apollo
+## Mod history:	05/24/03 RSB.	Began transcribing.
 
-# Page 716
+## Page 716
 # 1)	PROGRAM NAME -- TARGET DELTA V PROGRAM (P76).
 # 2)	FUNCTIONAL DESCRIPTION -- UPON ENTRY BY ASTRONAUT ACTION, P76 FLASHES DSKY REQUESTS TO THE ASTRONAUT
 #	TO PROVIDE VIA DSKY (1) THE DELTA V TO BE APPLIED TO THE OTHER VEHICLE STATE VECTOR AND (2) THE
@@ -63,7 +63,7 @@ P76		TC	UPFLAG
 		TC	+2
 		TC	-5
 		TC	INTPRET		# RETURN TO INTERPRETIVE CODE
-# Page 717
+## Page 717
 		DLOAD	SET
 			TIG
 			NODOFLAG
@@ -114,7 +114,7 @@ INTOTHIS	STCALL	TDEC1
 		STOVL	TET
 			VATT1
 		CALL
-# Page 718
+## Page 718
 			MINIRECT
 		EXIT
 		TC	PHASCHNG

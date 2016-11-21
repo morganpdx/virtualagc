@@ -1,35 +1,35 @@
 ### FILE="Main.annotation"
-# Copyright:    Public domain.
-# Filename:     CM_BODY_ATTITUDE.agc
-# Purpose:      Part of the source code for Comanche, build 055. It
-#               is part of the source code for the Command Module's
-#               (CM) Apollo Guidance Computer (AGC), Apollo 11.
-# Assembler:    yaYUL
-# Reference:    pp. 883-889
-# Contact:      Ron Burkey <info@sandroid.org>
-# Website:      http://www.ibiblio.org/apollo.
-# Mod history:  2009-05-12 RSB	Adapted from Colossus249 file of the same
-#				name and Comanche 055 page images.
-#
-# The contents of the "Comanche055" files, in general, are transcribed 
-# from scanned documents. 
-#
-#       Assemble revision 055 of AGC program Comanche by NASA
-#       2021113-051.  April 1, 1969.  
-#
-#       This AGC program shall also be referred to as Colossus 2A
-#
-#       Prepared by
-#                       Massachusetts Institute of Technology
-#                       75 Cambridge Parkway
-#                       Cambridge, Massachusetts
-#
-#       under NASA contract NAS 9-4065.
-#
-# Refer directly to the online document mentioned above for further
-# information.  Please report any errors to info@sandroid.org.
+## Copyright:    Public domain.
+## Filename:     CM_BODY_ATTITUDE.agc
+## Purpose:      Part of the source code for Comanche, build 055. It
+##               is part of the source code for the Command Module's
+##               (CM) Apollo Guidance Computer (AGC), Apollo 11.
+## Assembler:    yaYUL
+## Reference:    pp. 883-889
+## Contact:      Ron Burkey <info@sandroid.org>
+## Website:      http://www.ibiblio.org/apollo.
+## Mod history:  2009-05-12 RSB	Adapted from Colossus249 file of the same
+##				name and Comanche 055 page images.
+##
+## The contents of the "Comanche055" files, in general, are transcribed 
+## from scanned documents. 
+##
+##       Assemble revision 055 of AGC program Comanche by NASA
+##       2021113-051.  April 1, 1969.  
+##
+##       This AGC program shall also be referred to as Colossus 2A
+##
+##       Prepared by
+##                       Massachusetts Institute of Technology
+##                       75 Cambridge Parkway
+##                       Cambridge, Massachusetts
+##
+##       under NASA contract NAS 9-4065.
+##
+## Refer directly to the online document mentioned above for further
+## information.  Please report any errors to info@sandroid.org.
 
-# Page 883
+## Page 883
 		BANK	35
 		
 		SETLOC	BODYATT
@@ -77,7 +77,7 @@ CM/POSE2	STORE	UYA/2		#				REF COORDS
 			UXA/2		# FINISH OBTAINING TRAJECTORY TRIAD.
 		VSL1
 		STORE	UZA/2		#				REF COORDS
-# Page 884
+## Page 884
 		TLOAD			# PICK UP CDUX, CDUY, CDUZ CORRESPONDING
 			AOG/PIP		# TO PIPUP TIME IN 2'S C AND SAVE.
 CM/TRIO		STODL	24D
@@ -127,7 +127,7 @@ CM/TRIO		STODL	24D
 		VXM	VSL2
 			REFSMMAT	# .5 UNIT
 		STODL	UBY/2		# YB/2 DONE			REF COORDS
-# Page 885
+## Page 885
 					# CM /2 FROM PDL 2
 		VXSC	VSL1
 			UBX/2
@@ -178,7 +178,7 @@ CM/TRIO		STODL	24D
 		STOVL	8D		# -(ALFA/180) /2
 			UNITR		# UR/2				REF COORDS
 		DOT	SL1
-# Page 886
+## Page 886
 			UZA/2		# MORE ACCURATE AT LARGE ARG.
 		ARCCOS
 		STORE	10D		# (-GAMA/180)/2
@@ -187,7 +187,7 @@ CM/TRIO		STODL	24D
 					# -( (ROLL, BETA, ALFA) /180)/2
 			6D		# THESE VALUES CORRECT AT PIPUP TIME.
 
-# Page 887
+## Page 887
 # BASIC SUBROUTINE TO UPDATE ATTITUDE ANGLES
 
 		EBANK=	AOG
@@ -238,7 +238,7 @@ NOGAMDOT	CA	ZERO		# COME HERE INHINTED
 		SU	ROLL/PIP	# GET INCR SINCE PIPUP
 		AD	ROLL/180	# ONLY SINGLE OVFL POSSIBLE.
 		TC	CORANGOV	# CORRECT FOR OVFL IF ANY
-# Page 888
+## Page 888
 		TS	TEMPROLL
 		
 		CS	MPAC +2		# GET (ALFA EUL/180) /2
@@ -289,7 +289,7 @@ CM/POSE3	VLOAD	ABVAL		# RETURN FROM CM/ATUP.	(RESTART)
 CORANGOV	TS	L
 		TC	Q
 		INDEX	A
-# Page 889
+## Page 889
 		CA	LIMITS
 		ADS	L
 		TC	Q		# COSTS 2 MCT TO USE.  SEE ANGOVCOR.

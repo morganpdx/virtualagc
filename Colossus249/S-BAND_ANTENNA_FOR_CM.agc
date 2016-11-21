@@ -1,40 +1,40 @@
 ### FILE="Main.annotation"
-# Copyright:	Public domain.
-# Filename:	Template.agc
-# Purpose:	Part of the source code for Colossus, build 249.
-#		It is part of the source code for the Command Module's (CM)
-#		Apollo Guidance Computer (AGC), possibly for Apollo 8 and 9.
-# Assembler:	yaYUL
-# Reference:	pp. 891-892 of 1701.pdf.
-# Contact:	Ron Burkey <info@sandroid.org>.
-# Website:	www.ibiblio.org/apollo.
-# Mod history:	08/22/04 RSB.	Began transcribing.
-#
-# The contents of the "Colossus249" files, in general, are transcribed 
-# from a scanned document obtained from MIT's website,
-# http://hrst.mit.edu/hrs/apollo/public/archive/1701.pdf.  Notations on this
-# document read, in part:
-#
-#	Assemble revision 249 of AGC program Colossus by NASA
-#	2021111-041.  October 28, 1968.  
-#
-#	This AGC program shall also be referred to as
-#				Colossus 1A
-#
-#	Prepared by
-#			Massachusetts Institute of Technology
-#			75 Cambridge Parkway
-#			Cambridge, Massachusetts
-#	under NASA contract NAS 9-4065.
-#
-# Refer directly to the online document mentioned above for further information.
-# Please report any errors (relative to 1701.pdf) to info@sandroid.org.
-#
-# In some cases, where the source code for Luminary 131 overlaps that of 
-# Colossus 249, this code is instead copied from the corresponding Luminary 131
-# source file, and then is proofed to incorporate any changes.
+## Copyright:	Public domain.
+## Filename:	S-BAND_ANTENNA_FOR_CM.agc
+## Purpose:	Part of the source code for Colossus, build 249.
+##		It is part of the source code for the Command Module's (CM)
+##		Apollo Guidance Computer (AGC), for Apollo 9.
+## Assembler:	yaYUL
+## Reference:	pp. 891-892 of 1701.pdf.
+## Contact:	Ron Burkey <info@sandroid.org>.
+## Website:	www.ibiblio.org/apollo.
+## Mod history:	08/22/04 RSB.	Began transcribing.
+##
+## The contents of the "Colossus249" files, in general, are transcribed 
+## from a scanned document obtained from MIT's website,
+## http://hrst.mit.edu/hrs/apollo/public/archive/1701.pdf.  Notations on this
+## document read, in part:
+##
+##	Assemble revision 249 of AGC program Colossus by NASA
+##	2021111-041.  October 28, 1968.  
+##
+##	This AGC program shall also be referred to as
+##				Colossus 1A
+##
+##	Prepared by
+##			Massachusetts Institute of Technology
+##			75 Cambridge Parkway
+##			Cambridge, Massachusetts
+##	under NASA contract NAS 9-4065.
+##
+## Refer directly to the online document mentioned above for further information.
+## Please report any errors (relative to 1701.pdf) to info@sandroid.org.
+##
+## In some cases, where the source code for Luminary 131 overlaps that of 
+## Colossus 249, this code is instead copied from the corresponding Luminary 131
+## source file, and then is proofed to incorporate any changes.
 
-# Page 891
+## Page 891
 # S-BAND ANTENNA FOR CM
 
 		BANK	23
@@ -87,7 +87,7 @@ EISOI		VLOAD	VCOMP		# EARTH, R= -RCM
 COVCNV		UNIT	BOV		# TEST OVERFLOW FOR INDICATION OF NULL
 			NOADJUST	# VECTOR
 		PUSH	DOT		# 20D
-# Page 892
+## Page 892
 			HIUNITX		# COMPUTE YAW ANGLE = ACOS (URP.UX)
 		SL1	ACOS		# REVOLUTIONS SCALED B0
 		PDVL	DOT		# 22D YAWANG

@@ -1,34 +1,34 @@
 ### FILE="Main.annotation"
-# Copyright:	Public domain.
-# Filename:	PLANETARY_INERTIAL_ORIENTATION.agc
-# Purpose:	Part of the source code for Colossus 2A, AKA Comanche 055.
-#		It is part of the source code for the Command Module's (CM)
-#		Apollo Guidance Computer (AGC), for Apollo 11.
-# Assembler:	yaYUL
-# Contact:	Ron Burkey <info@sandroid.org>.
-# Website:	www.ibiblio.org/apollo.
-# Pages:	1243-1251
-# Mod history:	2009-05-14 RSB	Adapted from the Colossus249/ file of the
-#				same name, using Comanche055 page images.
-#
-# This source code has been transcribed or otherwise adapted from digitized
-# images of a hardcopy from the MIT Museum.  The digitization was performed
-# by Paul Fjeld, and arranged for by Deborah Douglas of the Museum.  Many
-# thanks to both.  The images (with suitable reduction in storage size and
-# consequent reduction in image quality as well) are available online at
-# www.ibiblio.org/apollo.  If for some reason you find that the images are
-# illegible, contact me at info@sandroid.org about getting access to the 
-# (much) higher-quality images which Paul actually created.
-#
-# Notations on the hardcopy document read, in part:
-#
-#	Assemble revision 055 of AGC program Comanche by NASA
-#	2021113-051.  10:28 APR. 1, 1969  
-#
-#	This AGC program shall also be referred to as
-#			Colossus 2A
+## Copyright:	Public domain.
+## Filename:	PLANETARY_INERTIAL_ORIENTATION.agc
+## Purpose:	Part of the source code for Colossus 2A, AKA Comanche 055.
+##		It is part of the source code for the Command Module's (CM)
+##		Apollo Guidance Computer (AGC), for Apollo 11.
+## Assembler:	yaYUL
+## Contact:	Ron Burkey <info@sandroid.org>.
+## Website:	www.ibiblio.org/apollo.
+## Pages:	1243-1251
+## Mod history:	2009-05-14 RSB	Adapted from the Colossus249/ file of the
+##				same name, using Comanche055 page images.
+##
+## This source code has been transcribed or otherwise adapted from digitized
+## images of a hardcopy from the MIT Museum.  The digitization was performed
+## by Paul Fjeld, and arranged for by Deborah Douglas of the Museum.  Many
+## thanks to both.  The images (with suitable reduction in storage size and
+## consequent reduction in image quality as well) are available online at
+## www.ibiblio.org/apollo.  If for some reason you find that the images are
+## illegible, contact me at info@sandroid.org about getting access to the 
+## (much) higher-quality images which Paul actually created.
+##
+## Notations on the hardcopy document read, in part:
+##
+##	Assemble revision 055 of AGC program Comanche by NASA
+##	2021113-051.  10:28 APR. 1, 1969  
+##
+##	This AGC program shall also be referred to as
+##			Colossus 2A
 
-# Page 1243
+## Page 1243
 # PLANETARY INERTIAL ORIENTATION
 #
 # ***** RP-TO-R SUBROUTINE *****
@@ -81,11 +81,11 @@ RPTORA		CALL			# EARTH COMPUTATIONS
 			EARTHL		# L VECTOR RADIANS B0
 		MXV	VSL1		# LP=M(T)*L 	RAD B-0
 			MMATRIX
-# Page 1244
+## Page 1244
 		GOTO
 			RPTORB
 
-# Page 1245
+## Page 1245
 # ***** R-TO-RP SUBROUTINE *****
 # SUBROUTINE TO CONVERT R (VECTOR IN REFERENCE COORD. SYSTEM) TO RP
 # (VECTOR IN PLANETARY COORD SYSTEM) EITHER EARTH-FIXED OR MOON-FIXED
@@ -137,7 +137,7 @@ RTORPA		CALL			# EARTH COMPUTATIONS
 		GOTO			# MPAC=L=(-AX,-AY,0) 	RAD B-0
 			RTORPB
 
-# Page 1246
+## Page 1246
 # ***** MOONMX SUBROUTINE *****
 # SUBROUTINE TO COMPUTE THE TRANSFORMATION MATRIX M FOR THE MOON
 #
@@ -189,7 +189,7 @@ MOONMX		STQ	SETPD
 		AXT,1	CALL		# NODE REQUIRES SL 0, SL 5 IN NEWANGLE
 			5
 			NEWANGLE	# EXIT WITH PD 8D AND MPAC= NODI REVS B0
-# Page 1247
+## Page 1247
 		PUSH	COS		# PD 10D	8-9D= NODI REVS B0
 		PUSH			# PD 12D	10-11D= COS(NODI) B-1
 		STORE	AVECTR
@@ -240,7 +240,7 @@ MOONMX		STQ	SETPD
 		VSL1
 		STODL	MMATRIX +6	# M1= AVECTR*SINF-DVECTR*COSF B-1
 			504F
-# Page 1248
+## Page 1248
 		SIN	VXSC		# PD 8D
 		PDDL	COS		# PD 14D  8-13D=DVECTR*SINF B-2
 			504F
@@ -280,7 +280,7 @@ NEWANGLE	DLOAD	SR		# ENTER PD 12D
 			+1		# INSTRUCTION BEFORE EXITING.
 		RVQ			# MPAC=X= X0+(XDOT)(T+T0)	REVS B0
 
-# Page 1249
+## Page 1249
 # ***** EARTHMX SUBROUTINE *****
 # SUBROUTINE TO COMPUTE THE TRANSFORMATION MATRIX M FOR THE EARTH
 #
@@ -326,7 +326,7 @@ EARTHMX		STQ	SETPD		# SET 8-9D=AZO
 		GOTO
 			EARTHMXX
 
-# Page 1250
+## Page 1250
 # ***** EARTHL SUBROUTINE *****
 # SUBROUTINE TO COMPUTE L VECTOR FOR EARTH
 #
@@ -352,7 +352,7 @@ EARTHL		DLOAD	DCOMP
 			504LPL
 		RVQ
 
-# Page 1251
+## Page 1251
 # CONSTANTS AND ERASABLE ASSIGNMENTS
 
 1B1		=	DP1/2		# 1 SCALED B-1

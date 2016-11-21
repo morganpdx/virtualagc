@@ -7,7 +7,7 @@
 # Assembler:	yaYUL --block1
 # Contact:	Ron Burkey <info@sandroid.org>
 # Website:	www.ibiblio.org/apollo/index.html
-# Page scans:	www.ibiblio.org/apollo/ScansForConversion/Solarium055/
+# Page Scans:	www.ibiblio.org/apollo/ScansForConversion/Solarium055/
 # Mod history:	2009-07-25 RSB	Adapted from corresponding Colossus 249 file.
 # 		2009-09-14 JL	Fixed page number.
 #		2016-08-17 RSB	Corrected names of AGC_SELF-CHECK.agc,  
@@ -53,7 +53,7 @@ $IMU_PERFORMANCE_TESTS_1.agc			# 392
 $IMU_PERFORMANCE_TESTS_2.agc			# 426
 $INFLIGHT_ALIGNMENT_SUBROUTINES.agc		# 461
 $KEYRUPT_UPRUPT_FRESH_START.agc			# 477
-$PINBALL_GAME_BUTTONS_AND_LIGHTS.agc		# 481
+$PINBALL_GAME__BUTTONS_AND_LIGHTS.agc		# 481
 $501_MISSION_CONTROL_PROGRAM.agc		# 553
 $POWERED_FLIGHT_SUBROUTINES.agc			# 628
 $TIME_OF_FREE-FALL_CALCULATIONS.agc		# 682

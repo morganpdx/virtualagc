@@ -1,21 +1,21 @@
 ### FILE="Main.annotation"
-# Copyright:	Public domain.
-# Filename:	LEM_GEOMETRY.agc
-# Purpose:	A section of Luminary 1C, revision 131.
-#		It is part of the source code for the Lunar Module's (LM)
-#		Apollo Guidance Computer (AGC) for Apollo 13 and Apollo 14.
-#		This file is intended to be a faithful transcription, except
-#		that the code format has been changed to conform to the
-#		requirements of the yaYUL assembler rather than the 
-#		original YUL assembler.
-# Reference:	pp. 327-332 of 1729.pdf.
-# Contact:	Ron Burkey <info@sandroid.org>.
-# Website:	www.ibiblio.org/apollo/index.html
-# Mod history:	05/10/03 RSB.	Began transcribing.
-#		05/14/05 RSB	Corrected website reference above.
-#		2010-08-24 JL	Fixed page 330 number.
+## Copyright:	Public domain.
+## Filename:	LEM_GEOMETRY.agc
+## Purpose:	A section of Luminary 1C, revision 131.
+##		It is part of the source code for the Lunar Module's (LM)
+##		Apollo Guidance Computer (AGC) for Apollo 13.
+##		This file is intended to be a faithful transcription, except
+##		that the code format has been changed to conform to the
+##		requirements of the yaYUL assembler rather than the 
+##		original YUL assembler.
+## Reference:	pp. 327-332 of 1729.pdf.
+## Contact:	Ron Burkey <info@sandroid.org>.
+## Website:	www.ibiblio.org/apollo/index.html
+## Mod history:	05/10/03 RSB.	Began transcribing.
+##		05/14/05 RSB	Corrected website reference above.
+##		2010-08-24 JL	Fixed page 330 number.
 
-# Page 327
+## Page 327
 		BANK	23
 		SETLOC	LEMGEOM
 		BANK
@@ -62,7 +62,7 @@ SVDWN2		BOF	RVQ		# SW=1=AVETOMID DOING W-MATRIX INTEG.
 			TET
 		STORE	PIPTIME
 		RVQ
-# Page 328
+## Page 328
 SVDWN1		VLOAD	VSL*
 			TDELTAV
 			0 -7,2
@@ -79,7 +79,7 @@ SVDWN1		VLOAD	VSL*
 		STORE	V-OTHER
 		RVQ
 		
-# Page 329
+## Page 329
 # THE FOLLOWING ROUTINE TAKES A HALF UNIT TARGET VECTOR REFERRED TO NAV BASE COORDINATES AND FINDS BOTH
 # GIMBAL ORIENTATIONS AT WHICH THE RR MIGHT SIGHT THE TARGET.  THE GIMBAL ANGLES CORRESPONDING TO THE PRESENT MODE
 # ARE LEFT IN MODEA AND THOSE WHICH WOULD BE USED AFTER A REMODE IN MODEB.  THIS ROUTINE ASSUMES MODE 1 IS TRUNNION
@@ -115,7 +115,7 @@ RRANGLES	STORE	32D
 		SR1
 		STCALL	COSTH
 			ARCTRIG
-# Page 330
+## Page 330
 		PUSH	DAD		# MODE 1 SHAFT TO 2.
 			LODPHALF
 		STOVL	6
@@ -141,7 +141,7 @@ RRANGLES	STORE	32D
 		TC	INTPRET
 		GOTO
 			S2
-# Page 331
+## Page 331
 # GIVEN RR TRUNNION AND SHAFT (T,S) IN TANGNB,+1, FIND THE ASSOCIATED
 # LINE OF SIGHT IN NAV BASE AXES.  THE HALF UNIT VECTOR, .5(SIN(S)COS(T),
 # -SIN(T),COS(S)COS(T)) IS LEFT IN MPAC AND 32D.
@@ -191,7 +191,7 @@ RRNBMPAC	STODL	20D		# SAVE SHAFT CDU IN 21.
 			CDULOGIC
 		GOTO
 			RRNB1
-# Page 332
+## Page 332
 # (This page has nothing on it.)
 
 			

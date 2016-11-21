@@ -1,34 +1,34 @@
 ### FILE="Main.annotation"
-# Copyright:	Public domain.
-# Filename:	TVCMASSPROP.agc
-# Purpose:	Part of the source code for Colossus 2A, AKA Comanche 055.
-#		It is part of the source code for the Command Module's (CM)
-#		Apollo Guidance Computer (AGC), for Apollo 11.
-# Assembler:	yaYUL
-# Contact:	Ron Burkey <info@sandroid.org>.
-# Website:	www.ibiblio.org/apollo.
-# Pages:	951-955
-# Mod history:	2009-05-13 RSB	Adapted from the Colossus249/ file of the
-#				same name, using Comanche055 page images.
-#
-# This source code has been transcribed or otherwise adapted from digitized
-# images of a hardcopy from the MIT Museum.  The digitization was performed
-# by Paul Fjeld, and arranged for by Deborah Douglas of the Museum.  Many
-# thanks to both.  The images (with suitable reduction in storage size and
-# consequent reduction in image quality as well) are available online at
-# www.ibiblio.org/apollo.  If for some reason you find that the images are
-# illegible, contact me at info@sandroid.org about getting access to the 
-# (much) higher-quality images which Paul actually created.
-#
-# Notations on the hardcopy document read, in part:
-#
-#	Assemble revision 055 of AGC program Comanche by NASA
-#	2021113-051.  10:28 APR. 1, 1969  
-#
-#	This AGC program shall also be referred to as
-#			Colossus 2A
+## Copyright:	Public domain.
+## Filename:	TVCMASSPROP.agc
+## Purpose:	Part of the source code for Colossus 2A, AKA Comanche 055.
+##		It is part of the source code for the Command Module's (CM)
+##		Apollo Guidance Computer (AGC), for Apollo 11.
+## Assembler:	yaYUL
+## Contact:	Ron Burkey <info@sandroid.org>.
+## Website:	www.ibiblio.org/apollo.
+## Pages:	951-955
+## Mod history:	2009-05-13 RSB	Adapted from the Colossus249/ file of the
+##				same name, using Comanche055 page images.
+##
+## This source code has been transcribed or otherwise adapted from digitized
+## images of a hardcopy from the MIT Museum.  The digitization was performed
+## by Paul Fjeld, and arranged for by Deborah Douglas of the Museum.  Many
+## thanks to both.  The images (with suitable reduction in storage size and
+## consequent reduction in image quality as well) are available online at
+## www.ibiblio.org/apollo.  If for some reason you find that the images are
+## illegible, contact me at info@sandroid.org about getting access to the 
+## (much) higher-quality images which Paul actually created.
+##
+## Notations on the hardcopy document read, in part:
+##
+##	Assemble revision 055 of AGC program Comanche by NASA
+##	2021113-051.  10:28 APR. 1, 1969  
+##
+##	This AGC program shall also be referred to as
+##			Colossus 2A
 
-# Page 951
+## Page 951
 # PROGRAM NAME....MASSPROP
 # LOG SECTION....TVCMASSPROP		PROGRAMMER...MELANSON (ENGEL, SCHLUNDT)
 #
@@ -75,7 +75,7 @@
 #	
 #	THEY ARE STORED IN CONSECUTIVE REGISTERS IXX0, IXX1, IXX2
 #	CONVERSION FACTOR:  (SLUG-FTSQ) = 0.737562 (KG-MSQ)
-# Page 952
+## Page 952
 #
 # OUTPUTS ARE CALCULATED AS FOLLOWS:
 #
@@ -121,7 +121,7 @@
 #							(EMPTY)	14116 LBS.
 #
 # 	(WEIGHTS ARE FROM AMMENDMENT #1 (APRIL 24, 1968) TO ABOVE DATA BOOK)
-# Page 953
+## Page 953
 
 		BANK	25
 		SETLOC	DAPMASS
@@ -171,7 +171,7 @@ FIXCW		CAF	BIT2		# COMPUTATION PHASE BEGINS HERE. SET UP
 		AD	NEGBPW		# SLOPE LOCATIONS.
 		DOUBLE
 		TS	TEMP333
-# Page 954
+## Page 954
 		EXTEND
 		BZMF	PEGGY		# DETERMINE CORRECT SLOPE
 		CAF	NEG2
@@ -203,7 +203,7 @@ BOKKEP2		TS	PSI333		# REDUCE PSI BY ONE
 		DIM	PHI333
 		TCF	PEGGY
 		
-# Page 955
+## Page 955
 NOLEMVAL	DEC	25445 B-20
 		DEC	87450 B-20
 		DEC	.30715 B-2

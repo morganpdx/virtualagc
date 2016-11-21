@@ -1,36 +1,36 @@
 ### FILE="Main.annotation"
-# Copyright:	Public domain.
-# Filename:	TJET_LAW.agc
-# Purpose: 	Part of the source code for Luminary 1A build 099.
-#		It is part of the source code for the Lunar Module's (LM)
-#		Apollo Guidance Computer (AGC), for Apollo 11.
-# Assembler:	yaYUL
-# Contact:	Ron Burkey <info@sandroid.org>.
-# Website:	www.ibiblio.org/apollo.
-# Pages:	1460-1469
-# Mod history:	2009-05-27 RSB	Adapted from the corresponding 
-#				Luminary131 file, using page 
-#				images from Luminary 1A.
-#		2009-06-06 RSB	Eliminated a stray instruction that had crept
-#				in somehow.
-#		2011-01-06 JL	Fixed pseudo-label indentation.
-#
-# This source code has been transcribed or otherwise adapted from
-# digitized images of a hardcopy from the MIT Museum.  The digitization
-# was performed by Paul Fjeld, and arranged for by Deborah Douglas of
-# the Museum.  Many thanks to both.  The images (with suitable reduction
-# in storage size and consequent reduction in image quality as well) are
-# available online at www.ibiblio.org/apollo.  If for some reason you
-# find that the images are illegible, contact me at info@sandroid.org
-# about getting access to the (much) higher-quality images which Paul
-# actually created.
-#
-# Notations on the hardcopy document read, in part:
-#
-#	Assemble revision 001 of AGC program LMY99 by NASA 2021112-61
-#	16:27 JULY 14, 1969 
+## Copyright:	Public domain.
+## Filename:	TJET_LAW.agc
+## Purpose: 	Part of the source code for Luminary 1A build 099.
+##		It is part of the source code for the Lunar Module's (LM)
+##		Apollo Guidance Computer (AGC), for Apollo 11.
+## Assembler:	yaYUL
+## Contact:	Ron Burkey <info@sandroid.org>.
+## Website:	www.ibiblio.org/apollo.
+## Pages:	1460-1469
+## Mod history:	2009-05-27 RSB	Adapted from the corresponding 
+##				Luminary131 file, using page 
+##				images from Luminary 1A.
+##		2009-06-06 RSB	Eliminated a stray instruction that had crept
+##				in somehow.
+##		2011-01-06 JL	Fixed pseudo-label indentation.
+##
+## This source code has been transcribed or otherwise adapted from
+## digitized images of a hardcopy from the MIT Museum.  The digitization
+## was performed by Paul Fjeld, and arranged for by Deborah Douglas of
+## the Museum.  Many thanks to both.  The images (with suitable reduction
+## in storage size and consequent reduction in image quality as well) are
+## available online at www.ibiblio.org/apollo.  If for some reason you
+## find that the images are illegible, contact me at info@sandroid.org
+## about getting access to the (much) higher-quality images which Paul
+## actually created.
+##
+## Notations on the hardcopy document read, in part:
+##
+##	Assemble revision 001 of AGC program LMY99 by NASA 2021112-61
+##	16:27 JULY 14, 1969 
 
-# Page 1460
+## Page 1460
 # PROGRAM DESCRIPTION
 # DESIGNED BY:	R. D. GOSS AND P. S. WEISSMAN
 # CODED BY:  P. S. WEISSMAN, 28 FEBRURARY 1968
@@ -80,7 +80,7 @@
 		SETLOC	DAPS2
 		BANK
 		EBANK=	TJP
-# Page 1461
+## Page 1461
 		COUNT*	$$/DAPTJ
 
 TJETLAW		EXTEND			# SAVE Q FOR RETURN.
@@ -131,7 +131,7 @@ SCALEE		CAF	BIT13		# ERROR IS IN L SCALED AT PI/16.  RESCALE
 #	IF LESS THAN PI/32 RADIANS/SECOND, THEN RESCALE TO PI/32 RADIANS/SECOND.
 
 		CAE	EDOT		# PICK UP SINGLE-PRECISION ERROR-RATE
-# Page 1462
+## Page 1462
 		EXTEND			# FOR THIS AXIS=
 		MP	BIT4		# SHIFT RIGHT ELEVEN BITS, IF THE A-REG IS
 		EXTEND			# ZERO, THEN RESCALE AND USE FINELAW.
@@ -183,7 +183,7 @@ TJCALC		TS	NUMBERT		# SET TO +0,1,4 FOR (U,V-AXES) JET SELECT.
 
 ZONE4,5		INDEX	ADRSDIF1
 		CAE	1/ACOAST	# .5/ACC SCALED AT 2(6)/PI WHERE
-# Page 1463		
+## Page 1463		
 		EXTEND			# ACC = MAX(AMIN, AOS-).
 		MP	EDOTSQ		# SCALED AT PI/2(8).
 		AD	E		# SCALED AT PI/4
@@ -234,7 +234,7 @@ ZONE5		TS	L		# TEMPORARILY STORE FUNCTION IN L.
 		TCF	+4		# AND ACCFCTZ5, WHICH MUST BE PICKED UP
 		TC	CCSHOLE		# FROM THE NEXT LOWER REGISTER IF THE
 		CS	TWO		# (ACTUAL) ERROR RATE IS NEGATIVE.
-# Page 1464		
+## Page 1464		
 		ADS	ADRSDIF2
 
  +4		CAE	L
@@ -287,7 +287,7 @@ RETURNTJ	EXTEND			# ALL BRANCHES TERMINATE HERE WITH TJET
 		EXTEND			#	IN A SENSE FOR WHICH 1/ACCS HAS FORCED
 		BZMF	+3		#	A MAX-JET CALCULATION.
 		CAF	FOUR
-# Page 1465		
+## Page 1465		
 		TS	NUMBERT
 		TC	HOLDQ		# RETURN VIA SAVED Q.
 
@@ -337,7 +337,7 @@ ZON1,2,3	TC	Z123COMP	# SUBROUTINIZED PREPARATION FOR ZONE1,2,3.
 
 # IF THE (NEG) DISTANCE BEYOND PARABOLA IS LESS THAN FLAT, USE SPECIAL
 # LOGIC TO ACQUIRE MINIMUM IMPULSE LIMIT CYCLE.  DURING POWERED FLIGHT
-# Page 1466
+## Page 1466
 # OR ULLAGE, FLAT = 0
 
 		CAE	FIREFCT		# SCALED AT PI/4 RAD.
@@ -389,7 +389,7 @@ ZONE1		EXTEND
 		EXTEND
 		BZMF	FORMULA3
 
-# Page 1467
+## Page 1467
 # TJET = H/0.1 + TTOAXIS + .0375	FOR APPROXIMATION OVER MORE THAN 50 MSEC.
 
 		CAF	.1AT2		# STORE .1 SEC SCALED AT 2 FOR DIVISION.
@@ -417,7 +417,7 @@ CHKMINTJ	AD	-TJMIN		# IS COMPUTED TIME LESS THAN THE MINIMUM.
 		AD	TJMIN		# NO, RESTORE COMPUTED TIME.
 		TCF	RETURNTJ	# END COMPUTATION.
 
-# Page 1468
+## Page 1468
 # *** ROUGHLAW ***
 #
 # BEFORE ENTRY TO RUFLAW:
@@ -469,7 +469,7 @@ RUFLAW2		TC	RUFSETUP	# REVERSE ROTSENSE AND INDICATE MAX JETS.
 		TCF	RUFLAW12	# OTHERWISE, COMPUTE JET TIME.
 		TCF	FULLTIME
 
-# Page 1469
+## Page 1469
 RUFLAW3		TC	RUFSETUP	# EXECUTE COMMON RUFLAW SUBROUTINE.
 		INDEX	ADRSDIF1
 		CS	FIREDB		# CALCULATE DISTANCE FROM SWITCH CURVE

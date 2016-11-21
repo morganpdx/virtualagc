@@ -1,20 +1,20 @@
 ### FILE="Main.annotation"
-# Copyright:	Public domain.
-# Filename:	R31.agc
-# Purpose:	A section of Luminary 1C, revision 131.
-#		It is part of the source code for the Lunar Module's (LM)
-#		Apollo Guidance Computer (AGC) for Apollo 13 and Apollo 14.
-#		This file is intended to be a faithful transcription, except
-#		that the code format has been changed to conform to the
-#		requirements of the yaYUL assembler rather than the
-#		original YUL assembler.
-# Reference:	pp. 710-715 of 1729.pdf.
-# Contact:	Ron Burkey <info@sandroid.org>.
-# Website:	www.ibiblio.org/apollo/index.html
-# Mod history:	05/24/03 RSB.	Began transcribing.
-#		05/14/05 RSB	Corrected website reference above.
+## Copyright:	Public domain.
+## Filename:	R31.agc
+## Purpose:	A section of Luminary 1C, revision 131.
+##		It is part of the source code for the Lunar Module's (LM)
+##		Apollo Guidance Computer (AGC) for Apollo 13.
+##		This file is intended to be a faithful transcription, except
+##		that the code format has been changed to conform to the
+##		requirements of the yaYUL assembler rather than the
+##		original YUL assembler.
+## Reference:	pp. 710-715 of 1729.pdf.
+## Contact:	Ron Burkey <info@sandroid.org>.
+## Website:	www.ibiblio.org/apollo/index.html
+## Mod history:	05/24/03 RSB.	Began transcribing.
+##		05/14/05 RSB	Corrected website reference above.
 
-# Page 710
+## Page 710
 		BANK	40
 		SETLOC	R31LOC
 		BANK
@@ -64,7 +64,7 @@ V83CALL		CS	FLAGWRD7	# TEST AVERAGE G FLAG
 
 		TC	INTPRET		# EXTRAPOLATE BOTH STATE VECTORS
 		RTB
-# Page 711
+## Page 711
 			LOADTIME
 		STCALL	TDEC1
 			LEMPREC		# PRECISION BASE VECTOR FOR LM
@@ -115,7 +115,7 @@ REV83		CS	FLAGWRD7
 		STCALL	TET
 			INTEGRVS	# INTEGRATION --- AT LAST ---
 OTHCONIC	VLOAD
-# Page 712
+## Page 712
 			RATT
 		STOVL	RONE
 			VATT
@@ -166,7 +166,7 @@ COMPDISP	VLOAD	VSU
 		PDVL	VXV		# UNIT(P) TO PD 12-17
 			0D		# UNIT(RL)
 			VONE
-# Page 713
+## Page 713
 		VXV	DOT		# (UR * VL) * UR . U(P)
 			0D
 			12D
@@ -216,7 +216,7 @@ GETRVN		CA	PRIO22		# INHIBIT SERVICER
 		BOFF	VLOAD
 			MUNFLAG
 			GETRVN2		# IF MUNFLAG RESET, DO CM DELTA PRECISION
-# Page 714
+## Page 714
 		VXM	VSR4		# CHANGE TO REFERENCE SYSTEM AND RESCALE
 			REFSMMAT
 		PDVL			# R TO PD 0-5
@@ -251,6 +251,6 @@ ONEBASE		TC	INTPRET		# GET CSM BASE VECTOR
 
 V16N54		VN	1654
 
-# Page 715
+## Page 715
 # (The original program listing had no source lines on this page.)
 

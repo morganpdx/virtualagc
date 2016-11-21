@@ -1,33 +1,33 @@
 ### FILE="Main.annotation"
-# Copyright:	Public domain.
-# Filename:	RTB_OP_CODES.agc
-# Purpose: 	Part of the source code for Luminary 1A build 099.
-#		It is part of the source code for the Lunar Module's (LM)
-#		Apollo Guidance Computer (AGC), for Apollo 11.
-# Assembler:	yaYUL
-# Contact:	Ron Burkey <info@sandroid.org>.
-# Website:	www.ibiblio.org/apollo.
-# Pages:	1397-1401
-# Mod history:  2009-05-10 SN   (Sergio Navarro).  Started adapting
-#				from the Luminary131/ file of the same
-#				name, using Luminary099 page images.
-#
-# This source code has been transcribed or otherwise adapted from
-# digitized images of a hardcopy from the MIT Museum.  The digitization
-# was performed by Paul Fjeld, and arranged for by Deborah Douglas of
-# the Museum.  Many thanks to both.  The images (with suitable reduction
-# in storage size and consequent reduction in image quality as well) are
-# available online at www.ibiblio.org/apollo.  If for some reason you
-# find that the images are illegible, contact me at info@sandroid.org
-# about getting access to the (much) higher-quality images which Paul
-# actually created.
-#
-# Notations on the hardcopy document read, in part:
-#
-#	Assemble revision 001 of AGC program LMY99 by NASA 2021112-61
-#	16:27 JULY 14, 1969 
+## Copyright:	Public domain.
+## Filename:	RTB_OP_CODES.agc
+## Purpose: 	Part of the source code for Luminary 1A build 099.
+##		It is part of the source code for the Lunar Module's (LM)
+##		Apollo Guidance Computer (AGC), for Apollo 11.
+## Assembler:	yaYUL
+## Contact:	Ron Burkey <info@sandroid.org>.
+## Website:	www.ibiblio.org/apollo.
+## Pages:	1397-1401
+## Mod history: 2009-05-10 SN   (Sergio Navarro).  Started adapting
+##				from the Luminary131/ file of the same
+##				name, using Luminary099 page images.
+##
+## This source code has been transcribed or otherwise adapted from
+## digitized images of a hardcopy from the MIT Museum.  The digitization
+## was performed by Paul Fjeld, and arranged for by Deborah Douglas of
+## the Museum.  Many thanks to both.  The images (with suitable reduction
+## in storage size and consequent reduction in image quality as well) are
+## available online at www.ibiblio.org/apollo.  If for some reason you
+## find that the images are illegible, contact me at info@sandroid.org
+## about getting access to the (much) higher-quality images which Paul
+## actually created.
+##
+## Notations on the hardcopy document read, in part:
+##
+##	Assemble revision 001 of AGC program LMY99 by NASA 2021112-61
+##	16:27 JULY 14, 1969 
 
-# Page 1397
+## Page 1397
 		BANK	22
 		SETLOC	RTBCODES
 		BANK
@@ -78,7 +78,7 @@ V1STO2S		TC	1TO2SUB		# ANSWER ARRIVES IN A AND MPAC.
 		DXCH	MPAC +5
 		DXCH	MPAC
 		TC	1TO2SUB
-# Page 1398
+## Page 1398
 		TS	MPAC +2
 
 		DXCH	MPAC +3
@@ -129,7 +129,7 @@ CDUINC		TS	TEM2		# 1S COMPL.QUANT. ARRIVES IN ACC.  STORE IT
 		AD	ONE
 		TCF	+4
 		AD	ONE
-# Page 1399
+## Page 1399
 		AD	ONE		# OVEFLOW HERE IF 2S COMPL. IS 180 DEG.
 		COM
 
@@ -148,7 +148,7 @@ CDUINC		TS	TEM2		# 1S COMPL.QUANT. ARRIVES IN ACC.  STORE IT
 		TS	0		# STORE NEW ANGLE IN 2S COMPLEMENT.
 		TC	Q
 
-# Page 1400
+## Page 1400
 # RTB TO TORQUE GYROS, EXCEPT FOR THE CALL TO IMUSTALL.  ECADR OF COMMANDS ARRIVES IN X1.
 
 PULSEIMU	INDEX	FIXLOC		# ADDRESS OF GYRO COMMANDS SHOULD BE IN X1
@@ -157,7 +157,7 @@ PULSEIMU	INDEX	FIXLOC		# ADDRESS OF GYRO COMMANDS SHOULD BE IN X1
 		CADR	IMUPULSE
 		TCF	DANZIG
 
-# Page 1401
+## Page 1401
 # THE SUBROUTINE SIGNMPAC SETS C(MPAC, MPAC +1) TO SIGN(MPAC).
 # FOR THIS, ONLY THE CONTENTS OF MPAC ARE EXAMINED.  ALSO +0 YIELDS POSMAX AND -0 YIELDS NEGMAX.
 #
@@ -205,7 +205,7 @@ NORMUNIT	CAF	ZERO
 		TCF	NOSHIFT
 		TCF	+2
 		TCF	NOSHIFT
-# Page 1402
+## Page 1402
 		CA	MPAC +1		# SHIFT ALL COMPONENTS LEFT 13
 		EXTEND
 		MP	BIT14

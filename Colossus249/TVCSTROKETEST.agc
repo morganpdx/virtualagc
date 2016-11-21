@@ -1,42 +1,42 @@
 ### FILE="Main.annotation"
-# Copyright:	Public domain.
-# Filename:	TVCSTROKETEST.agc
-# Purpose:	Part of the source code for Colossus, build 249.
-#		It is part of the source code for the Command Module's (CM)
-#		Apollo Guidance Computer (AGC), possibly for Apollo 8 and 9.
-# Assembler:	yaYUL
-# Reference:	Starts on p. 947 of 1701.pdf.
-# Contact:	Ron Burkey <info@sandroid.org>.
-# Website:	www.ibiblio.org/apollo/index.html
-# Mod history:	08/23/04 RSB.	Began transcribing.
-#		05/14/05 RSB	Corrected website reference above.
-#		2010-10-24 JL	Indentation fixes.
-#
-# The contents of the "Colossus249" files, in general, are transcribed 
-# from a scanned document obtained from MIT's website,
-# http://hrst.mit.edu/hrs/apollo/public/archive/1701.pdf.  Notations on this
-# document read, in part:
-#
-#	Assemble revision 249 of AGC program Colossus by NASA
-#	2021111-041.  October 28, 1968.  
-#
-#	This AGC program shall also be referred to as
-#				Colossus 1A
-#
-#	Prepared by
-#			Massachusetts Institute of Technology
-#			75 Cambridge Parkway
-#			Cambridge, Massachusetts
-#	under NASA contract NAS 9-4065.
-#
-# Refer directly to the online document mentioned above for further information.
-# Please report any errors (relative to 1701.pdf) to info@sandroid.org.
-#
-# In some cases, where the source code for Luminary 131 overlaps that of 
-# Colossus 249, this code is instead copied from the corresponding Luminary 131
-# source file, and then is proofed to incorporate any changes.
+## Copyright:	Public domain.
+## Filename:	TVCSTROKETEST.agc
+## Purpose:	Part of the source code for Colossus, build 249.
+##		It is part of the source code for the Command Module's (CM)
+##		Apollo Guidance Computer (AGC), for Apollo 9.
+## Assembler:	yaYUL
+## Reference:	Starts on p. 947 of 1701.pdf.
+## Contact:	Ron Burkey <info@sandroid.org>.
+## Website:	www.ibiblio.org/apollo/index.html
+## Mod history:	08/23/04 RSB.	Began transcribing.
+##		05/14/05 RSB	Corrected website reference above.
+##		2010-10-24 JL	Indentation fixes.
+##
+## The contents of the "Colossus249" files, in general, are transcribed 
+## from a scanned document obtained from MIT's website,
+## http://hrst.mit.edu/hrs/apollo/public/archive/1701.pdf.  Notations on this
+## document read, in part:
+##
+##	Assemble revision 249 of AGC program Colossus by NASA
+##	2021111-041.  October 28, 1968.  
+##
+##	This AGC program shall also be referred to as
+##				Colossus 1A
+##
+##	Prepared by
+##			Massachusetts Institute of Technology
+##			75 Cambridge Parkway
+##			Cambridge, Massachusetts
+##	under NASA contract NAS 9-4065.
+##
+## Refer directly to the online document mentioned above for further information.
+## Please report any errors (relative to 1701.pdf) to info@sandroid.org.
+##
+## In some cases, where the source code for Luminary 131 overlaps that of 
+## Colossus 249, this code is instead copied from the corresponding Luminary 131
+## source file, and then is proofed to incorporate any changes.
 
-# Page 947
+## Page 947
 # NAME		STROKE TEST PACKAGE		(INCLUDING INITIALIZATION PACKAGE)
 # ORIGINAL CODING BY OLSSON			LOG SECTION....STROKE TEST PACKAGE
 # MOD BY ENGEL					DATE....21 MARCH, 1967
@@ -93,7 +93,7 @@
 # DEBRIS....
 #	N = CADDY = +0, CARD = -0, REVS = -1
 #	BUNKER
-# Page 948
+## Page 948
 #
 # EXAMPLE STROKE TEST WAVE FORM, DEMONSTRATING PARAMETER SELECTION
 # NOTE....THIS IS NOT THE OFFICIAL WAVEFORM....
@@ -142,7 +142,7 @@
 #		FCARD3	= +0	(NUMBER OF REVERSALS MINUS 1)
 #		FCARD6	= +0	(NUMBER OF PULSE BURSTS IN 1/2 AMPLUTUDE)
 
-# Page 949
+## Page 949
 # STROKE TEST INITIALIZATION PACKAGE (AS A JOB, FROM VERB 68)
 
 		BANK	17
@@ -184,7 +184,7 @@ TSTINIT		CS	FCADDY		# NORMAL ENTRY FROM STRKTSTI
 		
 		TC	Q		# RETURN TO STRKTSTI+1 (OR CHKSTRK+2 OR +4)
 
-# Page 950
+## Page 950
 # THE OFFICIAL STROKE TEST WAVEFORM (3 JAN, 1967) CONSISTS OF FOUR STROKE SETS, AS FOLLOWS....
 #
 #	SET 1...10 BURSTS IN 1/2 AMP,   4 REVERSALS
@@ -231,7 +231,7 @@ HACKWLST	CAF	TCTSKOVR	# ENTRY FROM WAITLIST
 		EXTEND
 		WOR	CHAN14
 		INCR	CADDY		# COUNT DOWN THE NO. BURSTS, THIS SLOPE
-# Page 951
+## Page 951
 		CS	CADDY
 		EXTEND
 		BZMF	+2

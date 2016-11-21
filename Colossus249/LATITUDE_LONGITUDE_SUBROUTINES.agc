@@ -1,41 +1,41 @@
 ### FILE="Main.annotation"
-# Copyright:	Public domain.
-# Filename:	LATITUDE_LONGITUDE_SUBROUTINES.agc
-# Purpose:	Part of the source code for Colossus, build 249.
-#		It is part of the source code for the Command Module's (CM)
-#		Apollo Guidance Computer (AGC), possibly for Apollo 8 and 9.
-# Assembler:	yaYUL
-# Reference:	Begins on p. 1218 of 1701.pdf.
-# Contact:	Ron Burkey <info@sandroid.org>.
-# Website:	www.ibiblio.org/apollo.
-# Mod history:	08/28/04 RSB.	Adapted from corresponding Luminary131 file.
-#		2010-10-25 JL	Indentation fix.
-#
-# The contents of the "Colossus249" files, in general, are transcribed 
-# from a scanned document obtained from MIT's website,
-# http://hrst.mit.edu/hrs/apollo/public/archive/1701.pdf.  Notations on this
-# document read, in part:
-#
-#	Assemble revision 249 of AGC program Colossus by NASA
-#	2021111-041.  October 28, 1968.  
-#
-#	This AGC program shall also be referred to as
-#				Colossus 1A
-#
-#	Prepared by
-#			Massachusetts Institute of Technology
-#			75 Cambridge Parkway
-#			Cambridge, Massachusetts
-#	under NASA contract NAS 9-4065.
-#
-# Refer directly to the online document mentioned above for further information.
-# Please report any errors (relative to 1701.pdf) to info@sandroid.org.
-#
-# In some cases, where the source code for Luminary 131 overlaps that of 
-# Colossus 249, this code is instead copied from the corresponding Luminary 131
-# source file, and then is proofed to incorporate any changes.
+## Copyright:	Public domain.
+## Filename:	LATITUDE_LONGITUDE_SUBROUTINES.agc
+## Purpose:	Part of the source code for Colossus, build 249.
+##		It is part of the source code for the Command Module's (CM)
+##		Apollo Guidance Computer (AGC), for Apollo 9.
+## Assembler:	yaYUL
+## Reference:	Begins on p. 1218 of 1701.pdf.
+## Contact:	Ron Burkey <info@sandroid.org>.
+## Website:	www.ibiblio.org/apollo.
+## Mod history:	08/28/04 RSB.	Adapted from corresponding Luminary131 file.
+##		2010-10-25 JL	Indentation fix.
+##
+## The contents of the "Colossus249" files, in general, are transcribed 
+## from a scanned document obtained from MIT's website,
+## http://hrst.mit.edu/hrs/apollo/public/archive/1701.pdf.  Notations on this
+## document read, in part:
+##
+##	Assemble revision 249 of AGC program Colossus by NASA
+##	2021111-041.  October 28, 1968.  
+##
+##	This AGC program shall also be referred to as
+##				Colossus 1A
+##
+##	Prepared by
+##			Massachusetts Institute of Technology
+##			75 Cambridge Parkway
+##			Cambridge, Massachusetts
+##	under NASA contract NAS 9-4065.
+##
+## Refer directly to the online document mentioned above for further information.
+## Please report any errors (relative to 1701.pdf) to info@sandroid.org.
+##
+## In some cases, where the source code for Luminary 131 overlaps that of 
+## Colossus 249, this code is instead copied from the corresponding Luminary 131
+## source file, and then is proofed to incorporate any changes.
 
-# Page 1218
+## Page 1218
 # SUBROUTINE TO CONVERT RAD VECTOR AT GIVEN TIME TO LAT,LONG AND ALT
 #
 # CALLING SEQUENCE
@@ -86,7 +86,7 @@ CALLRTRP	CALL
 			ALPHAV
 		PDDL	DSQ
 			ALPHAV +2
-# Page 1219
+## Page 1219
 		DAD	SQRT
 		DMP	SL1R
 			GAMRP
@@ -106,7 +106,7 @@ CALLRTRP	CALL
 			ERADM
 		STCALL	ALT		# EXIT WITH ALT METERS B-29
 			INCORPEX
-# Page 1220
+## Page 1220
 # SUBROUTINE TO CONVERT LAT,LONG.ALT AT GIVEN TIME TO RADIUS VECTOR
 #
 # CALLING SEQUENCE
@@ -158,7 +158,7 @@ CALLRPRT	CALL
 			RP-TO-R		# EXIT WITH UNIT R VECTOR IN MPAC
 		STODL	ALPHAV
 			ERADM
-# Page 1221
+## Page 1221
 		DAD	VXSC		# (RE + ALT)(UNIT R) METERS B-30
 			ALT
 			ALPHAV
@@ -198,7 +198,7 @@ B2/A2		2DEC	.9933064884 B-1	# GAMMA= B**2/A**2 B-1
 EE		2DEC	6.6935116 E-3	# (1-B**2/A**2) B-0
 ERAD		2DEC	6373338 B-29	# PAD RADIUS
 
-# Page 1222
+## Page 1222
 # ARCTAN SUBROUTINE
 #
 # CALLING SEQUENCE
@@ -245,7 +245,7 @@ ATAN=90		DLOAD	SIGN
 
 2DZERO		=	DPZERO
 
-# Page 1223
+## Page 1223
 # ***** SETGAMMA SUBROUTINE *****
 # SUBROUTINE TO SET GAMMA FOR THE LAT-LONG AND LALOTORV SUBROUTINES
 #
@@ -272,7 +272,7 @@ SETGMEX		STORE	GAMRP
 		RVQ
 GAMRP		=	8D
 
-# Page 1224
+## Page 1224
 # ***** SETRE SUBROUTINE *****
 # SUBROUTINE TO SET RE (EARTH OR MOON RADIUS)
 #

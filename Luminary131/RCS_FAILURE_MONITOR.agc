@@ -1,20 +1,20 @@
 ### FILE="Main.annotation"
-# Copyright:	Public domain.
-# Filename:	RCS_FAILURE_MONITOR.agc
-# Purpose:	RCS FAILURE MONITOR code for for Luminary 1C, revision 131.
-#		It is part of the source code for the Lunar Module's (LM)
-#		Apollo Guidance Computer (AGC) for Apollo 13 and Apollo 14.
-#		This file is intended to be a faithful transcription, except
-#		that the code format has been changed to conform to the
-#		requirements of the yaYUL assembler rather than the 
-#		original YUL assembler.
-# Reference:	pp. 197-199 of 1729.pdf.
-# Contact:	Ron Burkey <info@sandroid.org>.
-# Website:	www.ibiblio.org/apollo/index.html
-# Mod history:	05/05/03 RSB.	Began transcribing.
-#		05/14/05 RSB	Corrected website references above.
+## Copyright:	Public domain.
+## Filename:	RCS_FAILURE_MONITOR.agc
+## Purpose:	RCS FAILURE MONITOR code for for Luminary 1C, revision 131.
+##		It is part of the source code for the Lunar Module's (LM)
+##		Apollo Guidance Computer (AGC) for Apollo 13.
+##		This file is intended to be a faithful transcription, except
+##		that the code format has been changed to conform to the
+##		requirements of the yaYUL assembler rather than the 
+##		original YUL assembler.
+## Reference:	pp. 197-199 of 1729.pdf.
+## Contact:	Ron Burkey <info@sandroid.org>.
+## Website:	www.ibiblio.org/apollo/index.html
+## Mod history:	05/05/03 RSB.	Began transcribing.
+##		05/14/05 RSB	Corrected website references above.
 
-# Page 197
+## Page 197
 # PROGRAM DESCRIPTION:
 #
 # AUTHOR: J. S. MILLER
@@ -66,7 +66,7 @@ RCSMONEX	EQUALS	RESUME
 		BANK	23
 		SETLOC	RCSMONT
 		BANK
-# Page 198
+## Page 198
 		COUNT*	$$/T4RCS
 		
 RCSMONIT	CS	ZERO
@@ -116,7 +116,7 @@ RCSMONIT	CS	ZERO
 		
 		TCF	1/ACCFIX		# SET UP 1/ACCJOB AND EXIT.
 		
-# Page 199
+## Page 199
 VOPENED		INDEX	L			# A VALVE HAS JUST BEEN OPENED.
 		CS	5FAILTAB
 		MASK	CH5MASK

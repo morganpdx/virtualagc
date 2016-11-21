@@ -1,33 +1,33 @@
 ### FILE="Main.annotation"
-# Copyright:	Public domain.
-# Filename:	LEM_GEOMETRY.agc
-# Purpose: 	Part of the source code for Luminary 1A build 099.
-#		It is part of the source code for the Lunar Module's (LM)
-#		Apollo Guidance Computer (AGC), for Apollo 11.
-# Assembler:	yaYUL
-# Contact:	Ron Burkey <info@sandroid.org>.
-# Website:	www.ibiblio.org/apollo.
-# Pages:	320-325
-# Mod history:	2009-05-16 RSB	Adapted from the corresponding 
-#				Luminary131 file, using page 
-#				images from Luminary 1A.
-#
-# This source code has been transcribed or otherwise adapted from
-# digitized images of a hardcopy from the MIT Museum.  The digitization
-# was performed by Paul Fjeld, and arranged for by Deborah Douglas of
-# the Museum.  Many thanks to both.  The images (with suitable reduction
-# in storage size and consequent reduction in image quality as well) are
-# available online at www.ibiblio.org/apollo.  If for some reason you
-# find that the images are illegible, contact me at info@sandroid.org
-# about getting access to the (much) higher-quality images which Paul
-# actually created.
-#
-# Notations on the hardcopy document read, in part:
-#
-#	Assemble revision 001 of AGC program LMY99 by NASA 2021112-61
-#	16:27 JULY 14, 1969 
+## Copyright:	Public domain.
+## Filename:	LEM_GEOMETRY.agc
+## Purpose: 	Part of the source code for Luminary 1A build 099.
+##		It is part of the source code for the Lunar Module's (LM)
+##		Apollo Guidance Computer (AGC), for Apollo 11.
+## Assembler:	yaYUL
+## Contact:	Ron Burkey <info@sandroid.org>.
+## Website:	www.ibiblio.org/apollo.
+## Pages:	320-325
+## Mod history:	2009-05-16 RSB	Adapted from the corresponding 
+##				Luminary131 file, using page 
+##				images from Luminary 1A.
+##
+## This source code has been transcribed or otherwise adapted from
+## digitized images of a hardcopy from the MIT Museum.  The digitization
+## was performed by Paul Fjeld, and arranged for by Deborah Douglas of
+## the Museum.  Many thanks to both.  The images (with suitable reduction
+## in storage size and consequent reduction in image quality as well) are
+## available online at www.ibiblio.org/apollo.  If for some reason you
+## find that the images are illegible, contact me at info@sandroid.org
+## about getting access to the (much) higher-quality images which Paul
+## actually created.
+##
+## Notations on the hardcopy document read, in part:
+##
+##	Assemble revision 001 of AGC program LMY99 by NASA 2021112-61
+##	16:27 JULY 14, 1969 
 
-# Page 320
+## Page 320
 		BANK	23
 		SETLOC	LEMGEOM
 		BANK
@@ -74,7 +74,7 @@ SVDWN2		BOF	RVQ		# SW=1=AVETOMID DOING W-MATRIX INTEG.
 			TET
 		STORE	PIPTIME
 		RVQ
-# Page 321
+## Page 321
 SVDWN1		VLOAD	VSL*
 			TDELTAV
 			0 	-7,2
@@ -91,7 +91,7 @@ SVDWN1		VLOAD	VSL*
 		STORE	V-OTHER
 		RVQ
 		
-# Page 322
+## Page 322
 # THE FOLLOWING ROUTINE TAKES A HALF UNIT TARGET VECTOR REFERRED TO NAV BASE COORDINATES AND FINDS BOTH
 # GIMBAL ORIENTATIONS AT WHICH THE RR MIGHT SIGHT THE TARGET.  THE GIMBAL ANGLES CORRESPONDING TO THE PRESENT MODE
 # ARE LEFT IN MODEA AND THOSE WHICH WOULD BE USED AFTER A REMODE IN MODEB.  THIS ROUTINE ASSUMES MODE 1 IS TRUNNION
@@ -128,7 +128,7 @@ RRANGLES	STORE	32D
 		SR1
 		STCALL	COSTH
 			ARCTRIG
-# Page 323
+## Page 323
 		PUSH	DAD		# MODE 1 SHAFT TO 2.
 			LODPHALF
 		STOVL	6
@@ -154,7 +154,7 @@ RRANGLES	STORE	32D
 		TC	INTPRET
 		GOTO
 			S2
-# Page 324
+## Page 324
 # GIVEN RR TRUNNION AND SHAFT (T,S) IN TANGNB,+1, FIND THE ASSOCIATED
 # LINE OF SIGHT IN NAV BASE AXES.  THE HALF UNIT VECTOR, .5(SIN(S)COS(T),
 # -SIN(T),COS(S)COS(T)) IS LEFT IN MPAC AND 32D.
@@ -204,7 +204,7 @@ RRNBMPAC	STODL	20D		# SAVE SHAFT CDU IN 21.
 			CDULOGIC
 		GOTO
 			RRNB1
-# Page 325
+## Page 325
 # (This page has nothing on it.)
 
 			

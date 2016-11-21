@@ -1,21 +1,21 @@
 ### FILE="Main.annotation"
-# Copyright:	Public domain.
-# Filename:	KALCMANU_STEERING.agc
-# Purpose:	A section of Luminary 1C, revision 131.
-#		It is part of the source code for the Lunar Module's (LM)
-#		Apollo Guidance Computer (AGC) for Apollo 13 and Apollo 14.
-#		This file is intended to be a faithful transcription, except
-#		that the code format has been changed to conform to the
-#		requirements of the yaYUL assembler rather than the 
-#		original YUL assembler.
-# Reference:	pp. 372-376 of 1729.pdf.
-# Contact:	Ron Burkey <info@sandroid.org>.
-# Website:	www.ibiblio.org/apollo/index.html
-# Mod history:	05/11/03 RSB	Began transcribing.
-#		05/14/05 RSB	Corrected website reference above.
-#		2011-05-07 JL	Removed workarounds.
+## Copyright:	Public domain.
+## Filename:	KALCMANU_STEERING.agc
+## Purpose:	A section of Luminary 1C, revision 131.
+##		It is part of the source code for the Lunar Module's (LM)
+##		Apollo Guidance Computer (AGC) for Apollo 13.
+##		This file is intended to be a faithful transcription, except
+##		that the code format has been changed to conform to the
+##		requirements of the yaYUL assembler rather than the 
+##		original YUL assembler.
+## Reference:	pp. 372-376 of 1729.pdf.
+## Contact:	Ron Burkey <info@sandroid.org>.
+## Website:	www.ibiblio.org/apollo/index.html
+## Mod history:	05/11/03 RSB	Began transcribing.
+##		05/14/05 RSB	Corrected website reference above.
+##		2011-05-07 JL	Removed workarounds.
 
-# Page 372
+## Page 372
 # GENERATION OF STEERING COMMANDS FOR DIGITAL AUTOPILOT FREE FALL MANEUVERS
 #
 # NEW COMMANDS WILL BE GENERATED EVERY ONE SECOND DURING THE MANEUVER
@@ -66,7 +66,7 @@ INCRDCDU	TS	SPNDX
 		INDEX	SPNDX
 		TS	DELDCDU		# ANGLE INCREMENTS TO BE ADDED TO
 		INDEX	SPNDX		# CDUXD, CDUYD, CDUZD EVERY TENTH SECOND
-# Page 373
+## Page 373
 		CA	NCDU		# BY LEM DAP
 		INDEX	SPNDX
 		XCH	BCDU
@@ -116,7 +116,7 @@ DT/TAU		DEC	.1
 MANUSTAT	EXIT			# INITIALIZATION ROUTINE
 		EXTEND			# FOR AUTOMATIC MANEUVERS
 		DCA	TIME2
-# Page 374
+## Page 374
 		DAS	TM		# TM+TO		MANEUVER COMPLETION TIME
 		EXTEND
 		DCS	ONESEK
@@ -167,7 +167,7 @@ MANUCALL	INHINT			# CALL FOR NEXT UPDATE VIA WAITLIST
 		TC	WAITLIST
 		EBANK=	TTEMP
 		2CADR	UPDTCALL
-# Page 375
+## Page 375
 		CAF	ONESEK +1	# INCREMENT TIME FOR NEXT UPDATE
 		ADS	NEXTIME
 		TCF	ENDOFJOB
@@ -179,7 +179,7 @@ UPDTCALL	CAF	PRIO26		# CATELLITE PROGRAM TO CALL FOR UPDATE
 
 		TC	TASKOVER
 		
-# Page 376
+## Page 376
 # ROUTINE FOR TERMINATING AUTOMATIC MANEUVERS
 
 MANUSTOP	CAF	ZERO		# ZERO MANEUVER RATES

@@ -80,9 +80,22 @@
 #				the executables.
 #		2016-08-07 RSB	The Validation "mission" was missing.
 #		2016-08-28 RSB	Activated Solarium055 mission.
+#		2016-11-07 RSB	Added the Aurora12 and Sunburst120 missions,
+#				but also made it so that the MISSIONS 
+#				environment variable is assign herein only if
+#				it doesn't previously exists.
+#		2016-11-16 RSB	Certain resources needed only by the "standard"
+#				32-bit Linux VirtualAGC VM I'm now creating are
+#				added to the installation bundle.  These are
+#				related to debugging on Code::blocks. 
 
 APP=VirtualAGC
-MISSIONS=Colossus249 Luminary131 Artemis072 Validation FP6 FP8 Comanche055 Luminary099 Colossus237 Validation Solarium055
+ifndef MISSIONS
+MISSIONS=Colossus249 Luminary131 Artemis072 Validation FP6 FP8 Comanche055
+MISSIONS+=Luminary099 Colossus237 Validation Solarium055 Aurora12 Sunburst120
+else
+MISSIONS+=FP6 FP8
+endif
 
 # For cross-platform building --- i.e., for building Win32 and Mac OS X versions
 # of VirtualAGC on a Linux platform --- it is assumed that the IMCROSS
@@ -130,6 +143,10 @@ EXTRA_WIN_LIBS=-lwsock32
 endif
 endif
 
+ifndef WIN32
+LIBS2+=-lX11
+endif
+
 .PHONY: default
 default: Linux
 
@@ -137,13 +154,13 @@ default: Linux
 all-archs: Linux Win32 MacOsX
 
 .PHONY: Linux
+ifdef MACOSX
+Linux: temp/VirtualAGC.app
+else
 ifeq "${USER}" "rburkey"
 Linux: VirtualAGC-installer
 else
-ifndef MACOSX
 Linux: temp/lVirtualAGC
-else
-Linux: temp/VirtualAGC.app
 endif
 endif
 
@@ -183,7 +200,7 @@ ${APP}: ${SOURCES} ${HEADERS}
 		`wx-config --cxxflags` \
 		-o $@ ${SOURCES} \
 		`wx-config --libs` \
-		${LIBS2} -lX11
+		${LIBS2}
 	strip $@${EXT}
 
 ${APP}.exe: ${SOURCES} ${HEADERS}
@@ -210,8 +227,9 @@ temp/lVirtualAGC/bin temp/VirtualAGC/bin temp/VirtualAGC.app/Contents/MacOS:
 # This target creates a Resources directory for any of the installation
 # packages.  Except for gtk+ related stuff, none of the contents of the
 # Resources directory vary by target.
+.PHONY: temp/lVirtualAGC/Resources
 temp/lVirtualAGC/Resources temp/VirtualAGC/Resources temp/VirtualAGC.app/Contents/Resources:
-	mkdir -p $@/pixmaps $@/source $@
+	mkdir -p $@/pixmaps $@/source
 	${CP} ../scenarios $@
 	for n in ${MISSIONS}; do \
 		sh ./CopyApolloSource.sh $@ $$n ${EXTSW} ${WIN32} ;\
@@ -229,6 +247,8 @@ ifeq "${YADEDA_SUFFIX}" ""
 else
 	${CP} ../yaDEDA2/*.xpm $@
 endif
+	${CP} -a ../yaDSKYb1/images $@/images-yaDSKYb1
+	-rm -rf $@/images-yaDSKYb1/CVS $@/images-yaDSKYb1/.xvpics
 	${CP} ../jWiz/*.jpg $@
 	-rm -rf $@/pixmaps/yaDEDA/CVS $@/pixmaps/yaDEDA/.xvpics
 	${CP} ../yaTelemetry/*.jpg $@
@@ -240,11 +260,25 @@ endif
 	-rm -rf $@/LM_Simulator/Documentation/CVS
 	${CP} template.app/Contents/Resources/VirtualAGC.icns $@
 ifeq "${EXT}" ".exe"
-	for n in SDL.dll history*.dll pthread*.dll readline*.dll libgnurx*.dll ; \
+	${CP} /usr/local/bin/SDL.dll $@
+	# Very old usage.
+	#for n in history pthread readline libgnurx ; \
+	#do \
+	#	${CP} /usr/local/bin/$$n*.dll $@ ; \
+	#done
+	# Newer usage (2016-11-19)
+	for n in 1.0 ncurses regex ; \
 	do \
-		${CP} /usr/local/bin/$$n $@ ; \
+		${CP} /usr/bin/msys-$$n*.dll $@ ; \
 	done
-	${CP} /usr/local/lib/wx*dll $@
+	for n in wxbase28u_gcc_custom wxmsw28u_core_gcc_custom; \
+	do \
+		${CP} /usr/local/lib/$$n.dll $@ ; \
+	done
+	for n in libgcc_s_dw2-1 libstdc++-6 pthreadGC-3 ; \
+	do \
+		${CP} c:/mingw/bin/$$n.dll $@ ; \
+	done
 endif
 	${CP} ../Contributed/SyntaxHighlight $@
 	rm -rf `find $@/SyntaxHighlight -name ".svn"`
@@ -269,7 +303,11 @@ EXECUTABLES:=\
 	../yaUniverse/yaUniverse \
 	../ControlPulseSim/ControlPulseSim \
 	../yaTelemetry/yaTelemetry \
-	../jWiz/jWiz
+	../jWiz/jWiz \
+	../yaAGCb1/yaAGCb1 \
+	../yaAGC-Block1-Pultorak/yaAGC-Block1 \
+	../yaDSKYb1/yaDSKYb1 \
+	../yaUplinkBlock1/yaUplinkBlock1
 ifeq "${YADSKY_SUFFIX}" ""
 EXECUTABLES+=../yaDSKY/src/yaDSKY
 else
@@ -294,6 +332,12 @@ temp/lVirtualAGC : % : VirtualAGC %/bin %/Resources
 	for n in $@/bin/* ; do strip $$n ; done
 	${CP} ../scripts/SimStop $@/bin
 	chmod +x $@/bin/SimStop
+	-mkdir $@/Resources/source
+	cp ../Makefile.inc $@/Resources/source
+	-mkdir -p $@/Resources/source/yaYUL
+	-mkdir -p $@/Resources/source/Tools
+	cp ../yaYUL/yaYUL${EXT} $@/Resources/source/yaYUL
+	cp ../Tools/oct2bin${EXT} $@/Resources/source/Tools
 
 temp/VirtualAGC : % : VirtualAGC.exe %/bin %/Resources
 	for n in ${EXECUTABLES} ../yaAGC/WinAGC ; do cp $$n.exe $@/bin ; done

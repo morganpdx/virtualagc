@@ -1,31 +1,31 @@
 ### FILE="Main.annotation"
-# Copyright:	Public domain.
-# Filename:	LUNAR_AND_SOLAR_EPHEMERIDES_SUBROUTINES.agc
-# Purpose: 	Part of the source code for Luminary 1A build 099.
-#		It is part of the source code for the Lunar Module's (LM)
-#		Apollo Guidance Computer (AGC), for Apollo 11.
-# Assembler:	yaYUL
-# Contact:	Hartmuth Gutsche <hgutsche@xplornet.com>.
-# Website:	www.ibiblio.org/apollo.
-# Pages:	984-987
-# Mod history:	2009-05-24 HG	Transcribed from page images.
-#
-# This source code has been transcribed or otherwise adapted from
-# digitized images of a hardcopy from the MIT Museum.  The digitization
-# was performed by Paul Fjeld, and arranged for by Deborah Douglas of
-# the Museum.  Many thanks to both.  The images (with suitable reduction
-# in storage size and consequent reduction in image quality as well) are
-# available online at www.ibiblio.org/apollo.  If for some reason you
-# find that the images are illegible, contact me at info@sandroid.org
-# about getting access to the (much) higher-quality images which Paul
-# actually created.
-#
-# Notations on the hardcopy document read, in part:
-#
-#	Assemble revision 001 of AGC program LMY99 by NASA 2021112-61
-#	16:27 JULY 14, 1969 
+## Copyright:	Public domain.
+## Filename:	LUNAR_AND_SOLAR_EPHEMERIDES_SUBROUTINES.agc
+## Purpose: 	Part of the source code for Luminary 1A build 099.
+##		It is part of the source code for the Lunar Module's (LM)
+##		Apollo Guidance Computer (AGC), for Apollo 11.
+## Assembler:	yaYUL
+## Contact:	Hartmuth Gutsche <hgutsche@xplornet.com>.
+## Website:	www.ibiblio.org/apollo.
+## Pages:	984-987
+## Mod history:	2009-05-24 HG	Transcribed from page images.
+##
+## This source code has been transcribed or otherwise adapted from
+## digitized images of a hardcopy from the MIT Museum.  The digitization
+## was performed by Paul Fjeld, and arranged for by Deborah Douglas of
+## the Museum.  Many thanks to both.  The images (with suitable reduction
+## in storage size and consequent reduction in image quality as well) are
+## available online at www.ibiblio.org/apollo.  If for some reason you
+## find that the images are illegible, contact me at info@sandroid.org
+## about getting access to the (much) higher-quality images which Paul
+## actually created.
+##
+## Notations on the hardcopy document read, in part:
+##
+##	Assemble revision 001 of AGC program LMY99 by NASA 2021112-61
+##	16:27 JULY 14, 1969 
 
-# Page 984
+## Page 984
 # NAME -- LSPOS -- LOCATE SUN AND MOON			DATE -- 25 OCT 67
 # MOD NO. 1
 # MOD BY NEVILLE					ASSEMBLY SUNDANCE
@@ -79,7 +79,7 @@
 # THE THREE PHIS ARE STORED AS AARG, BARG, AND CARG(SUN).  ALL CONSTANTS ARE UPDATED BY YEAR.
 #
 # CALLING SEQUENCE
-# Page 985
+## Page 985
 #	CALL LSPOS.  RETURN IS VIA CPRET.
 #
 # ALARMS OR ABORTS
@@ -128,7 +128,7 @@ POSITA		DLOAD
 POSITB		DLOAD	DMP*
 			TIMEP		# T
 			VAL67 +4,1	# 1/27 OR 1/32 OR 1/365
-# Page 986
+## Page 986
 		SL	DAD*
 			8D
 			VAL67 +2,1	# AARG
@@ -179,7 +179,7 @@ POSITF		DLOAD	DSU		# 3RD
 			KONMAT
 		STORE	VSUN
 		RVQ
-# Page 987
+## Page 987
 POSITE		DLOAD
 			KONMAT +2	# ZEROS
 		STORE	GTMP

@@ -43,6 +43,8 @@
  * 		07/17/16 RSB	gdbmi_format was commented out everywhere
  * 				it appeared, since it wasn't being used
  * 				and was generating compiler warnings.
+ * 		09/12/16 OH	Add /fmt capabilities to print and output
+ * 		09/20/18 OH	Support floating point with scalar types.
  */
 
 #include <stdlib.h>
@@ -106,6 +108,55 @@ static CustomCommand_t gdbmiCustomCmds[32];
 const char disp_keep[5] = "keep";
 const char disp_delete[4] = "del";
 
+#define SP (unsigned)1
+#define DP (unsigned)2
+#define PI 3.14159265358979
+
+typedef int GdbmiComplement_t;
+
+typedef struct {
+  char     type[3];
+  unsigned precision;
+  double   scalar;
+} GdmiScalar_t;
+
+const GdmiScalar_t GdbmiScalarMap[] = {
+  {"FF",SP, 85.41},            // TRIM DEGREES: seconds of arc
+  {"GG",SP,  1.0/16384},       // INERTIA: Frac. of 1,048,576 kg m²
+  {"II",SP,  1.0/16384},       // THRUST MOMENT: Frac. of 1,048,576 Nm
+  {"JJ",DP,  2.0},             // POSITION5: m
+  {"KK",SP,  1.0/16384},       // WEIGHT2: kg
+  {"LL",DP,  0.00008055},      // POSITION6: Nautical Miles.
+  {"MM",DP, 25.0/268435456},   // DRAG ACCELERATION: G
+  {"PP",DP,  1.0},             // 2 INTEGERS
+  {"UU",DP,  1.0/268435456},   // VELOCITY/2VS: Frac. of 51,532.3946 feet/sec
+  {"VV",DP,  0.00005128},      // POSITION8: Nautical miles
+  {"XX",DP,  1.0/512},         // POSITION9: Meters
+  {"YY",DP,  1.0/268435456},   // VELOCITY4: Meters/Centisec
+  {"SP",SP,  1.0/16384},       // GENERIC: Single Precision Fraction.
+  {"DP",DP,  1.0/268435456},   // GENERIC: Double Precision Fraction.
+/*  {"TP",DP,  1.0/4398046511104}// GENERIC: Triple Precision Fraction.  */
+  { "A",SP,  1.0},             // OCTAL: Octal
+  { "B",SP,  1.0/16384},       // FRACTIONAL: Fraction (Default)
+  { "C",SP,  1.0},             // WHOLE: 1 Unit
+  { "D",SP,360.0/32768},       // CDU DEGREES: Degrees (15 Bit 2s Complement)
+  { "E",SP, 90.0/16384},       // ELEVATION DEGREES: Degrees
+  { "F",SP,180.0/16384},       // DEGREES      : Degrees
+  { "G",DP,360.0/268435456},   // DEGREES  (90): Degrees
+  { "H",DP,360.0/268435456},   // DEGREES (360): Degrees
+  { "J",SP, 90.0/32768},       // DEGREES: Degrees (15 bit 2s Complement)
+  { "K",DP,  1.0/100},         // TIME (HR, MIN, SEC): seconds
+  { "L",DP,  1.0/100},         // TIME (MIN SEC): minutes | seconds
+  { "M",SP,  1.0/100},         // TIME (SEC): seconds
+  { "N",DP,  1.0/100},         // TIME (SEC): seconds
+  { "P",DP,  1.0/2097152},     // VELOCITY 2: meters/centi-sec
+  { "Q",DP,  2.0},             // POSITION 4: meters
+  { "S",DP,  1.0/2097152},     // VELOCITY 3: meters/centi-sec
+  { "T",SP,  1.0/100},         // G
+};
+
+#define SCALARS sizeof(GdbmiScalarMap)/sizeof(GdmiScalar_t)
+
 char*
 GdbmiStringToUpper (char* str)
 {
@@ -126,6 +177,68 @@ GdbmiAdjustCmdPtr (int i)
 {
   s += i;
   sraw += i;
+}
+
+
+/**
+ Adjust the command string pointer with the value given.
+ */
+static inline void
+GdbmiSkipSpace ()
+{
+  while (*sraw == ' ') GdbmiAdjustCmdPtr(1);
+}
+
+/**
+ Skip to the next token.
+ */
+static inline void
+GdbmiNextToken()
+{
+  while (*sraw != ' ' && *sraw != '\0' ) {
+    GdbmiAdjustCmdPtr(1);
+  }
+}
+
+static inline void
+GdbmiGet(char* token)
+{
+  
+}
+
+static int GdbmiScalar = 12;
+
+/**
+ * Set the FMT specifier if provided in the command string
+ */
+static inline void GdbmiParseFmt(GdbmiFmt_t* fmt)
+{
+   *fmt = 'o';
+   int i;
+   
+   /* Get basic Format specified if provided */
+   if (*sraw == '/') {
+	*fmt = *(sraw + 1);
+	GdbmiAdjustCmdPtr(2);
+   }
+   
+   /* Get extended type scalar if speficied */
+   if (*sraw == ':') {
+      GdbmiAdjustCmdPtr(1);
+      
+      /* Find Scalar Type */
+      for (i=0; i< SCALARS; i++)
+      {
+	const char* type = GdbmiScalarMap[i].type;
+	if (strncmp(s,type, strlen(type)) == 0 ){
+	  GdbmiScalar = i;
+	  break;
+	}
+      }
+      
+      /* Adjust string pointers */
+      GdbmiNextToken();
+   }
 }
 
 GdbmiResult
@@ -1166,31 +1279,33 @@ GdbmiHandleSetVariable (int i)
   /* Adjust the CmdPtr to point to the next token */
   GdbmiAdjustCmdPtr (i);
 
-  operand1 = s;
-  operand2 = strstr (s, "=");
-  *operand2++ = (char) 0;
+  operand1 = strtok(s,"=");
+  operand2 = strtok(NULL, "=");
+  
+  if (operand1 && operand2)
+  {
+    /* Set value using address */
+    if (operand1[0] == '*')
+      {
+	gdbmi_addr = DbgLinearAddrFromAddrStr (++operand1);
+	if ((gdbmi_addr != ~0) && (GdbmiString2Num (operand2, &gdbmi_val) == 0))
+	  DbgSetValueByAddress (gdbmi_addr, (unsigned short) gdbmi_val);
+      }
+    else /* Must be a symbol */
+      {
+	Symbol = ResolveSymbol (operand1, SYMBOL_VARIABLE);
+	if (Symbol != NULL && !Symbol->Value.Erasable)
+	  Symbol = NULL;
 
-  /* Set value using address */
-  if (operand1[0] == '*')
-    {
-      gdbmi_addr = DbgLinearAddrFromAddrStr (++operand1);
-      if ((gdbmi_addr != ~0) && (GdbmiString2Num (operand2, &gdbmi_val) == 0))
-	DbgSetValueByAddress (gdbmi_addr, (unsigned short) gdbmi_val);
-    }
-  else /* Must be a symbol */
-    {
-      Symbol = ResolveSymbol (operand1, SYMBOL_VARIABLE);
-      if (Symbol != NULL && !Symbol->Value.Erasable)
-	Symbol = NULL;
-
-      if (Symbol != NULL)
-	{
-	  /* Get linear address for display */
-	  gdbmi_addr = DbgLinearAddr (&Symbol->Value);
-	  if (GdbmiString2Num (operand2, &gdbmi_val) == 0)
-	    DbgSetValueByAddress (gdbmi_addr, (unsigned short) gdbmi_val);
-	}
-    }
+	if (Symbol != NULL)
+	  {
+	    /* Get linear address for display */
+	    gdbmi_addr = DbgLinearAddr (&Symbol->Value);
+	    if (GdbmiString2Num (operand2, &gdbmi_val) == 0)
+	      DbgSetValueByAddress (gdbmi_addr, (unsigned short) gdbmi_val);
+	  }
+      }
+  }
   return (GdbmiCmdDone);
 }
 
@@ -1509,7 +1624,7 @@ GdbmiHandleDumpMemory (int i)
 
   if (3 == sscanf (sraw, "%s 0x%x 0x%x", filename, &start_addr, &end_addr))
     {
-      if (end_addr >= start_addr && start_addr >= 0 && end_addr < 0114000)
+      if (end_addr >= start_addr && /*start_addr >= 0 &&*/ end_addr < 0114000)
 	{
 	  target = fopen (filename, "w");
 	  if (target != NULL)
@@ -1541,7 +1656,7 @@ GdbmiHandleRestoreMemory (int i)
   end_addr = 0114000;
   if (3 >= sscanf (sraw, "%s 0x%x 0x%x", filename, &start_addr, &end_addr))
     {
-      if (start_addr >= 0 && start_addr < 0114000)
+      if (/*start_addr >= 0 &&*/ start_addr < 0114000)
 	{
 	  gdbmi_addr = start_addr;
 	  source = fopen (filename, "r");
@@ -1595,8 +1710,82 @@ static GdbmiResult
 GdbmiHandleWhatIs (int i)
 {
   /* All types will be considered unsigned */
-  printf ("type = unsigned\n");
+  printf ("type = <unknown type>\n");
   return (GdbmiCmdDone);
+}
+
+int
+GdbmiIntFromAgc(unsigned short value, GdbmiComplement_t format)
+{
+  int result = value; /* Assume 15 bit 2s Comp positive*/
+  
+  if (format == 1 )
+  {  /* 14 bit 1s Comp */
+     if (value & 0x4000) result = ((value ^ 0x3fff) & 0x3fff) * -1;
+     else result = value & 0x3fff;
+  }
+  
+  return result;
+}
+
+double
+GdbmiDoubleFromAgc(unsigned value)
+{
+  int precision = GdbmiScalarMap[GdbmiScalar].precision;
+  GdbmiComplement_t c = 1;
+  double scalar = GdbmiScalarMap[GdbmiScalar].scalar;
+  
+  unsigned lower = value & 0x0000ffff;
+  unsigned upper = (value & 0xffff0000) >> 16;
+  double result = 0;
+  
+  if (GdbmiScalarMap[GdbmiScalar].type[0] == 'D' || 
+      GdbmiScalarMap[GdbmiScalar].type[0] == 'J') c = 2; /* Use Twos Complement */
+  
+  if (precision == SP){
+    result = GdbmiIntFromAgc(upper,c) * scalar;
+  }
+  else { /* Double Precision */
+    result = (GdbmiIntFromAgc(upper,c) * 16384 + GdbmiIntFromAgc(lower,c)) * scalar;
+  }
+  return result;
+}
+
+void GdbmiPrintFmt(GdbmiFmt_t fmt, unsigned value)
+{
+  int i;
+
+  switch(fmt)
+  {
+    case 'o':
+      printf("%#o",value);
+      break;
+    case 'u':
+      printf("%#u",value);
+      break;
+    case 'd':
+      if (value & 0x00004000) printf("-%d",((value ^ 0x3fff) & 0x3fff));
+      else  printf("+%d",(value & 0x3fff));
+      break;
+    case 'f':
+      printf("%.*f",9,GdbmiDoubleFromAgc(value));
+      break;      
+    case 'c':
+      printf("%c",(char)value);
+      break;          
+    case 't':
+      for (i = 14 ;i >= 0; i--)
+	 {
+	   if (value & (1 << i)) printf("1");
+	   else printf("0");
+	   /* Format binary in groups of three for easy octal view */
+	   if ((i % 3) == 0) printf(" ");
+	 } 
+      break;     
+    case 'x':  
+    default:
+      printf("0x%04x",value);
+  }
 }
 
 static GdbmiResult
@@ -1606,15 +1795,22 @@ GdbmiHandlePrint (int i)
   char* AddrStr;
   Symbol_t *Symbol = NULL;
   Address_t *agc_addr;
+  unsigned agc_value; 
   unsigned gdbmi_addr;
+  GdbmiFmt_t fmt;
 
   /* Adjust the CmdPtr to point to the next token */
   GdbmiAdjustCmdPtr (i);
 
   if (strlen (s) > 1)
     {
+      GdbmiSkipSpace();
+      GdbmiParseFmt(&fmt);
+      
       /* we have an expression */
-      AddrStr = ++sraw;
+      GdbmiSkipSpace();
+      AddrStr = sraw;
+
       if (*AddrStr == '&')
 	{
 	  AddrFlag++;
@@ -1630,17 +1826,31 @@ GdbmiHandlePrint (int i)
 	  agc_addr = &Symbol->Value;
 	  gdbmi_addr = DbgLinearAddr (agc_addr);
 
-	  if (AddrFlag)
-	    printf ("$1 = 0x%x\n", gdbmi_addr);
+	  if (AddrFlag){
+	    printf ("$1 = ");
+	    GdbmiPrintFmt(fmt,gdbmi_addr);
+	    printf ("\n");
+	  }
 	  else
-	    printf ("$1 = %d\n", DbgGetValueByAddress (gdbmi_addr));
+	  {
+	    printf ("$1 = ");
+	    agc_value = DbgGetValueByAddress (gdbmi_addr);
+	    if (fmt == 'f') agc_value = (agc_value << 16) | DbgGetValueByAddress (gdbmi_addr + 1);
+	    GdbmiPrintFmt(fmt,agc_value);
+	    printf ("\n");
+	  }
 	}
       else
 	{
 	  if (*AddrStr == '*')
 	    {
+	      
 	      gdbmi_addr = DbgLinearAddrFromAddrStr (++AddrStr);
-	      printf ("$1 = %d\n", DbgGetValueByAddress (gdbmi_addr));
+	      printf ("$1 = ");
+	      agc_value = DbgGetValueByAddress (gdbmi_addr);
+	      if (fmt == 'f') agc_value = (agc_value << 16) | DbgGetValueByAddress (gdbmi_addr + 1);
+	      GdbmiPrintFmt(fmt,agc_value);
+	      printf ("\n");
 	    }
 	  else
 	    printf ("$1 = %s\n", sraw);
@@ -1648,6 +1858,8 @@ GdbmiHandlePrint (int i)
     }
   return (GdbmiCmdDone);
 }
+
+
 
 static GdbmiResult
 GdbmiHandleOutput (int i)
@@ -1657,14 +1869,19 @@ GdbmiHandleOutput (int i)
   Symbol_t *Symbol = NULL;
   Address_t *agc_addr;
   unsigned gdbmi_addr;
+  GdbmiFmt_t fmt;
 
   /* Adjust the CmdPtr to point to the next token */
   GdbmiAdjustCmdPtr (i);
 
   if (strlen (s) > 1)
-    {
+  {
+      GdbmiSkipSpace();
+      GdbmiParseFmt(&fmt);
+      
       /* we have an expression */
-      AddrStr = ++sraw;
+      GdbmiSkipSpace();
+      AddrStr = sraw;
       if (*AddrStr == '&')
 	{
 	  AddrFlag++;
@@ -1681,16 +1898,16 @@ GdbmiHandleOutput (int i)
 	  gdbmi_addr = DbgLinearAddr (agc_addr);
 
 	  if (AddrFlag)
-	    printf ("0x%x", gdbmi_addr);
+	    GdbmiPrintFmt(fmt,gdbmi_addr);
 	  else
-	    printf ("%d", DbgGetValueByAddress (gdbmi_addr));
+	    GdbmiPrintFmt(fmt,DbgGetValueByAddress (gdbmi_addr));
 	}
       else
 	{
 	  if (*AddrStr == '*')
 	    {
 	      gdbmi_addr = DbgLinearAddrFromAddrStr (++AddrStr);
-	      printf ("%d", DbgGetValueByAddress (gdbmi_addr));
+	      GdbmiPrintFmt(fmt,DbgGetValueByAddress (gdbmi_addr));
 	    }
 	  else
 	    printf ("%s", sraw);

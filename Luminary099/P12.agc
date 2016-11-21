@@ -1,31 +1,31 @@
 ### FILE="Main.annotation"
-# Copyright:	Public domain.
-# Filename:	P12.agc
-# Purpose: 	Part of the source code for Luminary 1A build 099.
-#		It is part of the source code for the Lunar Module's (LM)
-#		Apollo Guidance Computer (AGC), for Apollo 11.
-# Assembler:	yaYUL
-# Contact:	Hartmuth Gutsche <hgutsche@xplornet.com>.
-# Website:	www.ibiblio.org/apollo.
-# Pages:	838-842
-# Mod history:	2009-05-23 HG	Transcribed from page images.
-#
-# This source code has been transcribed or otherwise adapted from
-# digitized images of a hardcopy from the MIT Museum.  The digitization
-# was performed by Paul Fjeld, and arranged for by Deborah Douglas of
-# the Museum.  Many thanks to both.  The images (with suitable reduction
-# in storage size and consequent reduction in image quality as well) are
-# available online at www.ibiblio.org/apollo.  If for some reason you
-# find that the images are illegible, contact me at info@sandroid.org
-# about getting access to the (much) higher-quality images which Paul
-# actually created.
-#
-# Notations on the hardcopy document read, in part:
-#
-#	Assemble revision 001 of AGC program LMY99 by NASA 2021112-61
-#	16:27 JULY 14, 1969 
+## Copyright:	Public domain.
+## Filename:	P12.agc
+## Purpose: 	Part of the source code for Luminary 1A build 099.
+##		It is part of the source code for the Lunar Module's (LM)
+##		Apollo Guidance Computer (AGC), for Apollo 11.
+## Assembler:	yaYUL
+## Contact:	Hartmuth Gutsche <hgutsche@xplornet.com>.
+## Website:	www.ibiblio.org/apollo.
+## Pages:	838-842
+## Mod history:	2009-05-23 HG	Transcribed from page images.
+##
+## This source code has been transcribed or otherwise adapted from
+## digitized images of a hardcopy from the MIT Museum.  The digitization
+## was performed by Paul Fjeld, and arranged for by Deborah Douglas of
+## the Museum.  Many thanks to both.  The images (with suitable reduction
+## in storage size and consequent reduction in image quality as well) are
+## available online at www.ibiblio.org/apollo.  If for some reason you
+## find that the images are illegible, contact me at info@sandroid.org
+## about getting access to the (much) higher-quality images which Paul
+## actually created.
+##
+## Notations on the hardcopy document read, in part:
+##
+##	Assemble revision 001 of AGC program LMY99 by NASA 2021112-61
+##	16:27 JULY 14, 1969 
 
-# Page 838
+## Page 838
 		BANK	24
 		SETLOC	P12
 		BANK
@@ -76,7 +76,7 @@ P12LM		TC	PHASCHNG
 		SET	CALL
 			FLPI
 			P12INIT
-# Page 839
+## Page 839
 P12LMB		DLOAD
 			(TGO)A		# SET TGO TO AN INITIAL NOMINAL VALUE.
 		STODL	TGO
@@ -127,7 +127,7 @@ NEWLOAD		CAF	V06N76		# FLASH CROSS-RANGE, AND APOLUNE VALUES.
 			XRANGE
 			5D
 		DAD
-# Page 840
+## Page 840
 			Y
 		STOVL	YCO
 			UNIT/R/
@@ -178,7 +178,7 @@ YAWDUN		STOVL	YAW
 		CADR	BURNBABY
 
 P12INIT		DLOAD			# INITIALIZE ENGINE DATA.  USED FOR P12 AND
-# Page 841
+## Page 841
 			(1/DV)A		# P71.
 		STORE	1/DV3
 		STORE	1/DV2
@@ -229,7 +229,7 @@ GUIDINIT	STQ	SETPD
 			LOADTIME
 		CALL
 			RP-TO-R
-# Page 842
+## Page 842
 		MXV	VXSC
 			REFSMMAT
 			MOONRATE

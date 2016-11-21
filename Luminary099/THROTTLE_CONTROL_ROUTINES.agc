@@ -1,32 +1,32 @@
 ### FILE="Main.annotation"
-# Copyright:	Public domain.
-# Filename:	THROTTLE_CONTROL_ROUTINES.agc
-# Purpose: 	Part of the source code for Luminary 1A build 099.
-#		It is part of the source code for the Lunar Module's (LM)
-#		Apollo Guidance Computer (AGC), for Apollo 11.
-# Assembler:	yaYUL
-# Contact:	HARTMUTH GUTSCHE <hgutsche@xplornet.com>.
-# Website:	www.ibiblio.org/apollo.
-# Pages:	793-797
-# Mod history:	2009-05-20 HG	Transcribed from page images.
-#		2010-12-31 JL	Fixed page number comments.
-#
-# This source code has been transcribed or otherwise adapted from
-# digitized images of a hardcopy from the MIT Museum.  The digitization
-# was performed by Paul Fjeld, and arranged for by Deborah Douglas of
-# the Museum.  Many thanks to both.  The images (with suitable reduction
-# in storage size and consequent reduction in image quality as well) are
-# available online at www.ibiblio.org/apollo.  If for some reason you
-# find that the images are illegible, contact me at info@sandroid.org
-# about getting access to the (much) higher-quality images which Paul
-# actually created.
-#
-# Notations on the hardcopy document read, in part:
-#
-#	Assemble revision 001 of AGC program LMY99 by NASA 2021112-61
-#	16:27 JULY 14, 1969 
+## Copyright:	Public domain.
+## Filename:	THROTTLE_CONTROL_ROUTINES.agc
+## Purpose: 	Part of the source code for Luminary 1A build 099.
+##		It is part of the source code for the Lunar Module's (LM)
+##		Apollo Guidance Computer (AGC), for Apollo 11.
+## Assembler:	yaYUL
+## Contact:	HARTMUTH GUTSCHE <hgutsche@xplornet.com>.
+## Website:	www.ibiblio.org/apollo.
+## Pages:	793-797
+## Mod history:	2009-05-20 HG	Transcribed from page images.
+##		2010-12-31 JL	Fixed page number comments.
+##
+## This source code has been transcribed or otherwise adapted from
+## digitized images of a hardcopy from the MIT Museum.  The digitization
+## was performed by Paul Fjeld, and arranged for by Deborah Douglas of
+## the Museum.  Many thanks to both.  The images (with suitable reduction
+## in storage size and consequent reduction in image quality as well) are
+## available online at www.ibiblio.org/apollo.  If for some reason you
+## find that the images are illegible, contact me at info@sandroid.org
+## about getting access to the (much) higher-quality images which Paul
+## actually created.
+##
+## Notations on the hardcopy document read, in part:
+##
+##	Assemble revision 001 of AGC program LMY99 by NASA 2021112-61
+##	16:27 JULY 14, 1969 
 
-# Page 793
+## Page 793
 		BANK	31
 		SETLOC	FTHROT
 		BANK
@@ -68,7 +68,7 @@ AFDUMP		TC	MASSMULT
 
 WHERETO		CA	EBANK5		# INITIALIZE L*WCR*T AND H*GHCR*T FROM
 		TS	EBANK		# 	PAD LOADED ERASABLES IN W-MATRIX
-# Page 794
+## Page 794
 		EBANK=	LOWCRIT
 		EXTEND
 		DCA	LOWCRIT
@@ -119,7 +119,7 @@ DOPIF		TC	FASTCHNG
 		TS	FCOLD
 		DXCH	PIF
 		EXTEND
-# Page 795
+## Page 795
 		DCS	FP
 		DAS	PIF		# PIF = FC - FP, NEVER EQUALS +0
 
@@ -169,7 +169,7 @@ FWCOMP		CAF	2SECS
 		MASK	LOW8		# MAKE SURE SMALL AND POSITIVE
 		ZL
 		EXTEND
-# Page 796
+## Page 796
 		DV	Q
 		EXTEND
 		MP	PIF
@@ -216,7 +216,7 @@ MASSMULT	EXTEND
 		TC	BUF
 		DXCH	MPAC +1
 		TC	BUF
-# Page 797
+## Page 797
 # CONSTANTS --
 
 FEXTRA		=	BIT13		# FEXT +5.13309020 E+4

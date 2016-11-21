@@ -1,40 +1,40 @@
 ### FILE="Main.annotation"
-# Copyright:	Public domain.
-# Filename:	Template.agc
-# Purpose:	Part of the source code for Colossus, build 249.
-#		It is part of the source code for the Command Module's (CM)
-#		Apollo Guidance Computer (AGC), possibly for Apollo 8 and 9.
-# Assembler:	yaYUL
-# Reference:	pp. 545-555 of 1701.pdf.
-# Contact:	Ron Burkey <info@sandroid.org>.
-# Website:	www.ibiblio.org/apollo.
-# Mod history:	08/14/04 RSB.	Began transcribing.
-#
-# The contents of the "Colossus249" files, in general, are transcribed 
-# from a scanned document obtained from MIT's website,
-# http://hrst.mit.edu/hrs/apollo/public/archive/1701.pdf.  Notations on this
-# document read, in part:
-#
-#	Assemble revision 249 of AGC program Colossus by NASA
-#	2021111-041.  October 28, 1968.  
-#
-#	This AGC program shall also be referred to as
-#				Colossus 1A
-#
-#	Prepared by
-#			Massachusetts Institute of Technology
-#			75 Cambridge Parkway
-#			Cambridge, Massachusetts
-#	under NASA contract NAS 9-4065.
-#
-# Refer directly to the online document mentioned above for further information.
-# Please report any errors (relative to 1701.pdf) to info@sandroid.org.
-#
-# In some cases, where the source code for Luminary 131 overlaps that of 
-# Colossus 249, this code is instead copied from the corresponding Luminary 131
-# source file, and then is proofed to incorporate any changes.
+## Copyright:	Public domain.
+## Filename:	TPI_SEARCH.agc
+## Purpose:	Part of the source code for Colossus, build 249.
+##		It is part of the source code for the Command Module's (CM)
+##		Apollo Guidance Computer (AGC), for Apollo 9.
+## Assembler:	yaYUL
+## Reference:	pp. 545-555 of 1701.pdf.
+## Contact:	Ron Burkey <info@sandroid.org>.
+## Website:	www.ibiblio.org/apollo.
+## Mod history:	08/14/04 RSB.	Began transcribing.
+##
+## The contents of the "Colossus249" files, in general, are transcribed 
+## from a scanned document obtained from MIT's website,
+## http://hrst.mit.edu/hrs/apollo/public/archive/1701.pdf.  Notations on this
+## document read, in part:
+##
+##	Assemble revision 249 of AGC program Colossus by NASA
+##	2021111-041.  October 28, 1968.  
+##
+##	This AGC program shall also be referred to as
+##				Colossus 1A
+##
+##	Prepared by
+##			Massachusetts Institute of Technology
+##			75 Cambridge Parkway
+##			Cambridge, Massachusetts
+##	under NASA contract NAS 9-4065.
+##
+## Refer directly to the online document mentioned above for further information.
+## Please report any errors (relative to 1701.pdf) to info@sandroid.org.
+##
+## In some cases, where the source code for Luminary 131 overlaps that of 
+## Colossus 249, this code is instead copied from the corresponding Luminary 131
+## source file, and then is proofed to incorporate any changes.
 
-# Page 545
+## Page 545
 # TPI SEARCH
 #
 # PROGRAM DESCRIPTION S17.1 AND S17.2
@@ -89,7 +89,7 @@ PIINVERS	2DEC	.3183098862
 
 SEC1THET	2DEC	.1944444444
 
-# Page 546
+## Page 546
 SEC2THET	2DEC	.9166666667
 
 MANYFEET	2DEC	-1.0 B-2
@@ -140,7 +140,7 @@ S17.1		STQ	DLOAD
 		VXV	DOT
 			RACT3
 			E2
-# Page 547
+## Page 547
 		PDDL	SIGN
 		STADR
 		STODL	THETZERO		# CENTRAL ANGLE
@@ -193,7 +193,7 @@ S17.2		STQ	VLOAD			# COMPUTE SEARCH SECTOR LIMITS
 			T
 		STORE	TF
 		STODL	TFO
-# Page 548
+## Page 548
 			IT
 		PUSH	SIN
 		STODL	SNTH
@@ -244,7 +244,7 @@ CONCAUL		DLOAD
 			TF
 			AVFLAG
 			ADVCSM
-# Page 549
+## Page 549
 		STCALL	TDEC1
 			LEMCONIC
 		GOTO
@@ -295,7 +295,7 @@ JUNCT3		VLOAD
 			VIPRIME
 		VSR*
 			0,2
-# Page 550
+## Page 550
 		STOVL	VVEC
 			RACT3
 		VSR*
@@ -346,7 +346,7 @@ INTERP		SET	DSU			# HP-HPO
 			X1
 		DMP	SR*
 			DELTEE
-# Page 551
+## Page 551
 			0 -1,2
 		STCALL	DELTEE
 			JUNCT2
@@ -397,7 +397,7 @@ ENDEN		VLOAD
 			RACT3
 			VIPRIME			# SG1
 		SIGN	BPL			# IF POSITIVE THEN SG1 = SG2 OTHERWISE
-# Page 552
+## Page 552
 			RELDELV
 			USEKAY			# SIGN(SG2-SG1)=SIGN(SG2)=SIGN(RELDELV)
 		SLOAD	DCOMP
@@ -449,7 +449,7 @@ TRANSANG	STQ	SETPD
 			X1
 		DMP	SRR*
 			02D
-# Page 553
+## Page 553
 			0 -3,1
 		BDSU				# R V**/MU 		(+6)
 			D1/32
@@ -500,7 +500,7 @@ P17.1		TC	P20FLGON		#	SET UPDATE FLAG
 		DEC	1			# DELTA H = 1 K NEGATIVE, KFLAG ON
 		SXA,1	EXIT
 			OPTION2
-# Page 554
+## Page 554
 		CAF	V06N72			# DISPLAY PHI, DELTA H, SEARCH OPTION K
 		TC	VNCOMP17
 		TC	INTPRET
@@ -551,7 +551,7 @@ VNCOMP17	EXTEND
 		EXTEND
 		BZF	P17.1
 		TC	VNCOMP17 +3
-# Page 555
+## Page 555
 ALARUMS		SET	EXIT
 			UPDATFLG
 		TC	ALARM

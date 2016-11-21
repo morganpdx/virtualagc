@@ -1,21 +1,21 @@
 ### FILE="Main.annotation"
-# Copyright:	Public domain.
-# Filename:	DAP_INTERFACE_SUBROUTINES.agc
-# Purpose:	A section of Luminary 1C, revision 131.
-#		It is part of the source code for the Lunar Module's (LM)
-#		Apollo Guidance Computer (AGC) for Apollo 13 and Apollo 14.
-#		This file is intended to be a faithful transcription, except
-#		that the code format has been changed to conform to the
-#		requirements of the yaYUL assembler rather than the
-#		original YUL assembler.
-# Reference:	pp. 1403-1406 of 1729.pdf.
-# Contact:	Ron Burkey <info@sandroid.org>.
-# Website:	www.ibiblio.org/apollo/index.html
-# Mod history:	06/07/03 RSB.	Began transcribing.
-#		05/14/05 RSB	Corrected website reference above.
-#		2010-10-25 JL	Indentation fixes.
+## Copyright:	Public domain.
+## Filename:	DAP_INTERFACE_SUBROUTINES.agc
+## Purpose:	A section of Luminary 1C, revision 131.
+##		It is part of the source code for the Lunar Module's (LM)
+##		Apollo Guidance Computer (AGC) for Apollo 13.
+##		This file is intended to be a faithful transcription, except
+##		that the code format has been changed to conform to the
+##		requirements of the yaYUL assembler rather than the
+##		original YUL assembler.
+## Reference:	pp. 1403-1406 of 1729.pdf.
+## Contact:	Ron Burkey <info@sandroid.org>.
+## Website:	www.ibiblio.org/apollo/index.html
+## Mod history:	06/07/03 RSB.	Began transcribing.
+##		05/14/05 RSB	Corrected website reference above.
+##		2010-10-25 JL	Indentation fixes.
 
-# Page 1403
+## Page 1403
 		BANK	20
 		SETLOC	DAPS3
 		BANK
@@ -46,7 +46,7 @@
 # DEBRIS
 #	A, L, AND SOMETIMES MDUETEMP
 
-# Page 1404
+## Page 1404
 # SUBROUTINE NAMES:
 #	SETMAXDB, SETMINDB, RESTORDB, PFLITEDB
 # MODIFIED:	30 JANUARY 1968 BY P. S. WEISSMAN TO CREATE RESTORDB.
@@ -95,7 +95,7 @@ CALLACCS	CAF	PRIO27
 SETMINDB	CAF	NARROWDB	# SET 0.3 DEGREE DEADBAND.
 		TCF	SETMAXDB +1
 
-# Page 1405
+## Page 1405
 PFLITEDB	EXTEND			# THE RETURN FROM CALLACCS IS TO RUPTREG1.
 		QXCH	RUPTREG1
 		TC	ZATTEROR	# ZERO THE ERRORS AND COMMANDED RATES.
@@ -143,7 +143,7 @@ STOPRATE	CAF	EBANK6
 # SUBROUTINES CALLED:	STOPRATE, RESTORDB, NOVAC
 #
 # ZERO:			(FOR ALL AXES) AOS, ALPHA, AOSTERM, OMEGAD, DELCDU, DELEROR
-# Page 1406
+## Page 1406
 #
 # OUTPUT:		DRIFTBIT/DAPBOOLS, OE, JOB TO DO 1/ACCS
 #

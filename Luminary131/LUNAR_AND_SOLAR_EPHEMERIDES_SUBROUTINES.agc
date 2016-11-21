@@ -1,20 +1,20 @@
 ### FILE="Main.annotation"
-# Copyright:	Public domain.
-# Filename:	LUNAR_AND_SOLAR_EPHEMERIDES_SUBROUTINES.agc
-# Purpose:	A section of Luminary 1C, revision 131.
-#		It is part of the source code for the Lunar Module's (LM)
-#		Apollo Guidance Computer (AGC) for Apollo 13 and Apollo 14.
-#		This file is intended to be a faithful transcription, except
-#		that the code format has been changed to conform to the
-#		requirements of the yaYUL assembler rather than the
-#		original YUL assembler.
-# Reference:	pp. 983-986 of 1729.pdf.
-# Contact:	Ron Burkey <info@sandroid.org>.
-# Website:	www.ibiblio.org/apollo/index.html
-# Mod history:	05/29/03 RSB.	Began transcribing.
-#		05/14/05 RSB	Corrected website reference above.
+## Copyright:	Public domain.
+## Filename:	LUNAR_AND_SOLAR_EPHEMERIDES_SUBROUTINES.agc
+## Purpose:	A section of Luminary 1C, revision 131.
+##		It is part of the source code for the Lunar Module's (LM)
+##		Apollo Guidance Computer (AGC) for Apollo 13.
+##		This file is intended to be a faithful transcription, except
+##		that the code format has been changed to conform to the
+##		requirements of the yaYUL assembler rather than the
+##		original YUL assembler.
+## Reference:	pp. 983-986 of 1729.pdf.
+## Contact:	Ron Burkey <info@sandroid.org>.
+## Website:	www.ibiblio.org/apollo/index.html
+## Mod history:	05/29/03 RSB.	Began transcribing.
+##		05/14/05 RSB	Corrected website reference above.
 
-# Page 983
+## Page 983
 # NAME -- LSPOS -- LOCATE SUN AND MOON			DATE -- 25 OCT 67
 # MOD NO. 1
 # MOD BY NEVILLE					ASSEMBLY SUNDANCE
@@ -68,7 +68,7 @@
 # THE THREE PHIS ARE STORED AS AARG, BARG, AND CARG(SUN).  ALL CONSTANTS ARE UPDATED BY YEAR.
 #
 # CALLING SEQUENCE
-# Page 984
+## Page 984
 #	CALL LSPOS.  RETURN IS VIA CPRET.
 #
 # ALARMS OR ABORTS
@@ -116,7 +116,7 @@ POSITA		DLOAD
 POSITB		DLOAD	DMP*
 			TIMEP		# T
 			VAL67 +4,1	# 1/27 OR 1/32 OR 1/365
-# Page 985
+## Page 985
 		SL	DAD*
 			8D
 			VAL67 +2,1	# AARG
@@ -167,7 +167,7 @@ POSITF		DLOAD	DSU		# 3RD
 			KONMAT
 		STORE	VSUN
 		RVQ
-# Page 986
+## Page 986
 POSITE		DLOAD
 			KONMAT +2	# ZEROS
 		STORE	GTMP

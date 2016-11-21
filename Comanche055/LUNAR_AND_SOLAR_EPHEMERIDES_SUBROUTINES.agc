@@ -1,37 +1,37 @@
 ### FILE="Main.annotation"
-# Copyright:    Public domain.
-# Filename:     LUNAR_AND_SOLAR_EPHEMERIDES_SUBROUTINES.agc
-# Purpose:      Part of the source code for Comanche, build 055. It
-#               is part of the source code for the Command Module's
-#               (CM) Apollo Guidance Computer (AGC), Apollo 11.
-# Assembler:    yaYUL
-# Reference:    pp. 785-788
-# Contact:      Ron Burkey <info@sandroid.org>
-# Website:      http://www.ibiblio.org/apollo.
-# Mod history:  2009-05-12 RSB	Adapted from Colossus249 file of the same
-#				name and Comanche 055 page images.
-#		2009-07-26 RSB	Added annotations related to computation
-#				of the ephemeral(?) polynomials.
-#
-# The contents of the "Comanche055" files, in general, are transcribed 
-# from scanned documents. 
-#
-#       Assemble revision 055 of AGC program Comanche by NASA
-#       2021113-051.  April 1, 1969.  
-#
-#       This AGC program shall also be referred to as Colossus 2A
-#
-#       Prepared by
-#                       Massachusetts Institute of Technology
-#                       75 Cambridge Parkway
-#                       Cambridge, Massachusetts
-#
-#       under NASA contract NAS 9-4065.
-#
-# Refer directly to the online document mentioned above for further
-# information.  Please report any errors to info@sandroid.org.
+## Copyright:    Public domain.
+## Filename:     LUNAR_AND_SOLAR_EPHEMERIDES_SUBROUTINES.agc
+## Purpose:      Part of the source code for Comanche, build 055. It
+##               is part of the source code for the Command Module's
+##               (CM) Apollo Guidance Computer (AGC), Apollo 11.
+## Assembler:    yaYUL
+## Reference:    pp. 785-788
+## Contact:      Ron Burkey <info@sandroid.org>
+## Website:      http://www.ibiblio.org/apollo.
+## Mod history:  2009-05-12 RSB	Adapted from Colossus249 file of the same
+##				name and Comanche 055 page images.
+##		2009-07-26 RSB	Added annotations related to computation
+##				of the ephemeral(?) polynomials.
+##
+## The contents of the "Comanche055" files, in general, are transcribed 
+## from scanned documents. 
+##
+##       Assemble revision 055 of AGC program Comanche by NASA
+##       2021113-051.  April 1, 1969.  
+##
+##       This AGC program shall also be referred to as Colossus 2A
+##
+##       Prepared by
+##                       Massachusetts Institute of Technology
+##                       75 Cambridge Parkway
+##                       Cambridge, Massachusetts
+##
+##       under NASA contract NAS 9-4065.
+##
+## Refer directly to the online document mentioned above for further
+## information.  Please report any errors to info@sandroid.org.
 
-# Page 785
+## Page 785
 # LUNAR AND SOLAR EPHEMERIDES SUBROUTINES
 #
 # FUNCTIONAL DESCRIPTION
@@ -89,7 +89,7 @@
 #	ERASABLE DATA LOAD.
 #
 # OUTPUT -- LSPOS
-# Page 786
+## Page 786
 #
 #	1) 2D OF VAC AREA CONTAINS THE POSITION VECTOR OF THE SUN RELATIVE
 #	TO THE EARTH AT TIME INPUT BY THE USER IN METERS x B-38.
@@ -143,7 +143,7 @@ LSPOS		AXT,2			# COMPUTES POSITION VECTORS OF BOTH THE
 LUNPOS		AXT,1	GOTO		# COMPUTES THE POSITION VECTOR OF THE MOON
 			REM		# AND STORES IT IN MPAC.
 			LSTIME
-# Page 787
+## Page 787
 LUNVEL		AXT,1	GOTO		# COMPUTES THE VELOCITY VECTOR OF THE MOON
 			VEM		# AND STORES IT IN MPAC.
 			LSTIME
@@ -194,7 +194,7 @@ VEM		AXT,1	PDDL		#					PD- 2
 			VECOEM
 VEMA		VXSC
 			0D
-# Page 788
+## Page 788
 		STODL	4D		#					PD- 2
 		DSU	PUSH		#					PD- 4
 			ONEB4

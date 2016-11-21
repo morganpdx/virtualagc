@@ -1,35 +1,35 @@
 ### FILE="Main.annotation"
-# Copyright:	Public domain.
-# Filename:	LATITUDE_LONGITUDE_SUBROUTINES.agc
-# Purpose:	Part of the source code for Colossus 2A, AKA Comanche 055.
-#		It is part of the source code for the Command Module's (CM)
-#		Apollo Guidance Computer (AGC), for Apollo 11.
-# Assembler:	yaYUL
-# Contact:	Ron Burkey <info@sandroid.org>.
-# Website:	www.ibiblio.org/apollo.
-# Pages:	1236-1242
-# Mod history:	2009-05-14 RSB	Adapted from the Colossus249/ file of the
-#				same name, using Comanche055 page images.
-#		2010-08-20 JL	Fixed indentation of RVQ opcode on line 180.
-#
-# This source code has been transcribed or otherwise adapted from digitized
-# images of a hardcopy from the MIT Museum.  The digitization was performed
-# by Paul Fjeld, and arranged for by Deborah Douglas of the Museum.  Many
-# thanks to both.  The images (with suitable reduction in storage size and
-# consequent reduction in image quality as well) are available online at
-# www.ibiblio.org/apollo.  If for some reason you find that the images are
-# illegible, contact me at info@sandroid.org about getting access to the
-# (much) higher-quality images which Paul actually created.
-#
-# Notations on the hardcopy document read, in part:
-#
-#	Assemble revision 055 of AGC program Comanche by NASA
-#	2021113-051.  10:28 APR. 1, 1969
-#
-#	This AGC program shall also be referred to as
-#			Colossus 2A
+## Copyright:	Public domain.
+## Filename:	LATITUDE_LONGITUDE_SUBROUTINES.agc
+## Purpose:	Part of the source code for Colossus 2A, AKA Comanche 055.
+##		It is part of the source code for the Command Module's (CM)
+##		Apollo Guidance Computer (AGC), for Apollo 11.
+## Assembler:	yaYUL
+## Contact:	Ron Burkey <info@sandroid.org>.
+## Website:	www.ibiblio.org/apollo.
+## Pages:	1236-1242
+## Mod history:	2009-05-14 RSB	Adapted from the Colossus249/ file of the
+##				same name, using Comanche055 page images.
+##		2010-08-20 JL	Fixed indentation of RVQ opcode on line 180.
+##
+## This source code has been transcribed or otherwise adapted from digitized
+## images of a hardcopy from the MIT Museum.  The digitization was performed
+## by Paul Fjeld, and arranged for by Deborah Douglas of the Museum.  Many
+## thanks to both.  The images (with suitable reduction in storage size and
+## consequent reduction in image quality as well) are available online at
+## www.ibiblio.org/apollo.  If for some reason you find that the images are
+## illegible, contact me at info@sandroid.org about getting access to the
+## (much) higher-quality images which Paul actually created.
+##
+## Notations on the hardcopy document read, in part:
+##
+##	Assemble revision 055 of AGC program Comanche by NASA
+##	2021113-051.  10:28 APR. 1, 1969
+##
+##	This AGC program shall also be referred to as
+##			Colossus 2A
 
-# Page 1236
+## Page 1236
 # SUBROUTINE TO CONVERT RAD VECTOR AT GIVEN TIME TO LAT,LONG AND ALT
 #
 # CALLING SEQUENCE
@@ -80,7 +80,7 @@ CALLRTRP	CALL
 			ALPHAV
 		PDDL	DSQ
 			ALPHAV +2
-# Page 1237
+## Page 1237
 		DAD	SQRT
 		DMP	SL1R
 			GAMRP
@@ -100,7 +100,7 @@ CALLRTRP	CALL
 			ERADM
 		STCALL	ALT		# EXIT WITH ALT METERS B-29
 			INCORPEX
-# Page 1238
+## Page 1238
 # SUBROUTINE TO CONVERT LAT,LONG.ALT AT GIVEN TIME TO RADIUS VECTOR
 #
 # CALLING SEQUENCE
@@ -152,7 +152,7 @@ CALLRPRT	CALL
 			RP-TO-R		# EXIT WITH UNIT R VECTOR IN MPAC
 		STODL	ALPHAV
 			ERADM
-# Page 1239
+## Page 1239
 		DAD	VXSC		# (RE + ALT)(UNIT R) METERS B-30
 			ALT
 			ALPHAV
@@ -195,7 +195,7 @@ EE		2DEC	6.6935116 E-3	# (1-B**2/A**2) B-0
 
 ERAD		2DEC	6373338 B-29	# PAD RADIUS
 
-# Page 1240
+## Page 1240
 # ARCTAN SUBROUTINE
 #
 # CALLING SEQUENCE
@@ -242,7 +242,7 @@ ATAN=90		DLOAD	SIGN
 
 2DZERO		=	DPZERO
 
-# Page 1241
+## Page 1241
 # ***** SETGAMMA SUBROUTINE *****
 # SUBROUTINE TO SET GAMMA FOR THE LAT-LONG AND LALOTORV SUBROUTINES
 #
@@ -269,7 +269,7 @@ SETGMEX		STORE	GAMRP
 		RVQ
 GAMRP		=	8D
 
-# Page 1242
+## Page 1242
 # ***** SETRE SUBROUTINE *****
 # SUBROUTINE TO SET RE (EARTH OR MOON RADIUS)
 #

@@ -1,41 +1,41 @@
 ### FILE="Main.annotation"
-# Copyright:	Public domain.
-# Filename:	RESTARTS_ROUTINE.agc
-# Purpose:	Part of the source code for Colossus, build 249.
-#		It is part of the source code for the Command Module's (CM)
-#		Apollo Guidance Computer (AGC), possibly for Apollo 8 and 9.
-# Assembler:	yaYUL
-# Reference:	Starts on p. 1404 of 1701.pdf.
-# Contact:	Ron Burkey <info@sandroid.org>.
-# Website:	www.ibiblio.org/apollo.
-# Mod history:	08/30/04 RSB.	Adapted from corresponding Luminary131 file.
-#		2010-10-24 JL	Added missing # in comment.
-#
-# The contents of the "Colossus249" files, in general, are transcribed 
-# from a scanned document obtained from MIT's website,
-# http://hrst.mit.edu/hrs/apollo/public/archive/1701.pdf.  Notations on this
-# document read, in part:
-#
-#	Assemble revision 249 of AGC program Colossus by NASA
-#	2021111-041.  October 28, 1968.  
-#
-#	This AGC program shall also be referred to as
-#				Colossus 1A
-#
-#	Prepared by
-#			Massachusetts Institute of Technology
-#			75 Cambridge Parkway
-#			Cambridge, Massachusetts
-#	under NASA contract NAS 9-4065.
-#
-# Refer directly to the online document mentioned above for further information.
-# Please report any errors (relative to 1701.pdf) to info@sandroid.org.
-#
-# In some cases, where the source code for Luminary 131 overlaps that of 
-# Colossus 249, this code is instead copied from the corresponding Luminary 131
-# source file, and then is proofed to incorporate any changes.
+## Copyright:	Public domain.
+## Filename:	RESTARTS_ROUTINE.agc
+## Purpose:	Part of the source code for Colossus, build 249.
+##		It is part of the source code for the Command Module's (CM)
+##		Apollo Guidance Computer (AGC), for Apollo 9.
+## Assembler:	yaYUL
+## Reference:	Starts on p. 1404 of 1701.pdf.
+## Contact:	Ron Burkey <info@sandroid.org>.
+## Website:	www.ibiblio.org/apollo.
+## Mod history:	08/30/04 RSB.	Adapted from corresponding Luminary131 file.
+##		2010-10-24 JL	Added missing # in comment.
+##
+## The contents of the "Colossus249" files, in general, are transcribed 
+## from a scanned document obtained from MIT's website,
+## http://hrst.mit.edu/hrs/apollo/public/archive/1701.pdf.  Notations on this
+## document read, in part:
+##
+##	Assemble revision 249 of AGC program Colossus by NASA
+##	2021111-041.  October 28, 1968.  
+##
+##	This AGC program shall also be referred to as
+##				Colossus 1A
+##
+##	Prepared by
+##			Massachusetts Institute of Technology
+##			75 Cambridge Parkway
+##			Cambridge, Massachusetts
+##	under NASA contract NAS 9-4065.
+##
+## Refer directly to the online document mentioned above for further information.
+## Please report any errors (relative to 1701.pdf) to info@sandroid.org.
+##
+## In some cases, where the source code for Luminary 131 overlaps that of 
+## Colossus 249, this code is instead copied from the corresponding Luminary 131
+## source file, and then is proofed to incorporate any changes.
 
-# Page 1404
+## Page 1404
 		BANK	01
 		SETLOC	RESTART
 		BANK
@@ -85,7 +85,7 @@ ITSAVAR		MASK	OCT1400		# IS IT TYPE B ?
 		CCS	A
 		TCF	ITSLNGCL	# IT'S A LONGCALL
 
-# Page 1405
+## Page 1405
 RTRNCADR	TC	SWRETURN	# CAN'T GET HERE.
 		TCF	ITSAWAIT
 
@@ -136,7 +136,7 @@ FINDTIME	COM			# MAKE NEGATIVE SINCE IT WILL BE SUBTRACTED
 		NDX	TEMP2G
 		CS	TBASE1
 		EXTEND
-# Page 1406
+## Page 1406
 		SU	TIME1
 		CCS	A
 		COM
@@ -186,7 +186,7 @@ ITSATBL		TS	CYR		# FIND OUT IF THE PHASE IS ODD OR EVEN
 
 		CA	RTRNCADR	# IN CASE THIS IS THE SECOND PART OF A
 		TS	GOLOC +2	# TYPE B RESTART, WE NEED PROPER EXIT
-# Page 1407
+## Page 1407
 		CA	TEMPPHS		# SET UP POINTER FOR FINDING OUR PLACE IN
 		TS	SR		# THE RESTART TABLES
 		AD	SR
@@ -237,7 +237,7 @@ ITSLGCL1	LXCH	GOLOC +1	# OBTAIN THE CORRECT E BANK
 		EXTEND			# GET THE DELTA TIME
 		NDX	A
 		DCA	0
-# Page 1408
+## Page 1408
 		LXCH	GOLOC +1	# RESTORE OUR E AND F BANK
 		LXCH	BB		# RESTORE THE TASKS E AND F BANKS
 		LXCH	GOLOC +1	# AND PRESERVE OUR L
@@ -286,7 +286,7 @@ ITSLNGCL	CA	WTLTCADR	# ASSUME IT WILL GO TO WAITLIST
 
 ITSWTLST	CS	GOLOC +1	# CORRECT THE BBCON INFORMATION
 		TS	GOLOC +1
-# Page 1409
+## Page 1409
 		NDX	POINTER		# GET THE DT AND FIND OUT IF IT WAS STORED
 		CA	PRDTTAB		# DIRECTOY OR INDIRECTLY
 

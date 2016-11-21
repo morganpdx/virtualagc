@@ -1,36 +1,36 @@
 ### FILE="Main.annotation"
-# Copyright:	Public domain.
-# Filename:	STABLE_ORBIT.agc
-# Purpose: 	Part of the source code for Luminary 1A build 099.
-#		It is part of the source code for the Lunar Module's (LM)
-#		Apollo Guidance Computer (AGC), for Apollo 11.
-# Assembler:	yaYUL
-# Contact:	Ron Burkey <info@sandroid.org>.
-# Website:	www.ibiblio.org/apollo.
-# Pages:	723-730
-# Mod history:	2009-05-19 RSB	Adapted from the corresponding 
-#				Colossus249 file (there being no corresponding
-#				Luminary131 source-code file), using page 
-#				images from Luminary 1A.
-#		2009-06-07 RSB	Eliminated an extraneous instruction.
-#		2011-01-06 JL	Fixed pseudo-label indentation.
-#
-# This source code has been transcribed or otherwise adapted from
-# digitized images of a hardcopy from the MIT Museum.  The digitization
-# was performed by Paul Fjeld, and arranged for by Deborah Douglas of
-# the Museum.  Many thanks to both.  The images (with suitable reduction
-# in storage size and consequent reduction in image quality as well) are
-# available online at www.ibiblio.org/apollo.  If for some reason you
-# find that the images are illegible, contact me at info@sandroid.org
-# about getting access to the (much) higher-quality images which Paul
-# actually created.
-#
-# Notations on the hardcopy document read, in part:
-#
-#	Assemble revision 001 of AGC program LMY99 by NASA 2021112-61
-#	16:27 JULY 14, 1969 
+## Copyright:	Public domain.
+## Filename:	STABLE_ORBIT.agc
+## Purpose: 	Part of the source code for Luminary 1A build 099.
+##		It is part of the source code for the Lunar Module's (LM)
+##		Apollo Guidance Computer (AGC), for Apollo 11.
+## Assembler:	yaYUL
+## Contact:	Ron Burkey <info@sandroid.org>.
+## Website:	www.ibiblio.org/apollo.
+## Pages:	723-730
+## Mod history:	2009-05-19 RSB	Adapted from the corresponding 
+##				Colossus249 file (there being no corresponding
+##				Luminary131 source-code file), using page 
+##				images from Luminary 1A.
+##		2009-06-07 RSB	Eliminated an extraneous instruction.
+##		2011-01-06 JL	Fixed pseudo-label indentation.
+##
+## This source code has been transcribed or otherwise adapted from
+## digitized images of a hardcopy from the MIT Museum.  The digitization
+## was performed by Paul Fjeld, and arranged for by Deborah Douglas of
+## the Museum.  Many thanks to both.  The images (with suitable reduction
+## in storage size and consequent reduction in image quality as well) are
+## available online at www.ibiblio.org/apollo.  If for some reason you
+## find that the images are illegible, contact me at info@sandroid.org
+## about getting access to the (much) higher-quality images which Paul
+## actually created.
+##
+## Notations on the hardcopy document read, in part:
+##
+##	Assemble revision 001 of AGC program LMY99 by NASA 2021112-61
+##	16:27 JULY 14, 1969 
 
-# Page 723
+## Page 723
 # STABLE ORBIT RENDEZVOUS PROGRAMS (P38 AND P78)
 #
 # MOD NO -1		LOG SECTION -- STABLE ORBIT -- P38-P39
@@ -81,7 +81,7 @@
 #	(1)  TRKMKCNT	NUMBER OF MARKS
 #	(2)  TTOGO	TIME TO GO
 #	(3)  +MGA	MIDDLE GIMBAL ANGLE
-# Page 724
+## Page 724
 #	(4)  DSPTEM1	TIME OF INTERCEPT OF PASSIVE VEHICLE ORBIT
 #			(FOR SOI ONLY)
 #	(5)  POSTTPI	PERIGEE ALTITUDE OF ACTIVE VEHICLE ORBIT AFTER
@@ -132,7 +132,7 @@ P78		TC	BANKCALL
 		TCF	-5		# RECYCLE
 		CAF	THREE		# IMMEDIATE RETURN -- BLANK R1, R2
 		TCR	BLANKET
-# Page 725		
+## Page 725		
 		TCF	ENDOFJOB
 		CAF	FIVE
 		TS	OPTION1
@@ -183,7 +183,7 @@ OPTN1		SET	CLEAR		# SOI
 		TC	VNDSPLY
 		TC	INTPRET
 JUNCTN1		CLEAR	CALL
-# Page 726
+## Page 726
 			P39/79SW
 			SELECTMU	# SELECT MU, CLEAR FINALFLG, GO TO VN1645
 RECYCLE		CALL
@@ -236,7 +236,7 @@ MAINRTNE	STCALL	TDEC1		# PRECISION UPDATE PASSIVE VEHICLE TO
 		SSP	VLOAD
 			SUBEXIT
 			TEST3979
-# Page 727			
+## Page 727			
 			RATT
 		CALL
 			S3435.25
@@ -288,7 +288,7 @@ DSPLY81		CAF	V06N81SR	# DISPLAY DELTA V (LV)
 # MOD NO -1		LOG SECTION -- STABLE ORBIT -- P38-P39
 # MOD BY RUDNICKI, S	DATE 25JAN68
 #
-# Page 728
+## Page 728
 # FUNCTIONAL DESCRIPTION
 #
 #	P39 AND P79 CALCULATE THE REQUIRED DELTA V AND OTHER INITIAL
@@ -339,7 +339,7 @@ P39/P79A	DXCH	KT		# TIME TO PREPARE FOR BURN
 		TC	BANKCALL
 		CADR	P20FLGON	# SET UPDATFLG, TRACKFLG
 		TC	INTPRET
-# Page 729		
+## Page 729		
 		SET	CALL
 			P39/79SW
 			SELECTMU	# SELECT MU, CLEAR FINALFLG, GO TO VN1645
@@ -394,7 +394,7 @@ PREC/TT		STQ	DLOAD
 # SUBROUTINES USED
 #
 #	CSMPREC
-# Page 730
+## Page 730
 #	LEMPREC
 
 INTRPVP		STQ	BOFF		# PRECISION UPDATE PASSIVE VEHICLE TO

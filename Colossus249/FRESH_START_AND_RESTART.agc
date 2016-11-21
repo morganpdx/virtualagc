@@ -1,43 +1,44 @@
 ### FILE="Main.annotation"
-# Copyright:	Public domain.
-# Filename:	FRESH_START_AND_RESTART.agc
-# Purpose:	Part of the source code for Colossus, build 249.
-#		It is part of the source code for the Command Module's (CM)
-#		Apollo Guidance Computer (AGC), possibly for Apollo 8 and 9.
-# Assembler:	yaYUL
-# Reference:	pp. 179-206 of 1701.pdf.
-# Contact:	Ron Burkey <info@sandroid.org>.
-# Website:	www.ibiblio.org/apollo.
-# Mod history:	08/07/04 RSB.	Adapted from similar Luminary 131 file.
-#				Oddly, the 2 pages of introductory comments
-#				aren't present in Luminary.
-#		2010-08-29 JL	Added missing comment character. 
-#		2010-10-24 JL	Pseudo-label indentation fixes.
-#
-# The contents of the "Colossus249" files, in general, are transcribed 
-# from a scanned document obtained from MIT's website,
-# http://hrst.mit.edu/hrs/apollo/public/archive/1701.pdf.  Notations on this
-# document read, in part:
-#
-#	Assemble revision 249 of AGC program Colossus by NASA
-#	2021111-041.  October 28, 1968.  
-#
-#	This AGC program shall also be referred to as
-#				Colossus 1A
-#
-#	Prepared by
-#			Massachusetts Institute of Technology
-#			75 Cambridge Parkway
-#			Cambridge, Massachusetts
-#	under NASA contract NAS 9-4065.
-#
-# Refer directly to the online document mentioned above for further information.
-# Please report any errors (relative to 1701.pdf) to info@sandroid.org.
-#
-# In some cases, where the source code for Luminary 131 overlaps that of 
-# Colossus 249, this code is instead copied from the corresponding Luminary 131
-# source file, and then is proofed to incorporate any changes.
+## Copyright:	Public domain.
+## Filename:	FRESH_START_AND_RESTART.agc
+## Purpose:	Part of the source code for Colossus, build 249.
+##		It is part of the source code for the Command Module's (CM)
+##		Apollo Guidance Computer (AGC), for Apollo 9.
+## Assembler:	yaYUL
+## Reference:	pp. 179-206 of 1701.pdf.
+## Contact:	Ron Burkey <info@sandroid.org>.
+## Website:	www.ibiblio.org/apollo.
+## Mod history:	08/07/04 RSB.	Adapted from similar Luminary 131 file.
+##				Oddly, the 2 pages of introductory comments
+##				aren't present in Luminary.
+##		2010-08-29 JL	Added missing comment character. 
+##		2010-10-24 JL	Pseudo-label indentation fixes.
+##
+## The contents of the "Colossus249" files, in general, are transcribed 
+## from a scanned document obtained from MIT's website,
+## http://hrst.mit.edu/hrs/apollo/public/archive/1701.pdf.  Notations on this
+## document read, in part:
+##
+##	Assemble revision 249 of AGC program Colossus by NASA
+##	2021111-041.  October 28, 1968.  
+##
+##	This AGC program shall also be referred to as
+##				Colossus 1A
+##
+##	Prepared by
+##			Massachusetts Institute of Technology
+##			75 Cambridge Parkway
+##			Cambridge, Massachusetts
+##	under NASA contract NAS 9-4065.
+##
+## Refer directly to the online document mentioned above for further information.
+## Please report any errors (relative to 1701.pdf) to info@sandroid.org.
+##
+## In some cases, where the source code for Luminary 131 overlaps that of 
+## Colossus 249, this code is instead copied from the corresponding Luminary 131
+## source file, and then is proofed to incorporate any changes.
 
+## Page 179
 # PROGRAM DESCRIPTION						8 APRIL, 1967
 #								SUNDISK REV 120
 # FUNCTIONAL DESCRIPTION
@@ -88,7 +89,7 @@
 #		TRANSFER CONTROL TO DOFSTART
 #	2.	DISPLAY MAJOR MODE
 #	3.  	IF ANY GROUPS WERE ACTIVE UPON RESTART, TRANSFER CONTROL TO THE
-# Page 180
+## Page 180
 #		RESTARTS SUBROUTINE TO RESCHEDULE PENDING TASKS, LONGCALLS, AND
 #		JOBS (P20 IS RESTARTED VIA FINDVAC)
 #	4.	IF NO GROUPS WERE ACTIVE UPON RESTART, DISPLAY ALARM CODE
@@ -138,7 +139,7 @@
 #		1107	PHASE TABLE ERROR
 #		1110	RESTART WTIH NO ACTIVE GROUPS
 
-# Page 181
+## Page 181
 		BANK	10
 		SETLOC	FRANDRES
 		BANK
@@ -188,7 +189,7 @@ DOFSTART	CAF	ZERO		# DO A FRESH START
 		WRITE	CHAN14		# ZERO CHANNEL 14
 		TS	WTOPTION
 		TS	DNLSTCOD
-# Page 182
+## Page 182
 		TS	NVSAVE
 		TS	EBANKTEM
 		TS	RATEINDX
@@ -239,7 +240,7 @@ DOFSTART	CAF	ZERO		# DO A FRESH START
 		EXTEND
 		DCA	SWINIT +6
 		DXCH	STATE +6
-# Page 183		
+## Page 183		
 		EXTEND
 		DCA	SWINIT	+8D
 		DXCH	STATE	+8D
@@ -271,7 +272,7 @@ V37KLEAN	EXTEND
 		DXCH	-PHASE6
 		TC	Q
 		
-# Page 184
+## Page 184
 # COMES HERE FROM LOCATION 4000, GOJAM, RESTART ANY PROGRAMS WHICH MAY HAVE BEEN RUNNING AT THE TIME.
 
 GOPROG		INCR	REDOCTR		# ADVANCE RESTART COUNTER.
@@ -322,7 +323,7 @@ DORSTART	CA	BIT15		# TEST OSC FAIL BIT TO SEE IF WE HAVE
 		
 BUTTONS		TC	LIGHTSET	# EXIT
 					# MARK REJECT DEPRESSED SIMULTANEOUSLY.
-# Page 185
+## Page 185
 ELRSKIP		CA	FLAGWRD6	# RESTART AUTOPILOTS
 		EXTEND
 		MP	BIT3		# BITS 15,14	00	T5IDLOC
@@ -373,7 +374,7 @@ NOCOARSE	CAF	IFAILINH	# LEAVE FAILURE INHIBITS INTACT ON
 		CAF	BIT13
 		EXTEND
 		WOR	DSALMOUT	# TURN ENGINE ON
-# Page 186
+## Page 186
 		TCF	GOPROG3
 
 ENEMA		INHINT
@@ -424,7 +425,7 @@ PCLOOP		TS	MPAC +5
 		CAF	EBANK3
 		TS	EBANK
 		CAF	NUMGRPS		# SEE IF ANY GROUPS RUNNING
-# Page 187
+## Page 187
 NXTRST		TS	MPAC +5
 		DOUBLE
 		INDEX	A
@@ -476,7 +477,7 @@ LIGHTSET	CAF	BIT7		# DOFSTART IF MARK REJECT AND EITHER
 		BZF	NONAVKEY +1
 		EXTEND
 		READ	MNKEYIN		# MAIN DSKY KEYCODES
-# Page 188
+## Page 188
 		AD	-ELR	
 		EXTEND
 		BZF	+2
@@ -526,7 +527,7 @@ STARTSB2	CAF	OCT77603	# TURN OFF UPLINK ACTY, TEMP CAUTION, KR,
 		TS	LST2 +4
 		TS	LST2 +6
 		TS	LST2 +8D
-# Page 189
+## Page 189
 		TS	LST2 +10D
 		TS	LST2 +12D
 		TS	LST2 +14D
@@ -576,7 +577,7 @@ DSPOFF		TS	MPAC
 		TS	DELAYLOC
 		TS	DELAYLOC +1
 		TS	DELAYLOC +2
-# Page 190
+## Page 190
 		TS	DELAYLOC +3
 		TS	R1SAVE
 		TS	INLINK
@@ -628,7 +629,7 @@ T5IDLER		2CADR	T5IDLOC
 		
 IFAILINH	OCT	435
 LDNPHAS1	GENADR	DNPHASE1
-# Page 191
+## Page 191
 LESCHK		GENADR	SELFCHK
 VAC1ADRC	ADRES	VAC1USE
 LTHVACA		DEC	44
@@ -658,7 +659,7 @@ SWINIT		OCT	0
 		OCT	0
 		OCT	0
 		OCT	0
-# Page 192
+## Page 192
 # PROGRAM NAME		GOTOP00H		ASSEMBLY SUNDISK
 # LOG SECTION		FRESH START AND RESTART
 #
@@ -704,11 +705,11 @@ GOP00FIX	TC	INITSUB
 		CADR	GOFLASH
 		TCF	-3
 		TCF	-4
-# Page 193
+## Page 193
 		TCF	-5
 V37N99		VN	3799
 
-# Page 194
+## Page 194
 # PROGRAM NAME		V37			ASSEMBLY SUNDISK
 #
 # LOG SECTION		FRESH START AND RESTART
@@ -758,7 +759,7 @@ V37N99		VN	3799
 #
 # 	C. OUTPUT
 #		MAJOR MODE CHANGE
-# Page 195
+## Page 195
 #
 #	D. DEBRIS
 #		MMNUMBER, MPAC +1, MINDEX, BASETEMP +C(MINDEX), FLAGWRD0, FLAGWRD1, FLAGWRD2, MODREG, GOLOC -1,
@@ -810,7 +811,7 @@ V37		TS	MMNUMBER		# SAVE MAJOR MODE
 		
 R00TOP00	INHINT
 		CAF	EBANK6
-# Page 196
+## Page 196
 		TS	EBANK
 		EBANK=	DAPDATR1
 		CAE	CSMMASS
@@ -861,7 +862,7 @@ AGAINMM		TS	MPAC +1
 		AD	MMNUMBER
 		CCS	A
 		CCS	MPAC +1			# IF GR, SEE IF ANY MORE IN LIST
-# Page 197
+## Page 197
 		TCF	AGAINMM			# YES, GET NEXT ONE
 		TCF	V37NONO			# LAST TIME OR PASSED MM
 		
@@ -911,7 +912,7 @@ DUMMYAD		EXIT
 		COUNT	04/P00
 		
 P00H		TC	RELDSP			# RELEASE DISPLAY SYSTEM
-# Page 198
+## Page 198
 		CAF	PRIO5			# SET VARIABLE RESTART REGISTER FOR P00.
 		TS	PHSPRDT2	
 		
@@ -961,7 +962,7 @@ RENDV00		CS	MMNUMBER		# IS NEW PROG = 20
 		EXTEND
 		BZF	RENDN00			# YES
 		TCF	P00FIZZ
-# Page 199
+## Page 199
 RENDN00		CS	MMNUMBER
 		AD	MODREG
 		EXTEND
@@ -1013,7 +1014,7 @@ NOUVEAU		CAF	BIT7
 		TCF	SEUDOP00
 		
 V37NONO		TC	FALTON			# COME HERE IF MM REQUESTED DOESN'T EXIST
-# Page 200
+## Page 200
 		TCF	V37BAD
 		
 OCT00010	EQUALS	BIT4
@@ -1064,7 +1065,7 @@ INITSUB		EXTEND
 		
 		CA	FLAGWRD9		# RESTORE DEADBAND
 		MASK	BIT12
-# Page 201
+## Page 201
 		CCS	A
 		TCF	SETMAXER		# MAX DE SELECTED
 		TC	BANKCALL		# MIN DE SELECTED
@@ -1115,7 +1116,7 @@ P00DAPAD	2CADR	T5IDLOC
 MMTEMP		EQUALS	PHSPRDT3
 BASETEMP	EQUALS	TBASE4
 BIT7-8		OCT	300
-# Page 202
+## Page 202
 OCT01120	OCT	01120
 
 V37QCAD		CADR	V37XEQ +3
@@ -1168,7 +1169,7 @@ FCADRMM1	FCADR	P79
 		FCADR	PROG20
 		FCADR	P17
 		FCADR	P06
-# Page 203
+## Page 203
 		FCADR	GTSCPSS1			# GYROCOMPASS STANDARD LEAD IN.
 
 # THE PREMM TABLE CONTAINS THE E-BANK, MAJOR MODE, AND PRIORITY
@@ -1226,7 +1227,7 @@ PREMM1		EQUALS
 		OCT	27424		# MM 20		EBANK 6		PRIO 13
 		
 		OCT	27021		# MM 17		EBANK 6		PRIO 13
-# Page 204
+## Page 204
 		OCT	27006		# MM 06		EBANK 4		PRIO 13
 		OCT	41201		# MM 01		EBANK 5		PRIO 20
 		
@@ -1273,7 +1274,7 @@ DNLADMM1	EQUALS
 		ADRES	RENDEZVU	# P76
 		ADRES	RENDEZVU	# P75
 		ADRES	RENDEZVU	# P74
-# Page 205
+## Page 205
 		ADRES	ENTRYUPD	# P62
 		ADRES	POWERED		# P61
 		ADRES	COSTALIN
@@ -1327,7 +1328,7 @@ STATEUP		SET	BOF		# EXTRAPOLATE CM STATE VECTOR
 			ORBWFLAG	# ALSO 6X6 W-MATRIX IF VALID
 			+3		# 	FOR ORBITAL NAVIGATION
 		SET	
-# Page 206
+## Page 206
 			DIM0FLAG
 		CLEAR	CALL
 			PRECIFLG

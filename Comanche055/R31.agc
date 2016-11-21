@@ -1,36 +1,36 @@
 ### FILE="Main.annotation"
-# Copyright:	Public domain.
-# Filename:	R31.agc
-# Purpose:      Part of the source code for Comanche, build 055. It
-#               is part of the source code for the Command Module's
-#               (CM) Apollo Guidance Computer (AGC), Apollo 11.
-# Assembler:    yaYUL
-# Reference:    pp. 505-510
-# Contact:      Onno Hommes <ohommes@cmu.edu>
-# Website:      http://www.ibiblio.org/apollo.
-# Mod history:  2009-05-11 OH	Batch 2 Assignment Comanche Transcription
-#		2009-05-20 RSB	Corrected INSTALL -> INTSTALL
-#
-# The contents of the "Comanche055" files, in general, are transcribed 
-# from scanned documents. 
-#
-#       Assemble revision 055 of AGC program Comanche by NASA
-#       2021113-051.  April 1, 1969.  
-#
-#       This AGC program shall also be referred to as Colossus 2A
-#
-#       Prepared by
-#                       Massachusetts Institute of Technology
-#                       75 Cambridge Parkway
-#                       Cambridge, Massachusetts
-#
-#       under NASA contract NAS 9-4065.
-#
-# Refer directly to the online document mentioned above for further
-# information.  Please report any errors to info@sandroid.org.
+## Copyright:	Public domain.
+## Filename:	R31.agc
+## Purpose:     Part of the source code for Comanche, build 055. It
+##              is part of the source code for the Command Module's
+##              (CM) Apollo Guidance Computer (AGC), Apollo 11.
+## Assembler:   yaYUL
+## Reference:   pp. 505-510
+## Contact:     Onno Hommes <ohommes@cmu.edu>
+## Website:     http://www.ibiblio.org/apollo.
+## Mod history: 2009-05-11 OH	Batch 2 Assignment Comanche Transcription
+##		2009-05-20 RSB	Corrected INSTALL -> INTSTALL
+##
+## The contents of the "Comanche055" files, in general, are transcribed 
+## from scanned documents. 
+##
+##       Assemble revision 055 of AGC program Comanche by NASA
+##       2021113-051.  April 1, 1969.  
+##
+##       This AGC program shall also be referred to as Colossus 2A
+##
+##       Prepared by
+##                       Massachusetts Institute of Technology
+##                       75 Cambridge Parkway
+##                       Cambridge, Massachusetts
+##
+##       under NASA contract NAS 9-4065.
+##
+## Refer directly to the online document mentioned above for further
+## information.  Please report any errors to info@sandroid.org.
 
 
-# Page 505
+## Page 505
 		BANK	34
 		SETLOC	R31
 		BANK
@@ -80,7 +80,7 @@ COMPDISP	VLOAD	VSU
 		VSL*	UNIT
 			0,1
 		PDVL	VSU		# UNIT(LOS) TO 0D	PD= 6
-# Page 506
+## Page 506
 			VATT
 			VONE
 		DOT			# (VATT-VONE).UNIT(LOS)	PD= 0
@@ -131,7 +131,7 @@ R34ANG		VLOAD	UNIT
 		MASK	EXTVBACT
 		EXTEND
 		BZF	ENDEXT		# YES, DIE
-# Page 507
+## Page 507
 		CS	EXTVBACT
 		MASK	BIT12
 		ADS	EXTVBACT
@@ -140,7 +140,7 @@ R34ANG		VLOAD	UNIT
 V16N54		VN	1654
 V16N53		VN	1653
 
-# Page 508
+## Page 508
 # STATEXTP DOES AN INITIAL PRECISION EXTRAPOLATION OF THE
 # LEM STATE VECTOR TO PRESENT TIME OR TO PIPTIME IF AV G.
 # IS ON AND SAVES AS BASE VECTOR. IF AV G IS ON RN + VN
@@ -196,7 +196,7 @@ HAVEBASE	BON	RTB		# SUBSEQUENT INTEGRATIONS
 			INTSTALL
 		VLOAD	CLEAR
 			BASETHP
-# Page 509
+## Page 509
 			MOONFLAG
 		STOVL	RCV
 			BASETHV
@@ -247,7 +247,7 @@ GETRVN5		CALL			# AV G ON
 		BON	CALL
 			SURFFLAG
 			GETRVN6		# LM DOWN, LMPREC
-# Page 510
+## Page 510
 			INTSTALL
 		CLEAR	GOTO
 			INTYPFLG

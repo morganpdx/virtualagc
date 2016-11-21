@@ -3,12 +3,11 @@
 # Filename:	MAIN.agc
 # Purpose:	Part of the source code for Colossus, build 237.
 #		This is for the Command Module's (CM) 
-#		Apollo Guidance Computer (AGC), we believe for 
-#		Apollo 8.
+#		Apollo Guidance Computer (AGC), for Apollo 8.
 # Assembler:	yaYUL
 # Contact:	Jim Lawton <jim.lawton@gmail.com>.
 # Website:	www.ibiblio.org/apollo/index.html
-# Page scans:	www.ibiblio.org/apollo/ScansForConversion/Artemis072/
+# Page Scans:	www.ibiblio.org/apollo/ScansForConversion/Artemis072/
 # Mod history:	2009-08-12 JL	Created.
 #		2011-01-17 JL	Fixed module name, indentation.
 #		2011-01-23 JL	Fixed module name. 
@@ -119,7 +118,7 @@ $AGC_BLOCK_TWO_SELF-CHECK.agc				# 1358
 $PHASE_TABLE_MAINTENANCE.agc				# 1368
 $RESTARTS_ROUTINE.agc					# 1378
 $IMU_MODE_SWITCHING_ROUTINES.agc			# 1384
-$KEYRUPT_UPRUPT.agc					# 1413
+$KEYRUPT,_UPRUPT.agc					# 1413
 $DISPLAY_INTERFACE_ROUTINES.agc				# 1416
 $SERVICE_ROUTINES.agc					# 1449
 $ALARM_AND_ABORT.agc					# 1457

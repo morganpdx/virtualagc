@@ -1,35 +1,35 @@
 ### FILE="Main.annotation"
-# Copyright:	Public domain.
-# Filename:	R30.agc
-# Purpose: 	Part of the source code for Luminary 1A build 099.
-#		It is part of the source code for the Lunar Module's (LM)
-#		Apollo Guidance Computer (AGC), for Apollo 11.
-# Assembler:	yaYUL
-# Contact:	Ron Burkey <info@sandroid.org>.
-# Website:	www.ibiblio.org/apollo.
-# Pages:	712-722
-# Mod history:	2009-05-19 RSB	Adapted from the corresponding 
-#				Luminary131 file, using page 
-#				images from Luminary 1A.
-#		2009-06-07 RSB	Removed a space between two components of
-#				a 2OCT that isn't legal in yaYUL.
-#
-# This source code has been transcribed or otherwise adapted from
-# digitized images of a hardcopy from the MIT Museum.  The digitization
-# was performed by Paul Fjeld, and arranged for by Deborah Douglas of
-# the Museum.  Many thanks to both.  The images (with suitable reduction
-# in storage size and consequent reduction in image quality as well) are
-# available online at www.ibiblio.org/apollo.  If for some reason you
-# find that the images are illegible, contact me at info@sandroid.org
-# about getting access to the (much) higher-quality images which Paul
-# actually created.
-#
-# Notations on the hardcopy document read, in part:
-#
-#	Assemble revision 001 of AGC program LMY99 by NASA 2021112-61
-#	16:27 JULY 14, 1969 
+## Copyright:	Public domain.
+## Filename:	R30.agc
+## Purpose: 	Part of the source code for Luminary 1A build 099.
+##		It is part of the source code for the Lunar Module's (LM)
+##		Apollo Guidance Computer (AGC), for Apollo 11.
+## Assembler:	yaYUL
+## Contact:	Ron Burkey <info@sandroid.org>.
+## Website:	www.ibiblio.org/apollo.
+## Pages:	712-722
+## Mod history:	2009-05-19 RSB	Adapted from the corresponding 
+##				Luminary131 file, using page 
+##				images from Luminary 1A.
+##		2009-06-07 RSB	Removed a space between two components of
+##				a 2OCT that isn't legal in yaYUL.
+##
+## This source code has been transcribed or otherwise adapted from
+## digitized images of a hardcopy from the MIT Museum.  The digitization
+## was performed by Paul Fjeld, and arranged for by Deborah Douglas of
+## the Museum.  Many thanks to both.  The images (with suitable reduction
+## in storage size and consequent reduction in image quality as well) are
+## available online at www.ibiblio.org/apollo.  If for some reason you
+## find that the images are illegible, contact me at info@sandroid.org
+## about getting access to the (much) higher-quality images which Paul
+## actually created.
+##
+## Notations on the hardcopy document read, in part:
+##
+##	Assemble revision 001 of AGC program LMY99 by NASA 2021112-61
+##	16:27 JULY 14, 1969 
 
-# Page 712
+## Page 712
 # SUBROUTINE NAME:  V82CALL
 # MOD NO: 0								DATE: 16 FEB 67
 # MOD BY: R. R. BAIRNSFATHER						LOG SECTION:  R30
@@ -81,7 +81,7 @@
 #		TFF	(-28) CS	CONTAINS NEGATIVE QUANTITY
 #		-TPER	(-28) CS	CONTAINS NEGATIVE QUANTITY
 #
-# Page 713
+## Page 713
 # ERASABLE INITIALIZATION REQUIRED:  STATE VECTOR.
 #
 # DEBRIS:	QPRET, RONE, VONE, TFF/RTMU, HPERMIN, RPADTEM, V82EMFLG.
@@ -129,7 +129,7 @@ V82GOFLP	CAF	TFFBANK		# MAJOR RECYCLE LOOP ENTRY
 
 		RELINT
 V82STALL	CAF	THREE		# STALL IN THIS LOOP AND WITHOLD V 16 N 44
-# Page 714
+## Page 714
 		MASK	V82FLAGS	# UNTIL STATE VECTOR UPDATE SETS ONE OF
 		CCS	A		# OUR FLAG BITS.
 		TC	FLAGGON		# EXIT FROM STALL LOOP.
@@ -178,7 +178,7 @@ BOTHSHIP	VLOAD			# MOVE RESULTS INTO TFFCONIC STORAGE AREAS
 			EARTHPAD
 		GOTO
 			MOONPAD
-# Page 715
+## Page 715
 THISSHIP	TC	INTPRET
 		CALL			# CALL STATE VECTOR UPDATE FOR THIS SHIP.
 			THISPREC
@@ -227,7 +227,7 @@ TICKTIFF	DLOAD	DAD		# (-TPER=0) TFF WAS COMPUTED.  TICK TFF.
 		TS	V82FLAGS	# INFORMS TICKTEST TO INCREMENT ONLY TFF.
 		TC	ENDOFJOB
 
-# Page 716
+## Page 716
 TICKTEST	CAF	BIT5		# THIS WAITLIST PROGRAM PERPETUATES ITSELF
 		MASK	EXTVBACT	# ONCE A SEC UNTIL BIT 5 OF EXTVBACT =0.
 		CCS	A
@@ -261,7 +261,7 @@ TPERTICK	CAF	1SEC
 		DAS	-TPER
 		TC	TASKOVER
 
-# Page 717
+## Page 717
 V82GON		EXIT			# AVERAGE G ON.  USE CURRENT STATE VECTOR
 					# FOR ORBITAL PARAMETER CALCULATIONS.
 		CAF	PRIO7		# LESS THAN LAMBERT
@@ -312,7 +312,7 @@ EARTHGON	CLEAR	DLOAD
 			RPAD
 V82GON2		STCALL	RPADTEM		# COMMON CODE FOR EARTH & MOON.
 			SR30.1
-# Page 718
+## Page 718
 		EXIT
 V82GON3		CAF	BIT5
 		MASK	EXTVBACT	# SEE IF ASTRONAUT HAS SIGNALLED TERMINATE
@@ -325,7 +325,7 @@ V82GON3		CAF	BIT5
 
 SPLRET		=	V82GON3
 
-# Page 719
+## Page 719
 # SUBROUTINE NAME: SR30.1
 # MOD NO: 0								DATE: 16 FEB 67
 # MOD BY: R. R. BAIRNSFATHER						LOG SECTION: R32
@@ -379,7 +379,7 @@ SPLRET		=	V82GON3
 #
 # DEBRIS:	QPREG, PDL, S2
 
-# Page 720
+## Page 720
 		COUNT*	$$/SR30S
 
 SR30.1		SETPD	STQ		# INITIALIZE PUSHDOWN LIST.
@@ -430,7 +430,7 @@ STORHAPO	STODL	HAPOX
 			+1
 		CALL			# IF HPER > MAXNM, SET HPER = 9999.9 NM.
 			MAXCHK
-# Page 721
+## Page 721
 STORHPER	STODL	HPERX		# STORE (RPER - RPADTEM) INTO HPERX.
 			MPAC 	+4
 		DSU	BPL		# HPERMIN AT (-29)M FOR EARTH, (-27)M MOON
@@ -462,5 +462,5 @@ MAXCHK		DSU	BPL		# IF C(MPAC) > 9999.9 NM. MPAC = 9999.9 NM.
 
 MAXNM		2OCT	0106505603
 
-# Page 722 (empty page)
+## Page 722 (empty page)
 

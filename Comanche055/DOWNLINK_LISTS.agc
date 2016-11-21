@@ -1,35 +1,35 @@
 ### FILE="Main.annotation"
-# Copyright:	Public domain.
-# Filename:	DOWNLINK_LISTS.agc
-# Purpose:	Part of the source code for Comanche, build 055. It
-#		is part of the source code for the Command Module's
-#		(CM) Apollo Guidance Computer (AGC), Apollo 11.
-# Assembler:	yaYUL
-# Reference:	pp. 170-180
-# Contact:	Ron Burkey <info@sandroid.org>,
-#  		Fabrizio Bernardini <fabrizio@spacecraft.it>
-# Website:	http://www.ibiblio.org/apollo.
-# Mod history:	10/05/09 FB	Transcription of Batch FB-1 Assignment.
-#
-# The contents of the "Comanche055" files, in general, are transcribed
-# from scanned documents.
-#
-#	Assemble revision 055 of AGC program Comanche by NASA
-#	2021113-051.  April 1, 1969.
-#
-#	This AGC program shall also be referred to as Colossus 2A
-#
-#	Prepared by
-#			Massachusetts Institute of Technology
-#			75 Cambridge Parkway
-#			Cambridge, Massachusetts
-#
-#	under NASA contract NAS 9-4065.
-#
-# Refer directly to the online document mentioned above for further
-# information.  Please report any errors to info@sandroid.org.
+## Copyright:	Public domain.
+## Filename:	DOWNLINK_LISTS.agc
+## Purpose:	Part of the source code for Comanche, build 055. It
+##		is part of the source code for the Command Module's
+##		(CM) Apollo Guidance Computer (AGC), Apollo 11.
+## Assembler:	yaYUL
+## Reference:	pp. 170-180
+## Contact:	Ron Burkey <info@sandroid.org>,
+##  		Fabrizio Bernardini <fabrizio@spacecraft.it>
+## Website:	http://www.ibiblio.org/apollo.
+## Mod history:	10/05/09 FB	Transcription of Batch FB-1 Assignment.
+##
+## The contents of the "Comanche055" files, in general, are transcribed
+## from scanned documents.
+##
+##	Assemble revision 055 of AGC program Comanche by NASA
+##	2021113-051.  April 1, 1969.
+##
+##	This AGC program shall also be referred to as Colossus 2A
+##
+##	Prepared by
+##			Massachusetts Institute of Technology
+##			75 Cambridge Parkway
+##			Cambridge, Massachusetts
+##
+##	under NASA contract NAS 9-4065.
+##
+## Refer directly to the online document mentioned above for further
+## information.  Please report any errors to info@sandroid.org.
 
-# Page 170
+## Page 170
 		BANK	22
 		SETLOC	DOWNTELM
 		BANK
@@ -70,7 +70,7 @@ LOWIDCOD	OCT	77340				# LOW ID CODE
 NOMDNLST	EQUALS	CMCSTADL			# FRESH START AND POST P27 DOWNLIST
 UPDNLIST	EQUALS	CMENTRDL			# UPDATE PROGRAM (P27) DOWNLIST
 
-# Page 171
+## Page 171
 # CSM POWERED FLIGHT DOWNLIST
 #
 # --------------------- CONTROL LIST -------------------------
@@ -122,7 +122,7 @@ CMPOWE01	-1DNADR	RN	+2			# RN +2,+3			SNAPSHOT DATA
 		-1DNADR	RN				# RN, +1
 
 CMPOWE02	-1DNADR	CDUZ				# CDUZ,CDUT			SNAPSHOT DATA
-# Page 172
+## Page 172
 		1DNADR	ADOT				# ADOT,+1/OGARATE,+1
 		1DNADR	ADOT	+2			# ADOT+2,+3/OMEGAB+2,+3
 		1DNADR	ADOT	+4			# ADOT+4,+5/OMEGAB+4,+5
@@ -158,7 +158,7 @@ CMPOWE07	1DNADR	LEMMASS				# LEMMASS,CSMMASS		COMMON DATA
 		-DNCHAN	32				# CHANNELS 32,33
 
 # -----------------------------------------------------------
-# Page 173
+## Page 173
 # CSM COAST AND ALIGNMENT DOWNLIST
 
 # --------------------- CONTROL LIST ------------------------
@@ -209,9 +209,9 @@ CMCSTA06	EQUALS	CMPOWE06			# COMMON DOWNLIST DATA
 
 CMCSTA07	EQUALS	CMPOWE07			# COMMON DOWNLIST DATA
 
-# Page 174
+## Page 174
 # -----------------------------------------------------------
-# Page 175
+## Page 175
 # CSM RENDEZVOUS AND PRETHRUST LIST
 
 # --------------------- CONTROL LIST ------------------------
@@ -263,7 +263,7 @@ CMREND02	EQUALS	CMPOWE02			# COMMON DOWNLIST DATA
 CMREND03	EQUALS	CMPOWE03			# COMMON DOWNLIST DATA
 
 CMREND04	EQUALS	CMPOWE04			# COMMON DOWNLIST DATA
-# Page 176
+## Page 176
 CMREND05	EQUALS	CMPOWE05			# COMMON DOWNLIST DATA
 
 CMREND06	EQUALS	CMPOWE06			# COMMON DOWNLIST DATA
@@ -272,7 +272,7 @@ CMREND07	EQUALS	CMPOWE07			# COMMON DOWNLIST DATA
 
 # ------------------------------------------------------------
 
-# Page 177
+## Page 177
 # CSM ENTRY AND UPDATE DOWNLIST
 # --------------------- CONTROL LIST -------------------------
 
@@ -321,7 +321,7 @@ CMENTRDL	EQUALS					# SEND ID BY SPECIAL CODING
 # --------------------- SUB LISTS ----------------------------
 
 CMENTR01	EQUALS	CMPOWE01			# COMMON DOWNLIST DATA
-# Page 178
+## Page 178
 CMENTR02	EQUALS	CMPOWE02			# COMMON DOWNLIST DATA
 
 CMENTR03	EQUALS	CMPOWE03			# COMMON DOWNLIST DATA
@@ -340,7 +340,7 @@ CMENTR07	EQUALS	CMPOWE07			# COMMON DOWNLIST DATA
 
 # -------------------------------------------------------------
 
-# Page 179
+## Page 179
 # --------------------- CONTROL LIST --------------------------
 
 CMPG22DL	EQUALS					# SEND ID BY SPECIAL CODING
@@ -388,7 +388,7 @@ CMPG2201	EQUALS	CMPOWE01			# COMMON DOWNLIST DATA
 CMPG2202	EQUALS	CMPOWE02			# COMMON DOWNLIST DATA
 
 CMPG2203	EQUALS	CMPOWE03			# COMMON DOWNLIST DATA
-# Page 180
+## Page 180
 CMPG2204	EQUALS	CMPOWE04			# COMMON DOWNLIST DATA
 
 CMPG2205	-1DNADR	LONG				# LONG,+1			SNAPSHOT DATA

@@ -1,40 +1,40 @@
 ### FILE="Main.annotation"
-# Copyright:	Public domain.
-# Filename:	Template.agc
-# Purpose:	Part of the source code for Colossus, build 249.
-#		It is part of the source code for the Command Module's (CM)
-#		Apollo Guidance Computer (AGC), possibly for Apollo 8 and 9.
-# Assembler:	yaYUL
-# Reference:	pp. 777-794 of 1701.pdf.
-# Contact:	Ron Burkey <info@sandroid.org>.
-# Website:	www.ibiblio.org/apollo.
-# Mod history:	08/19/04 RSB.	Began transcribing.
-#
-# The contents of the "Colossus249" files, in general, are transcribed 
-# from a scanned document obtained from MIT's website,
-# http://hrst.mit.edu/hrs/apollo/public/archive/1701.pdf.  Notations on this
-# document read, in part:
-#
-#	Assemble revision 249 of AGC program Colossus by NASA
-#	2021111-041.  October 28, 1968.  
-#
-#	This AGC program shall also be referred to as
-#				Colossus 1A
-#
-#	Prepared by
-#			Massachusetts Institute of Technology
-#			75 Cambridge Parkway
-#			Cambridge, Massachusetts
-#	under NASA contract NAS 9-4065.
-#
-# Refer directly to the online document mentioned above for further information.
-# Please report any errors (relative to 1701.pdf) to info@sandroid.org.
-#
-# In some cases, where the source code for Luminary 131 overlaps that of 
-# Colossus 249, this code is instead copied from the corresponding Luminary 131
-# source file, and then is proofed to incorporate any changes.
+## Copyright:	Public domain.
+## Filename:	SERVICER207.agc
+## Purpose:	Part of the source code for Colossus, build 249.
+##		It is part of the source code for the Command Module's (CM)
+##		Apollo Guidance Computer (AGC), for Apollo 9.
+## Assembler:	yaYUL
+## Reference:	pp. 777-794 of 1701.pdf.
+## Contact:	Ron Burkey <info@sandroid.org>.
+## Website:	www.ibiblio.org/apollo.
+## Mod history:	08/19/04 RSB.	Began transcribing.
+##
+## The contents of the "Colossus249" files, in general, are transcribed 
+## from a scanned document obtained from MIT's website,
+## http://hrst.mit.edu/hrs/apollo/public/archive/1701.pdf.  Notations on this
+## document read, in part:
+##
+##	Assemble revision 249 of AGC program Colossus by NASA
+##	2021111-041.  October 28, 1968.  
+##
+##	This AGC program shall also be referred to as
+##				Colossus 1A
+##
+##	Prepared by
+##			Massachusetts Institute of Technology
+##			75 Cambridge Parkway
+##			Cambridge, Massachusetts
+##	under NASA contract NAS 9-4065.
+##
+## Refer directly to the online document mentioned above for further information.
+## Please report any errors (relative to 1701.pdf) to info@sandroid.org.
+##
+## In some cases, where the source code for Luminary 131 overlaps that of 
+## Colossus 249, this code is instead copied from the corresponding Luminary 131
+## source file, and then is proofed to incorporate any changes.
 
-# Page 777
+## Page 777
 # SERVICER207
 #
 # PROGRAM NAME:	PREREAD, READACCS, SERVICER, AVERAGE G.
@@ -81,7 +81,7 @@
 #		ONMONITOR LOOP IS INITIATED TO PROVIDE DOWNLINK INFORMATION DURING ENTRY.
 #		PIPS READ AND CLEARED BY PIPASR SUBROUTINE.
 #		IF CM/DSTBY IS ON, ENTRY VARIABLES INITIALIZED AND SETJTAG TASK CALLED.
-# Page 778
+## Page 778
 #
 #	SERVICER207
 #
@@ -132,7 +132,7 @@
 #			DAP SET UP FOR RCS.
 #	
 #	AVERAGE G
-# Page 779
+## Page 779
 #		RN1, VN1, GDT1/2 CALCULATED VIA CALCRVG ROUTINE BY UPDATING RN, VN WITH DELV AND AN AVERAGED VALUE
 #			OF GDT/2
 #		RN1, VN1, GDT1/2, PIPTIME1 COPIED INTO RN, VN, GDT/2, PIPTIME FOR RESTART PROTECTION.
@@ -179,7 +179,7 @@
 #	VN(6)		REFERENCE COORD.	SCALED AT 2(+7) M/CS
 #	GDT/2(6)	REFERENCE COORD.	SCALED AT 2(+7) M/CS
 #	DELV(6)		STABLE MEMB. COORD.	SCALED AT 2(+14)*5.85*10(-4) M/CS (KPIP1 USED TO GET DV/2 AT 2(+7))
-# Page 780
+## Page 780
 #	DELVREF(6)	REFERENCE COORD.	SCALED AT 2(+7) M/CS
 #
 # INITIALIZATION
@@ -226,7 +226,7 @@ PREREAD		CAF	PRIO21		# CALLER MUST PROTECT PREREAD
 					#	PROTECTED. REREADAC SETS 1/PIPADT
 					#	TO 2.0 SECS IN CASE LASTBIAS LOST.
 					#	(REDUNDANT IF LASTBIAS IS AOK.)
-# Page 781
+## Page 781
 REDO5.31	TC	PREREAD1
 
 		CAF	PRIO32
@@ -270,7 +270,7 @@ PREREAD1	EXTEND
 		
 		TC	RUPTREG1
 
-# Page 782
+## Page 782
 # ********************* READACCS ***************************************
 
 		EBANK=	AOG
@@ -322,7 +322,7 @@ REDO5.5		CAF	ONE		# SHOW PIPS HAVE BEEN READ
 		CA	DELVY
 		XCH	YPIPBUF
 		TS	YOLDBUF
-# Page 783
+## Page 783
 		CA	DELVZ
 		XCH	ZPIPBUF
 		TS	ZOLDBUF
@@ -370,7 +370,7 @@ MAKESERV	CAF	PRIO20		# ESTABLISH SERVICER ROUTINE
 		
 		TCF	TASKOVER	# END PREVIOUS READACCS WAITLIST TASK
 		
-# Page 784
+## Page 784
 AVEGOUT		EXTEND
 		DCA	AVOUTCAD
 		DXCH	AVGEXIT
@@ -379,7 +379,7 @@ AVEGOUT		EXTEND
 		EBANK=	DVCNTR
 AVOUTCAD	2CADR	AVGEND
 
-# Page 785
+## Page 785
 # ROUTINE NAME:	ONMNITOR
 # MOD 04 BY BAIRNSFATHER 30 APR 1968	REDO ONMNITOR TO SAVE PIPS EACH 0.5 SEC FOR TM,ENTRY.
 # MOD 03 BY FISHER DECEMBER 1967
@@ -431,7 +431,7 @@ CHKCTR		CCS	RUPTREG1
 		TCF	ONMNITOR
 		TC	TASKOVER
 
-# Page 786
+## Page 786
 # ********************* SERVICER ***************************************
 
 		EBANK=	DVCNTR
@@ -480,7 +480,7 @@ AVERAGEG	TC	PHASCHNG
 		
 		TC	INTPRET
 		CALL
-# Page 787
+## Page 787
 			CALCRVG
 		EXIT
 		
@@ -532,7 +532,7 @@ AVGEND		CA	PIPTIME +1	# FINAL AVERAGE G EXIT
 		TC	DOWNFLAG
 		ADRES	V37FLAG
 
-# Page 788
+## Page 788
 		CAF	BIT7		# RESTORE GROUP 1 + 2 IF P20 IS RUNNING.
 		MASK	FLAGWRD0
 		EXTEND
@@ -562,7 +562,7 @@ MDOTFAIL	DEC	144.0 B-16	# 5 SEC MASS LOSS AT 28.8 KG/SEC
 					# SHOULD BE 2-4 SECS FOR NO START
 					#	    6-8 SECS FOR FAILURE
 					
-# Page 789
+## Page 789
 # NORMLIZE PERFORMS THE INITIALIZATION REQUIRED PRIOR TO THE FIRST ENTRY TO AVERAGEG, AND SCALES RN SO THAT IT
 # HAS 1 LEADING BINARY ZERO.  IN MOST MISSIONS, RN WILL BE SCALED AT 2(+29), BUT IN THE 206 MISSION, RN WILL BE
 # SCALED AT 2(+24) M.
@@ -584,7 +584,7 @@ NORMLIZE	CAF	THIRTEEN	# SET UP TO COPY 14 REGS: RN1,VN1,PIPTIME1
 		EXIT
 		TCF	ENDOFJOB
 		
-# Page 790
+## Page 790
 # *****  PIPA READER *****
 # MOD NO. 00 BY D. LICKLY DEC. 9 1966
 #
@@ -627,7 +627,7 @@ PIPASR		EXTEND
 		TS	TEMX
 		TS	TEMY
 		TS	TEMZ
-# Page 791
+## Page 791
 		CA	ZERO
 		TS	DELVZ		# OTHER DELVS OK INCLUDING LOW ORDER
 		TS	DELVY
@@ -676,7 +676,7 @@ REREADAC	CCS	PHASE5		# LAST PASS CHECK
 		TCF	+3		# Z NOT DONE, CHECK Y.
 		TC	Q
 		TC	Q
-# Page 792
+## Page 792
 		ZL
 		CCS	DELVY
 		TCF	+3
@@ -708,7 +708,7 @@ CHKTEMX		CCS	TEMX		# HAS THIS CHANGED
 		
 DONEADR		GENADR	PIPSDONE
 
-# Page 793
+## Page 793
 #*********************************************************************************************
 #
 # ROUTINE CALCRVG INTEGRATES THE EQUATIONS OF MOTION BY AVERAGING THE THRUST AND GRAVITATIONAL
@@ -758,7 +758,7 @@ ITISMOON	DLOAD	NORM
 			34D
 			X2
 		BDDV*	SLR*
-# Page 794
+## Page 794
 			-MUDT(E),1
 			0 -21D,2
 		VXSC	STADR

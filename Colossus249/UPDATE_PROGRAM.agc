@@ -1,42 +1,42 @@
 ### FILE="Main.annotation"
-# Copyright:	Public domain.
-# Filename:	UPDATE_PROGRAM.agc
-# Purpose:	Part of the source code for Colossus, build 249.
-#		It is part of the source code for the Command Module's (CM)
-#		Apollo Guidance Computer (AGC), possibly for Apollo 8 and 9.
-# Assembler:	yaYUL
-# Reference:	Starts at p. 1487 of 1701.pdf.
-# Contact:	Ron Burkey <info@sandroid.org>.
-# Website:	www.ibiblio.org/apollo/index.html
-# Mod history:	08/30/04 RSB.	Adapted from corresponding Luminary131 file.
-#		05/14/05 RSB	Corrected website reference above.
-#		2010-10-24 JL	Indentation fixes.
-#
-# The contents of the "Colossus249" files, in general, are transcribed 
-# from a scanned document obtained from MIT's website,
-# http://hrst.mit.edu/hrs/apollo/public/archive/1701.pdf.  Notations on this
-# document read, in part:
-#
-#	Assemble revision 249 of AGC program Colossus by NASA
-#	2021111-041.  October 28, 1968.  
-#
-#	This AGC program shall also be referred to as
-#				Colossus 1A
-#
-#	Prepared by
-#			Massachusetts Institute of Technology
-#			75 Cambridge Parkway
-#			Cambridge, Massachusetts
-#	under NASA contract NAS 9-4065.
-#
-# Refer directly to the online document mentioned above for further information.
-# Please report any errors (relative to 1701.pdf) to info@sandroid.org.
-#
-# In some cases, where the source code for Luminary 131 overlaps that of 
-# Colossus 249, this code is instead copied from the corresponding Luminary 131
-# source file, and then is proofed to incorporate any changes.
+## Copyright:	Public domain.
+## Filename:	UPDATE_PROGRAM.agc
+## Purpose:	Part of the source code for Colossus, build 249.
+##		It is part of the source code for the Command Module's (CM)
+##		Apollo Guidance Computer (AGC), for Apollo 9.
+## Assembler:	yaYUL
+## Reference:	Starts at p. 1487 of 1701.pdf.
+## Contact:	Ron Burkey <info@sandroid.org>.
+## Website:	www.ibiblio.org/apollo/index.html
+## Mod history:	08/30/04 RSB.	Adapted from corresponding Luminary131 file.
+##		05/14/05 RSB	Corrected website reference above.
+##		2010-10-24 JL	Indentation fixes.
+##
+## The contents of the "Colossus249" files, in general, are transcribed 
+## from a scanned document obtained from MIT's website,
+## http://hrst.mit.edu/hrs/apollo/public/archive/1701.pdf.  Notations on this
+## document read, in part:
+##
+##	Assemble revision 249 of AGC program Colossus by NASA
+##	2021111-041.  October 28, 1968.  
+##
+##	This AGC program shall also be referred to as
+##				Colossus 1A
+##
+##	Prepared by
+##			Massachusetts Institute of Technology
+##			75 Cambridge Parkway
+##			Cambridge, Massachusetts
+##	under NASA contract NAS 9-4065.
+##
+## Refer directly to the online document mentioned above for further information.
+## Please report any errors (relative to 1701.pdf) to info@sandroid.org.
+##
+## In some cases, where the source code for Luminary 131 overlaps that of 
+## Colossus 249, this code is instead copied from the corresponding Luminary 131
+## source file, and then is proofed to incorporate any changes.
 
-# Page 1487
+## Page 1487
 # PROGRAM NAME:		P27
 # WRITTEN BY:		KILROY/ DE WOLF
 #
@@ -84,7 +84,7 @@
 #				IS ADDED TO TEPHEM, SUBTRACTED FROM AGC CLOCK(TIME2,TIME1), SUBTRACTED FROM CSM STATE
 #				VECTOR TIME(TETCSM) AND SUBTRACTED FROM LEM STATE VECTOR TIME(TETLEM).
 #				THE DP OCTAL TIME INCREMENT IS SCALED AT 2(28).
-# Page 1488
+## Page 1488
 #	V71EIIEAAAAE		(CONTIGUOUS BLOCK UPDATE) II-2 OCTAL COMPONENTS, XXXXX,
 #	XXXXXE			ARE LOADED INTO ERASABLE STARTING AT ECADR, AAAA.
 #	XXXXXE			IT IS .GE. 3 .AND. .LE. 200.,
@@ -127,7 +127,7 @@
 #
 #	2.  REFSMMAT (ALL DATA ENTRIES IN OCTAL)
 #		ENTRIES		DATA DEFINITITIONS				SCALE FACTORS:
-# Page 1489
+## Page 1489
 #		V71E		CONTIGUOUS BLOCK UPDATE VERB
 #		   24E		NUMBER OF COMPONENTS FOR REFSMMAT UPDATE
 #		 AAAAE		ECADR OF `REFSMMAT'
@@ -173,7 +173,7 @@ V73UPDAT	CAF	UP73		# COMES HERE ON V73E
 					
 		CAE	MODREG		# UPDATE ALLOWED
 		TS	UPOLDMOD	# SAVE CURRENT MAJOR MODE
-# Page 1490
+## Page 1490
 		CAE	UPVERBSV	# SET UPVERB TO INDICDATE TO P27
 		TS	UPVERB		# WHICH EXTENDED VERB CALLED IT.
 
@@ -222,7 +222,7 @@ UPPART2		EQUALS			# UPDATE PROGRAM -- PART 2
 		TC	NEWMODEX	# SET MAJOR MODE = 27
 		DEC	27
 
-# Page 1491
+## Page 1491
 		INDEX	UPVERB		# BRANCH DEPENDING ON WHETHER THE UPDATE
 		TCF	+1		# VERB REQUIRES A FIXED OR VARIABLE NUMBER
 		TCF	+3		# V70 FIXED                (OF COMPONENTS)
@@ -270,7 +270,7 @@ OHWELL2		CAF	ADUPBFM1	# CALCULATE LOCATION (ECADR) IN UPBUFF
 		TCF	OHWELL2 -1	# NO -- REQUEST ADDITIONAL DATA.
 
 # VERIFY SEQUENCE
-# Page 1492
+## Page 1492
 UPVERIFY	CAF	ADUPTEMP	# PLACE ECADR WHERE COMPONENT NO. INDEX
 		TS	MPAC +2		# IS TO BE STORED INTO R3.
 		CAF	UPVRFYNV	# (CK4V32 RETURNS HERE IF V32 ENCOUNTERED)
@@ -320,7 +320,7 @@ UPSTORE		EQUALS			# GROUND HAS VERIFIED UPDATE.  STORE DATA.
 		CAF	BIT3		# THAT THE V33 (WHICH THE GROUND SENT TO
 		EXTEND			# VERIFY THE UPDATE) HAS BEEN SUCCESSFULLY
 		RXOR	LCHAN		# RECEIVED BY THE UPDATE PROGRAM
-# Page 1493
+## Page 1493
 		TS	FLAGWRD7
 
 		TC	PHASCHNG	# SET RESTART GROUP 6 TO REDO THE UPDATE
@@ -369,7 +369,7 @@ UPPART3		EQUALS
 		TCF	UPEND72		# V72
 
 # ROUTINE TO INCREMENT CLOCK (TIME2,TIME1) WITH CONTENTS OF DP WORD AT UPBUFF.
-# Page 1494
+## Page 1494
 TIMEDIDL	EXTEND
 		QXCH	UPTEMP		# SAVE Q FOR RETURN
 		CAF	ZERO		# ZERO AND SAVE TIME2,TIME1
@@ -420,7 +420,7 @@ UPEND71		CAE	UPBUFF +1	# SET EBANK
 		TS	EBANK		#	AND
 		MASK	LOW8		# CALCULATE
 		TS	UPTEMP		# S-REG VALUE OF RECEIVING AREA
-# Page 1495
+## Page 1495
 		AD	NEG3		# IN THE PROCESS OF
 		AD	COMPNUMB	# PERFORMING
 		EXTEND			# THIS UPDATE
@@ -470,7 +470,7 @@ LDLOOP72	TS	MPAC		# NO PERFORM THE UPDATE
 		EBANK=	1400
 		LXCH	1400		# UPDATE THE REGISTER BY CONTENTS OF L
 		EBANK=	TEPHEM
-# Page 1496
+## Page 1496
 		CCS	MPAC		# ARE WE THORUGH THE V72 UPDATE...
 		TCF	LDLOOP72	# NO
 
@@ -518,7 +518,7 @@ UPEND70		EXTEND			# V70 DOES THE FOLLOWING WITH DP DELTA
 		ZL
 		DXCH	UPBUFF +12D	# DECREMENT LEM STATE VECTOR TIME
 		DAS	TETLEM
-# Page 1497
+## Page 1497
 		CAF	ZERO
 		ZL
 		DXCH	UPBUFF

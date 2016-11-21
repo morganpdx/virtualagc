@@ -1,31 +1,31 @@
 ### FILE="Main.annotation"
-# Copyright:	Public domain.
-# Filename:	RESTARTS_ROUTINE.agc
-# Purpose: 	Part of the source code for Luminary 1A build 099.
-#		It is part of the source code for the Lunar Module's (LM)
-#		Apollo Guidance Computer (AGC), for Apollo 11.
-# Assembler:	yaYUL
-# Contact:	Onno Hommes <ohommes@cmu.edu>.
-# Website:	www.ibiblio.org/apollo.
-# Pages:	1303-1309
-# Mod history:	2009-05-27 OH	Transcribed from page images.
-#
-# This source code has been transcribed or otherwise adapted from
-# digitized images of a hardcopy from the MIT Museum.  The digitization
-# was performed by Paul Fjeld, and arranged for by Deborah Douglas of
-# the Museum.  Many thanks to both.  The images (with suitable reduction
-# in storage size and consequent reduction in image quality as well) are
-# available online at www.ibiblio.org/apollo.  If for some reason you
-# find that the images are illegible, contact me at info@sandroid.org
-# about getting access to the (much) higher-quality images which Paul
-# actually created.
-#
-# Notations on the hardcopy document read, in part:
-#
-#	Assemble revision 001 of AGC program LMY99 by NASA 2021112-61
-#	16:27 JULY 14, 1969 
+## Copyright:	Public domain.
+## Filename:	RESTARTS_ROUTINE.agc
+## Purpose: 	Part of the source code for Luminary 1A build 099.
+##		It is part of the source code for the Lunar Module's (LM)
+##		Apollo Guidance Computer (AGC), for Apollo 11.
+## Assembler:	yaYUL
+## Contact:	Onno Hommes <ohommes@cmu.edu>.
+## Website:	www.ibiblio.org/apollo.
+## Pages:	1303-1309
+## Mod history:	2009-05-27 OH	Transcribed from page images.
+##
+## This source code has been transcribed or otherwise adapted from
+## digitized images of a hardcopy from the MIT Museum.  The digitization
+## was performed by Paul Fjeld, and arranged for by Deborah Douglas of
+## the Museum.  Many thanks to both.  The images (with suitable reduction
+## in storage size and consequent reduction in image quality as well) are
+## available online at www.ibiblio.org/apollo.  If for some reason you
+## find that the images are illegible, contact me at info@sandroid.org
+## about getting access to the (much) higher-quality images which Paul
+## actually created.
+##
+## Notations on the hardcopy document read, in part:
+##
+##	Assemble revision 001 of AGC program LMY99 by NASA 2021112-61
+##	16:27 JULY 14, 1969 
 
-# Page 1303
+## Page 1303
 		BANK	01
 		SETLOC	RESTART
 		BANK
@@ -75,7 +75,7 @@ ITSAVAR		MASK	OCT1400		# IS IT TYPE B ?
 		TCF	ITSLNGCL	# IT'S A LONGCALL
 
 RTRNCADR	TC	SWRETURN	# CAN'T GET HERE.
-# Page 1304
+## Page 1304
 		TCF	ITSAWAIT
 
 		TCF	ITSAJOB		# IT'S A JOB
@@ -126,7 +126,7 @@ FINDTIME	COM			# MAKE NEGATIVE SINCE IT WILL BE SUBTRACTED
 		SU	TIME1
 		CCS	A
 		COM
-# Page 1305
+## Page 1305
 		AD	OCT37776
 		AD	ONE
 		AD	L
@@ -177,7 +177,7 @@ ITSATBL		TS	CYR		# FIND OUT IF THE PHASE IS ODD OR EVEN
 		CA	TEMPPHS		# SET UP POINTER FOR FINDING OUR PLACE IN
 		TS	SR		# THE RESTART TABLES
 		AD	SR
-# Page 1306
+## Page 1306
 		NDX	TEMP2G
 		AD	SIZETAB +1
 		TS	POINTER
@@ -228,7 +228,7 @@ ITSLGCL1	LXCH	GOLOC +1	# OBTAIN THE CORRECT E BANK
 		LXCH	GOLOC +1	# RESTORE OUR E AND F BANK
 		LXCH	BB		# RESTORE THE TASKS E AND F BANKS
 		LXCH	GOLOC +1	# AND PRESERVE OUR L
-# Page 1307
+## Page 1307
 		TCF	ITSLGCL2	# NOT LET'S PROCESS THIS LONGCALL
 
 # ***** YOU MAY RETURN TO SWITCHED FIXED *****
@@ -280,7 +280,7 @@ ITSWTLST	CS	GOLOC +1	# CORRECT THE BBCON INFORMATION
 
 		TCF	TIMETEST	# FIND OUT HOW THE TIME IS STORED
 
-# Page 1308
+## Page 1308
 ITSAJOB2	XCH	GOLOC		# STORE THE CADR
 
 		NDX	POINTER		# ADD THE PRIORITY AND LET'S GO

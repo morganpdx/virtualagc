@@ -1,20 +1,20 @@
 ### FILE="Main.annotation"
-# Copyright:	Public domain.
-# Filename:	SYSTEM_TEST_STANDARD_LEAD_INS.agc
-# Purpose:	A section of Luminary 1C, revision 131.
-#		It is part of the source code for the Lunar Module's (LM)
-#		Apollo Guidance Computer (AGC) for Apollo 13 and Apollo 14.
-#		This file is intended to be a faithful transcription, except
-#		that the code format has been changed to conform to the
-#		requirements of the yaYUL assembler rather than the 
-#		original YUL assembler.
-# Reference:	pp. 377-379 of 1729.pdf.
-# Contact:	Ron Burkey <info@sandroid.org>.
-# Website:	www.ibiblio.org/apollo/index.html
-# Mod history:	05/11/03 RSB.	Began transcribing.
-#		05/14/05 RSB	Corrected website reference above.
+## Copyright:	Public domain.
+## Filename:	SYSTEM_TEST_STANDARD_LEAD_INS.agc
+## Purpose:	A section of Luminary 1C, revision 131.
+##		It is part of the source code for the Lunar Module's (LM)
+##		Apollo Guidance Computer (AGC) for Apollo 13.
+##		This file is intended to be a faithful transcription, except
+##		that the code format has been changed to conform to the
+##		requirements of the yaYUL assembler rather than the 
+##		original YUL assembler.
+## Reference:	pp. 377-379 of 1729.pdf.
+## Contact:	Ron Burkey <info@sandroid.org>.
+## Website:	www.ibiblio.org/apollo/index.html
+## Mod history:	05/11/03 RSB.	Began transcribing.
+##		05/14/05 RSB	Corrected website reference above.
 
-# Page 377
+## Page 377
 		EBANK=	XSM
 		
 		BANK	33
@@ -61,7 +61,7 @@ E/BKCALL	DXCH	BUF2		# SAVE A,L AND GET DP RETURN
 E/SWITCH	DXCH	EBUF2
 		DTCB
 		
-# Page 378
+## Page 378
 # E/CALL	FOR CALLING A FIXED MEMORY INTERPRETIVE SUBROUTINE FROM ERASABLE AND RETURNING TO ERASABLE.
 #
 # THE CALLING SEQUENCE IS...
@@ -84,7 +84,7 @@ E/CALL		LXCH	LOC		# ADRES -1 OF CADR.
 		LXCH	EBUF2 +1	# PICK UP RETURN.
 		TCF	INTPRET +2	# SET LOC AND RETURN TO CALLER.
 		
-# Page 379
+## Page 379
 # E/JOBWAK	FOR WAKING UP ERASABLE MEMORY JOBS.
 #
 # THIS ROUTINE MUST BE CALLED IN INTERRUPT OR WITH INTERRUPTS INHIBITED.

@@ -1,34 +1,34 @@
 ### FILE="Main.annotation"
-# Copyright:	Public domain.
-# Filename:	INFLIGHT_ALIGNMENT_ROUTINES.agc
-# Purpose:	Part of the source code for Colossus 2A, AKA Comanche 055.
-#		It is part of the source code for the Command Module's (CM)
-#		Apollo Guidance Computer (AGC), for Apollo 11.
-# Assembler:	yaYUL
-# Contact:	Ron Burkey <info@sandroid.org>.
-# Website:	www.ibiblio.org/apollo.
-# Pages:	1355-1364
-# Mod history:	2009-05-14 RSB	Adapted from the Colossus249/ file of the
-#				same name, using Comanche055 page images.
-#
-# This source code has been transcribed or otherwise adapted from digitized
-# images of a hardcopy from the MIT Museum.  The digitization was performed
-# by Paul Fjeld, and arranged for by Deborah Douglas of the Museum.  Many
-# thanks to both.  The images (with suitable reduction in storage size and
-# consequent reduction in image quality as well) are available online at
-# www.ibiblio.org/apollo.  If for some reason you find that the images are
-# illegible, contact me at info@sandroid.org about getting access to the 
-# (much) higher-quality images which Paul actually created.
-#
-# Notations on the hardcopy document read, in part:
-#
-#	Assemble revision 055 of AGC program Comanche by NASA
-#	2021113-051.  10:28 APR. 1, 1969  
-#
-#	This AGC program shall also be referred to as
-#			Colossus 2A
+## Copyright:	Public domain.
+## Filename:	INFLIGHT_ALIGNMENT_ROUTINES.agc
+## Purpose:	Part of the source code for Colossus 2A, AKA Comanche 055.
+##		It is part of the source code for the Command Module's (CM)
+##		Apollo Guidance Computer (AGC), for Apollo 11.
+## Assembler:	yaYUL
+## Contact:	Ron Burkey <info@sandroid.org>.
+## Website:	www.ibiblio.org/apollo.
+## Pages:	1355-1364
+## Mod history:	2009-05-14 RSB	Adapted from the Colossus249/ file of the
+##				same name, using Comanche055 page images.
+##
+## This source code has been transcribed or otherwise adapted from digitized
+## images of a hardcopy from the MIT Museum.  The digitization was performed
+## by Paul Fjeld, and arranged for by Deborah Douglas of the Museum.  Many
+## thanks to both.  The images (with suitable reduction in storage size and
+## consequent reduction in image quality as well) are available online at
+## www.ibiblio.org/apollo.  If for some reason you find that the images are
+## illegible, contact me at info@sandroid.org about getting access to the 
+## (much) higher-quality images which Paul actually created.
+##
+## Notations on the hardcopy document read, in part:
+##
+##	Assemble revision 055 of AGC program Comanche by NASA
+##	2021113-051.  10:28 APR. 1, 1969  
+##
+##	This AGC program shall also be referred to as
+##			Colossus 2A
 
-# Page 1355
+## Page 1355
 		BANK	22
 		SETLOC	INFLIGHT
 		BANK
@@ -78,7 +78,7 @@ CALCGTA		ITA	DLOAD		# PUSHDOWN 00-03, 16D-27D, 34D-37D
 		STADR
 		STCALL	COSTH		# COS(MGC) = MPAC - PD00
 			ARCTRIG
-# Page 1356
+## Page 1356
 		STOVL	MGC		# Z GYRO TORQUING ANGLE   FRACTION OF REV.
 			ZPRIME
 		DOT
@@ -93,7 +93,7 @@ CALCGTA		ITA	DLOAD		# PUSHDOWN 00-03, 16D-27D, 34D-37D
 		STCALL	OGC		# X GYRO TORQUING ANGLE   FRACTION OF REV.
 			S2
 
-# Page 1357
+## Page 1357
 # ARCTRIG COMPUTES AN ANGLE GIVEN THE SINE AND COSINE OF THIS ANGLE.
 #
 # THE INPUTS ARE SIN/4 AND COS/4 STORED DP AT SINTH AND COSTH.
@@ -133,12 +133,12 @@ TRIG2		DLOAD	SIGN		# (135,-135)
 		STORE	THETA		# X = .5 WITH SIGN(SIN) - ARCSIN(SIN)
 		RVQ			#	(+) - (+) OR (-) - (-)
 
-# Page 1358
+## Page 1358
 # SMNB, NBSM, AND AXISROT, WHICH USED TO APPEAR HERE, HAVE BEEN
 # COMBINED IN A ROUTINE CALLED AX*SR*T, WHICH APPEARS AMONG THE POWERED
 # FLIGHT SUBROUTINES.
 
-# Page 1359
+## Page 1359
 # CALCGA COMPUTES THE CDU DRIVING ANGLES REQUIRED TO BRING THE STABLE MEMBER INTO THE DESIRED ORIENTATION.
 #
 # THE INPUTS ARE  1) THE NAVIGATION BASE COORDINATES REFERRED TO ANY COORDINATE SYSTEM.  THE THREE HALF-UNIT
@@ -188,7 +188,7 @@ CALCGA1		VLOAD	DOT
 			0
 		STOVL	COSTH		# COS(IG) = ZSM . MGA
 			XSM
-# Page 1360
+## Page 1360
 		DOT	STADR
 		STCALL	SINTH		# SIN(IG) = XSM . MGA
 			ARCTRIG
@@ -212,7 +212,7 @@ GIMLOCK1	EXIT
 		GOTO
 			CALCGA1
 
-# Page 1361
+## Page 1361
 # AXISGEN COMPUTES THE COORDINATES OF ONE COORDINATE SYSTEM REFERRED TO ANOTHER COORDINATE SYSTEM.
 #
 # THE INPUTS ARE  1) THE STAR1 VECTOR REFERRED TO COORDINATE SYSTEM A STORED AT STARAD.  2) THE STAR2 VECTOR
@@ -263,7 +263,7 @@ AXISGEN2	XCHX,1	VLOAD*
 			30D		# X1=-6 X2=+6	X1=-6 X2=+4	X1=-6 X2=+2
 			0,1
 
-# Page 1362
+## Page 1362
 		VXSC*	PDVL*		# J=(UA)(UB1)	J=(UA)(UB2)	J=(UA)(UB3)
 			STARAD 	+6,2
 			6,1
@@ -296,10 +296,10 @@ AXISGEN3	TIX,2
 
 		RVQ
 
-# Page 1363
+## Page 1363
 QTSN45		2DEC	.1768
 .166...		2DEC	.1666666667
 
-# Page 1364 (empty page)
+## Page 1364 (empty page)
 
 

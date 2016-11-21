@@ -1,34 +1,34 @@
 ### FILE="Main.annotation"
-# Copyright:	Public domain.
-# Filename:	AUTOMATIC_MANEUVERS.agc
-# Purpose:	Part of the source code for Colossus 2A, AKA Comanche 055.
-#		It is part of the source code for the Command Module's (CM)
-#		Apollo Guidance Computer (AGC), for Apollo 11.
-# Assembler:	yaYUL
-# Contact:	Ron Burkey <info@sandroid.org>.
-# Website:	www.ibiblio.org/apollo.
-# Pages:	1025-1036
-# Mod history:	2009-05-13 RSB	Adapted from the Colossus249/ file of the
-#				same name, using Comanche055 page images.
-#
-# This source code has been transcribed or otherwise adapted from digitized
-# images of a hardcopy from the MIT Museum.  The digitization was performed
-# by Paul Fjeld, and arranged for by Deborah Douglas of the Museum.  Many
-# thanks to both.  The images (with suitable reduction in storage size and
-# consequent reduction in image quality as well) are available online at
-# www.ibiblio.org/apollo.  If for some reason you find that the images are
-# illegible, contact me at info@sandroid.org about getting access to the 
-# (much) higher-quality images which Paul actually created.
-#
-# Notations on the hardcopy document read, in part:
-#
-#	Assemble revision 055 of AGC program Comanche by NASA
-#	2021113-051.  10:28 APR. 1, 1969  
-#
-#	This AGC program shall also be referred to as
-#			Colossus 2A
+## Copyright:	Public domain.
+## Filename:	AUTOMATIC_MANEUVERS.agc
+## Purpose:	Part of the source code for Colossus 2A, AKA Comanche 055.
+##		It is part of the source code for the Command Module's (CM)
+##		Apollo Guidance Computer (AGC), for Apollo 11.
+## Assembler:	yaYUL
+## Contact:	Ron Burkey <info@sandroid.org>.
+## Website:	www.ibiblio.org/apollo.
+## Pages:	1025-1036
+## Mod history:	2009-05-13 RSB	Adapted from the Colossus249/ file of the
+##				same name, using Comanche055 page images.
+##
+## This source code has been transcribed or otherwise adapted from digitized
+## images of a hardcopy from the MIT Museum.  The digitization was performed
+## by Paul Fjeld, and arranged for by Deborah Douglas of the Museum.  Many
+## thanks to both.  The images (with suitable reduction in storage size and
+## consequent reduction in image quality as well) are available online at
+## www.ibiblio.org/apollo.  If for some reason you find that the images are
+## illegible, contact me at info@sandroid.org about getting access to the 
+## (much) higher-quality images which Paul actually created.
+##
+## Notations on the hardcopy document read, in part:
+##
+##	Assemble revision 055 of AGC program Comanche by NASA
+##	2021113-051.  10:28 APR. 1, 1969  
+##
+##	This AGC program shall also be referred to as
+##			Colossus 2A
 
-# Page 1025
+## Page 1025
 		BANK	21
 		SETLOC	DAPS3
 		BANK
@@ -78,7 +78,7 @@ FREECONT	CAF	ONE
 		TS	TAU1
 		INDEX	YMANNDX
 		CA	MINTAU
-# Page 1026
+## Page 1026
 		TS	TAU2
 		TCF	T6PROGM
 		
@@ -87,7 +87,7 @@ MINTAU		DEC	0
 		DEC	-23		# = -14MS
 		DEC	0
 		
-# Page 1027
+## Page 1027
 # CALCULATION OF ATTITUDE ERRORS:
 #	_    *     _      _          _
 #	AK = AMGB (CDUX - THETADX) + BIAS
@@ -135,7 +135,7 @@ ATTHOLD		CA	CDUX
 		ADS	ERRORZ
 		CS	HOLDFLAG
 		EXTEND
-# Page 1028
+## Page 1028
 		BZMF	JETS
 		CA	BIAS		# AD BIASES ONLY IF PERFORMING AUTOMATIC
 		ADS	ERRORX
@@ -178,7 +178,7 @@ ENDDAMP		TS	HOLDFLAG	# SET HOLDFLAG +0
 		TS	THETADZ
 		TCF	ATTHOLD
 
-# Page 1029
+## Page 1029
 # JET SWITCHING LOGIC AND CALCULATION OF REQUIRED ROTATION COMMANDS
 #
 # DETERMINE THE LOCATION OF THE RATE ERROR AND THE ATTITUDE ERROR RELATIVE TO THE SWITCHING LOGIC IN THE PHASE
@@ -227,7 +227,7 @@ WLMH		2DEC	.0006666666	# = WL-H = 0.3 DEG/SEC		$450
 
 WL		2DEC	.0008888888	# = WL   = 0.4 DEG/SEC		$450
 
-# Page 1030
+## Page 1030
 SLOPE2		DEC	.32		# = 0.8 DEG/SEC/DEG		$450/180
 JETS		CA	ADB
 		AD	FOUR		# AF = FLAT REGION = .044 DEG
@@ -278,7 +278,7 @@ NEGVEL		EXTEND
 		TS	AERRVEL
 		
 J6.		EXTEND
-# Page 1031
+## Page 1031
 		SU	ADB
 		AD	WLH/SLOP
 		EXTEND
@@ -329,7 +329,7 @@ NJ22		EXTEND
 		DV	SLOPE
 		AD	T5TEMP		# (ADB+AF)
 		AD	AERRVEL
-# Page 1032
+## Page 1032
 		CCS	A
 		TCF	J23
 		TCF	J23
@@ -380,7 +380,7 @@ J21		CCS	EDOT
 		TCF	SIGNCK4
 		TCF	JN
 SIGNCK4		CCS	EDOT +1
-# Page 1033
+## Page 1033
 		TCF	JP
 		TCF	JP
 		TCF	JN
@@ -431,11 +431,11 @@ J24		CS	AERR
 		MP	SLOPE2		# (HYSTERESIS SLOPE)
 		DXCH	KMPAC
 		EXTEND
-# Page 1034
+## Page 1034
 		DCS	EDOT
 		DAS	KMPAC
 		
-# Page 1035
+## Page 1035
 # COMPUTE THE JET ON TIME NECESSARY TO ACCOMPLISH THE DESIRED CHANGE IN RATE, I.E.,
 #
 #	     T  = J/M(DELTA W)
@@ -485,7 +485,7 @@ DOJET		INDEX	SPNDX
 		TCF	JLOOP
 		TCF	T6PROG
 		
-# Page 1036
+## Page 1036
 ZEROCMDS	CAF	ZERO
 		TS	TAU
 		TS	TAU1

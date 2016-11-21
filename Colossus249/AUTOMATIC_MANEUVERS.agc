@@ -1,40 +1,40 @@
 ### FILE="Main.annotation"
-# Copyright:	Public domain.
-# Filename:	AUTOMATIC_MANEUVERS.agc
-# Purpose:	Part of the source code for Colossus, build 249.
-#		It is part of the source code for the Command Module's (CM)
-#		Apollo Guidance Computer (AGC), possibly for Apollo 8 and 9.
-# Assembler:	yaYUL
-# Reference:	Starts on p. 1000 of 1701.pdf.
-# Contact:	Ron Burkey <info@sandroid.org>.
-# Website:	www.ibiblio.org/apollo.
-# Mod history:	08/25/04 RSB.	Began transcribing.
-#
-# The contents of the "Colossus249" files, in general, are transcribed 
-# from a scanned document obtained from MIT's website,
-# http://hrst.mit.edu/hrs/apollo/public/archive/1701.pdf.  Notations on this
-# document read, in part:
-#
-#	Assemble revision 249 of AGC program Colossus by NASA
-#	2021111-041.  October 28, 1968.  
-#
-#	This AGC program shall also be referred to as
-#				Colossus 1A
-#
-#	Prepared by
-#			Massachusetts Institute of Technology
-#			75 Cambridge Parkway
-#			Cambridge, Massachusetts
-#	under NASA contract NAS 9-4065.
-#
-# Refer directly to the online document mentioned above for further information.
-# Please report any errors (relative to 1701.pdf) to info@sandroid.org.
-#
-# In some cases, where the source code for Luminary 131 overlaps that of 
-# Colossus 249, this code is instead copied from the corresponding Luminary 131
-# source file, and then is proofed to incorporate any changes.
+## Copyright:	Public domain.
+## Filename:	AUTOMATIC_MANEUVERS.agc
+## Purpose:	Part of the source code for Colossus, build 249.
+##		It is part of the source code for the Command Module's (CM)
+##		Apollo Guidance Computer (AGC), for Apollo 9.
+## Assembler:	yaYUL
+## Reference:	Starts on p. 1000 of 1701.pdf.
+## Contact:	Ron Burkey <info@sandroid.org>.
+## Website:	www.ibiblio.org/apollo.
+## Mod history:	08/25/04 RSB.	Began transcribing.
+##
+## The contents of the "Colossus249" files, in general, are transcribed 
+## from a scanned document obtained from MIT's website,
+## http://hrst.mit.edu/hrs/apollo/public/archive/1701.pdf.  Notations on this
+## document read, in part:
+##
+##	Assemble revision 249 of AGC program Colossus by NASA
+##	2021111-041.  October 28, 1968.  
+##
+##	This AGC program shall also be referred to as
+##				Colossus 1A
+##
+##	Prepared by
+##			Massachusetts Institute of Technology
+##			75 Cambridge Parkway
+##			Cambridge, Massachusetts
+##	under NASA contract NAS 9-4065.
+##
+## Refer directly to the online document mentioned above for further information.
+## Please report any errors (relative to 1701.pdf) to info@sandroid.org.
+##
+## In some cases, where the source code for Luminary 131 overlaps that of 
+## Colossus 249, this code is instead copied from the corresponding Luminary 131
+## source file, and then is proofed to incorporate any changes.
 
-# Page 1000
+## Page 1000
 		BANK	21
 		SETLOC	DAPS3
 		BANK
@@ -83,7 +83,7 @@ FREECONT	CAF	ONE
 		TS	TAU1
 		INDEX	YMANNDX
 		CA	MINTAU
-# Page 1001
+## Page 1001
 		TS	TAU2
 		TCF	T6PROGM
 MINTAU		DEC	0
@@ -91,7 +91,7 @@ MINTAU		DEC	0
 		DEC	-23		# = -14MS
 		DEC	0
 		
-# Page 1002
+## Page 1002
 # CALCULATION OF ATTITUDE ERRORS:
 #	_    *     _      _          _
 #	AK = AMGB (CDUX - THETADX) + BIAS
@@ -139,7 +139,7 @@ ATTHOLD		CA	CDUX
 		ADS	ERRORZ
 		CS	HOLDFLAG
 		EXTEND
-# Page 1003
+## Page 1003
 		BZMF	JETS
 		CA	BIAS		# AD BIASES ONLY IF PERFORMING AUTOMATIC
 		ADS	ERRORX
@@ -181,7 +181,7 @@ ENDDAMP		TS	HOLDFLAG	# SET HOLDFLAG +0
 		TS	THETADZ
 		TCF	ATTHOLD
 
-# Page 1004
+## Page 1004
 # JET SWITCHING LOGIC AND CALCULATION OF REQUIRED ROTATION COMMANDS
 #
 # DETERMINE THE LOCATION OF THE RATE ERROR AND THE ATTITUDE ERROR RELATIVE TO THE SWITCHING LOGIC IN THE PHASE
@@ -228,7 +228,7 @@ WLH		2DEC	.0011111111	# = WL+H = 0.5 DED/SEC		S450
 WLMH		2DEC	.0006666666	# = WL-H = 0.3 DEG/SEC		S450
 WL		2DEC	.0008888888	# = WL   = 0.4 DEG/SEC		S450
 
-# Page 1005
+## Page 1005
 SLOPE2		DEC	.32		# = 0.8 DEG/SEC/DEG		S450/180
 JETS		CA	ADB
 		AD	FOUR		# AF = FLAT REGION = .044 DEG
@@ -279,7 +279,7 @@ NEGVEL		EXTEND
 		TS	AERRVEL
 		
 J6.		EXTEND
-# Page 1006
+## Page 1006
 		SU	ADB
 		AD	WLH/SLOP
 		EXTEND
@@ -330,7 +330,7 @@ NJ22		EXTEND
 		DV	SLOPE
 		AD	T5TEMP		# (ADB+AF)
 		AD	AERRVEL
-# Page 1007
+## Page 1007
 		CCS	A
 		TCF	J23
 		TCF	J23
@@ -381,7 +381,7 @@ J21		CCS	EDOT
 		TCF	SIGNCK4
 		TCF	JN
 SIGNCK4		CCS	EDOT +1
-# Page 1008
+## Page 1008
 		TCF	JP
 		TCF	JP
 		TCF	JN
@@ -432,11 +432,11 @@ J24		CS	AERR
 		MP	SLOPE2		# (HYSTERESIS SLOPE)
 		DXCH	KMPAC
 		EXTEND
-# Page 1009
+## Page 1009
 		DCS	EDOT
 		DAS	KMPAC
 		
-# Page 1010
+## Page 1010
 # COMPUTE THE JET ON TIME NECESSARY TO ACCOMPLISH THE DESIRED CHANGE IN RATE, I.E.,
 #
 #	     T  = J/M(DELTA W)
@@ -486,7 +486,7 @@ DOJET		INDEX	SPNDX
 		TCF	JLOOP
 		TCF	T6PROG
 		
-# Page 1011
+## Page 1011
 ZEROCMDS	CAF	ZERO
 		TS	TAU
 		TS	TAU1

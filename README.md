@@ -1,3 +1,7 @@
+----
+# We are currently in the process of transcribing Luminary 210 (the Apollo 15-17 LM flight software), and are looking for volunteers to help out. If you're interested, **[click here!](https://github.com/virtualagc/virtualagc/wiki/Luminary-210-Transcription)**
+----
+ 
 Virtual Apollo Guidance Computer
 ================================
 
@@ -8,8 +12,8 @@ Virtual Apollo Guidance Computer
 |--------------------------|
 | [![travis-image][]][travis-site] |
 
-[travis-image]: https://travis-ci.org/rburkey2005/virtualagc.svg?branch=master
-[travis-site]: https://travis-ci.org/rburkey2005/virtualagc/branches
+[travis-image]: https://travis-ci.org/virtualagc/virtualagc.svg?branch=master
+[travis-site]: https://travis-ci.org/virtualagc/virtualagc/branches
 
 The Apollo spacecraft used for lunar missions in the late 1960's and early 1970's was really two different spacecraft, the Command Module (CM) and the Lunar Module (LM).  The CM was used to get the three astronauts to the moon, and back again.  The LM was used to land two of the astronauts on the moon while the third astronaut remained in the CM, in orbit around the moon. 
 
@@ -43,11 +47,11 @@ Perhaps the most important part of the guidance system was the Inertial Measurem
 # What this project is for
 
 This repository is associated with [the website of the Virtual AGC project] (http://www.ibiblio.org/apollo), which 
-provides a virtual machine which simulates the AGC, the DSKY, and some other portions of the guidance system.  In other words, if the virtual machine—which we call yaAGC—is given the same software which was originally run by the real AGCs, and is fed the same input signals encountered by the real AGCs during Apollo missions, then it will responds in the same way as the real AGCs did.  
+provides a virtual machine which simulates the AGC, the DSKY, and some other portions of the guidance system.  In other words, if the virtual machine—which we call yaAGC—is given the same software which was originally run by the real AGCs, and is fed the same input signals encountered by the real AGCs during Apollo missions, then it will respond in the same way as the real AGCs did.  
 
 The Virtual AGC software is open source code so that it can be studied or modified.  The repository contains the actual assembly-language source code for the AGC, for as many missions as we've been able to acquire, along with software for processing that AGC code.  Principal tools are an assembler (to create executable code from the source code) and a CPU simulator (to run the executable code), as well as simulated peripherals (such as the DSKY).  Similar source code and tools are provided for the very-different abort computer that resided in the Lunar Module.  Finally, any supplemental software material we have been able to find or create for the Saturn rocket's LVDC computer or for the Gemini on-board computer (OBC) are provided, though these materials are minimal at present.
 
-Virtual AGC is a computer model of the AGC.  It does not try to mimic the superficial behavioral characteristics of the AGC, but rather to model the AGC's inner workings.  The result is a computer model of the AGC which is itself capable of executing the original Apollo software on (for example) a desktop PC.  In computer terms, Virtual AGC is an emulator.  Virtual AGC also provides an emulated AGS and (in the planning stages) an emulated LVDC.  "Virtual AGC" is a catch-all term that comprises all of these.
+Virtual AGC is a computer model of the AGC.  It does not try to mimic the superficial behavioral characteristics of the AGC, but rather to model the AGC's inner workings.  The result is a computer model of the AGC which is itself capable of executing the original Apollo software on (for example) a desktop PC.  In computer terms, Virtual AGC is an emulator.  Virtual AGC also provides an emulated Abort Guidance System (AGS) and (in the planning stages) an emulated Launch Vehicle Digital Computer (LVDC).  "Virtual AGC" is a catch-all term that comprises all of these.
 
 The current version of the Virtual AGC software has been designed to work in Linux, in Windows XP/Vista/7, and in Mac OS X 10.3 or later (but 10.5 or later is best).  It also works in at least some versions of FreeBSD.  However, since I personally work in Linux, I have the most confidence in the Linux version.
 
@@ -152,9 +156,9 @@ All software needed to build Virtual AGC will be installed under /usr/local, so 
 
 At present, Virtual AGC binary packages are always built with wxWidgets 2.8.9, so 2.8.9 is a safe choice.  Unpack the tarball in your home directory, 'cd' into the directory this creates, and then do "./configure", "make", and "make install".  The "configure" step will accept various command-line options that select unicode vs. ansi, static linking vs. dynamic linking, etc., but the default options seem to work fine.
 
-Install POSIX Threads for Windows ("pthreads").  You can do this by unpacking the source tarball, 'cd' into the directory it creates, then run the command "make clean GC-inlined".  This creates various files that you should copy into /usr/local as follows:  copy *.dll into /usr/local/bin; copy *.h into /usr/local/include; copy the single libpthread*.a file created into /usr/local/lib and rename it libpthread.a.
+Install POSIX Threads for Windows ("pthreads").  You can do this by unpacking the source tarball, 'cd' into the directory it creates, then run the command "make clean GC-inlined".  This creates various files that you should copy into /usr/local as follows:  copy \*.dll into /usr/local/bin; copy \*.h into /usr/local/include; copy the single libpthread\*.a file created into /usr/local/lib and rename it libpthread.a.
 
-Install GNU readline for Windows. You should find zipfiles of both "binaries" and "developer files" are available for download.  They should both be downloaded and unpacked into /usr/local.  (I.e., each zipfile contains directories like bin/, include/, lib/, and so on, and we want these to be merged into /usr/local/bin/, usr/local/include/, etc.)
+Install GNU readline for Windows. You should find zipfiles of both "binaries" and "developer files" are available for download.  They should both be downloaded and unpacked into /usr/local.  (I.e., each zipfile contains directories like bin/, include/, lib/, and so on, and we want these to be merged into /usr/local/bin/, /usr/local/include/, etc.)
 
 Install a regular-expression library.  The MinGW project has a "contributed" regex library ("libgnurx") that you can use.  Download both the "bin" and "dev" tarballs and unpack them into /usr/local.
 

@@ -1,35 +1,35 @@
 ### FILE="Main.annotation"
-# Copyright:    Public domain.
-# Filename:     R30.agc
-# Purpose:      Part of the source code for Colossus 2A, AKA Comanche 055.
-#               It is part of the source code for the Command Module's (CM)
-#               Apollo Guidance Computer (AGC), for Apollo 11.
-# Assembler:    yaYUL
-# Contact:      Hartmuth Gutsche <hgutsche@xplornet.com>.
-# Website:      www.ibiblio.org/apollo.
-# Pages:	514-524
-# Mod history:  2009-05-09 HG    Started adapting from the Colossus249/ file 
-#               of the same name, using Comanche055 page 
-#               images 0514.jpg - 0524.jpg. 
-#
-# This source code has been transcribed or otherwise adapted from digitized
-# images of a hardcopy from the MIT Museum.  The digitization was performed
-# by Paul Fjeld, and arranged for by Deborah Douglas of the Museum.  Many
-# thanks to both.  The images (with suitable reduction in storage size and
-# consequent reduction in image quality as well) are available online at
-# www.ibiblio.org/apollo.  If for some reason you find that the images are
-# illegible, contact me at info@sandroid.org about getting access to the 
-# (much) higher-quality images which Paul actually created.
-#
-# Notations on the hardcopy document read, in part:
-#
-#    Assemble revision 055 of AGC program Comanche by NASA
-#    2021113-051.  10:28 APR. 1, 1969  
-#
-#    This AGC program shall also be referred to as
-#            Colossus 2A
+## Copyright:    Public domain.
+## Filename:     R30.agc
+## Purpose:      Part of the source code for Colossus 2A, AKA Comanche 055.
+##               It is part of the source code for the Command Module's (CM)
+##               Apollo Guidance Computer (AGC), for Apollo 11.
+## Assembler:    yaYUL
+## Contact:      Hartmuth Gutsche <hgutsche@xplornet.com>.
+## Website:      www.ibiblio.org/apollo.
+## Pages:	 514-524
+## Mod history:  2009-05-09 HG    Started adapting from the Colossus249/ file 
+##               of the same name, using Comanche055 page 
+##               images 0514.jpg - 0524.jpg. 
+##
+## This source code has been transcribed or otherwise adapted from digitized
+## images of a hardcopy from the MIT Museum.  The digitization was performed
+## by Paul Fjeld, and arranged for by Deborah Douglas of the Museum.  Many
+## thanks to both.  The images (with suitable reduction in storage size and
+## consequent reduction in image quality as well) are available online at
+## www.ibiblio.org/apollo.  If for some reason you find that the images are
+## illegible, contact me at info@sandroid.org about getting access to the 
+## (much) higher-quality images which Paul actually created.
+##
+## Notations on the hardcopy document read, in part:
+##
+##    Assemble revision 055 of AGC program Comanche by NASA
+##    2021113-051.  10:28 APR. 1, 1969  
+##
+##    This AGC program shall also be referred to as
+##            Colossus 2A
 
-# Page 514
+## Page 514
 # SUBROUTINE NAME:  V82CALL
 # MOD NO: 0					DATE: 16 FEB 67
 # MOD BY: R. R. BAIRNSFATHER			LOG SECTION:  R30
@@ -78,7 +78,7 @@
 #		HPERX	(-29) M
 #		RAPO	(-29) M EARTH
 #			(-27) M MOON
-# Page 515
+## Page 515
 #		RPER	(-29) M EARTH
 #			(-27) M MOON
 #		TFF	(-28) CS	CONTAINS NEGATIVE QUANTITY
@@ -127,7 +127,7 @@ V82GOFLP	CAF	TFFBANK		# MAJOR RECYCLE LOOP ENTRY
 					# DECREMENTING OF TFF AND -TPER.
 		CAF	PRIO7
 		TC	FINDVAC		# V82GOFF1 WILL EXECUTE STATE VECTOR
-# Page 516
+## Page 516
 		EBANK=	TFF		# UPDATE AND ORBIT CALCULATIONS FOR
 		2CADR	V82GOFF1	# SELECTED VEHICLE ABOUT PROPER BODY.
 
@@ -179,7 +179,7 @@ BOTHSHIP	VLOAD			# MOVE RESULTS INTO TFFCONIC STORAGE AREAS
 			MINPERE,2
 		STORE	HPERMIN		# TFFRTMU, HPERMIN, AND RPADTEM ARE ALL
 		SLOAD	BHIZ		# EARTH/MOON PARAMETERS AS SET HERE.
-# Page 517
+## Page 517
 			X2
 			EARTHPAD
 		GOTO
@@ -227,7 +227,7 @@ TICKTPER	DLOAD	DAD		# (-TPER NON ZERO) TFF WAS NOT COMPUTED.
 		STORE	-TPER           # -TPER CORRECTED FOR TIME SINCE V82GOFF1
 		EXIT                    # BEGAN.
 			
-# Page 518
+## Page 518
 		CAF	BIT1
 		TS	V82FLAGS	# INFORMS TICKTEST TO INCREMENT ONLY -TPER
 		TC	ENDOFJOB
@@ -273,7 +273,7 @@ TPERTICK	CAF	1SEC
 		CAF	ZERO
 		DAS	-TPER
 		TC	TASKOVER
-# Page 519
+## Page 519
 V82GON		EXIT			# AVERAGE G ON.  USE CURRENT STATE VECTOR
 					# FOR ORBITAL PARAMETER CALCULATIONS.
 		CAF	PRIO7		# LESS THAN LAMBERT
@@ -324,7 +324,7 @@ EARTHGON	CLEAR	DLOAD
 			RPAD
 V82GON2		STCALL	RPADTEM		# COMMON CODE FOR EARTH & MOON.
 			SR30.1
-# Page 520
+## Page 520
 		EXIT
 		TC	CHECKMM
 		DEC	11
@@ -349,7 +349,7 @@ V82GON3		CAF	BIT5
 		CADR	DELAYJOB	# ORBITAL PARAMETER COMPUTATION.
 		TC	V82GON1
 
-# Page 521
+## Page 521
 # SUBROUTINE NAME: SR30.1
 # MOD NO: 0								DATE: 16 FEB 67
 # MOD BY: R. R. BAIRNSFATHER						LOG SECTION: R32
@@ -403,7 +403,7 @@ V82GON3		CAF	BIT5
 #
 # DEBRIS:	QPRET, PDL, S2
 
-# Page 522
+## Page 522
 		COUNT*	$$/SR30S
 
 SR30.1		SETPD	STQ		# INITIALIZE PUSHDOWN LIST.
@@ -454,7 +454,7 @@ STORHAPO	STODL	HAPOX
 			+1
 		CALL			# IF HPER > MAXNM, SET HPER = 9999.9 NM.
 			MAXCHK
-# Page 523
+## Page 523
 STORHPER	STODL	HPERX		# STORE (RPER - RPADTEM) INTO HPERX.
 			MPAC +4
 		DSU	BPL		# HPERMIN AT (-29)M FOR EARTH, (-27)M MOON
@@ -486,6 +486,6 @@ MAXCHK		DSU	BPL		# IF C(MPAC) > 9999.9 NM. MPAC = 9999.9 NM.
 
 MAXNM		2OCT	0106505603
 
-# Page 524
+## Page 524
 
 # There is no source code on this page --- HG 2009

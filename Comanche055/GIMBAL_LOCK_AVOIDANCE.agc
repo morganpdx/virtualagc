@@ -1,35 +1,35 @@
 ### FILE="Main.annotation"
-# Copyright:	Public domain.
-# Filename:	GIMBAL_LOCK_AVOIDANCE.agc
-# Purpose:	Part of the source code for Comanche, build 055.
-#		It is part of the source code for the Command Module's (CM)
-#		Apollo Guidance Computer (AGC), Apollo 11.
-# Assembler:	yaYUL
-# Reference:	pp. 412-413
-# Contact:	Onno Hommes <ohommes@cmu.edu>.
-# Website:	www.ibiblio.org/apollo.
-# Mod history:	05/07/09 OH	Transcription Batch 1 Assignment 
-#
-# The contents of the "Comanche055" files, in general, are transcribed 
-# from scanned documents. 
-#
-#	Assemble revision 055 of AGC program Comanche by NASA
-#	2021113-051.  April 1, 1969.  
-#
-#	This AGC program shall also be referred to as Colossus 2A
-#
-#	Prepared by
-#			Massachusetts Institute of Technology
-#			75 Cambridge Parkway
-#			Cambridge, Massachusetts
-#
-#	under NASA contract NAS 9-4065.
-#
-# Refer directly to the online document mentioned above for further information.
-# Please report any errors to info@sandroid.org.
+## Copyright:	Public domain.
+## Filename:	GIMBAL_LOCK_AVOIDANCE.agc
+## Purpose:	Part of the source code for Comanche, build 055.
+##		It is part of the source code for the Command Module's (CM)
+##		Apollo Guidance Computer (AGC), Apollo 11.
+## Assembler:	yaYUL
+## Reference:	pp. 412-413
+## Contact:	Onno Hommes <ohommes@cmu.edu>.
+## Website:	www.ibiblio.org/apollo.
+## Mod history:	05/07/09 OH	Transcription Batch 1 Assignment 
+##
+## The contents of the "Comanche055" files, in general, are transcribed 
+## from scanned documents. 
+##
+##	Assemble revision 055 of AGC program Comanche by NASA
+##	2021113-051.  April 1, 1969.  
+##
+##	This AGC program shall also be referred to as Colossus 2A
+##
+##	Prepared by
+##			Massachusetts Institute of Technology
+##			75 Cambridge Parkway
+##			Cambridge, Massachusetts
+##
+##	under NASA contract NAS 9-4065.
+##
+## Refer directly to the online document mentioned above for further information.
+## Please report any errors to info@sandroid.org.
 
 
-# Page 412
+## Page 412
 		BANK	15		
 		SETLOC	KALCMON1
 		BANK
@@ -80,7 +80,7 @@ ANGLTIME	2DEC	.000190735	# = 100B - 19
 					# MANEUVER ANGLE TO MANEUVER TIME
 QUADROT		2DEC	.1		# ROTATION MATRIX FROM S/C AXES TO CONTROL
 
-# Page 413
+## Page 413
 		2DEC	0		# AXES (X ROT = -7.25 DEG)
 		
 		2DEC	0

@@ -1,38 +1,38 @@
 ### FILE="Main.annotation"
-# Copyright:    Public domain.
-# Filename:     SERVICE_ROUTINES.agc
-# Purpose:      Part of the source code for Comanche, build 055. It
-#               is part of the source code for the Command Module's
-#               (CM) Apollo Guidance Computer (AGC), Apollo 11.
-# Assembler:    yaYUL
-# Reference:    pp. 1485-1492
-# Contact:      Ron Burkey <info@sandroid.org>
-# Website:      http://www.ibiblio.org/apollo.
-# Mod history:  2009-05-07 RSB	Adapted from Colossus249 file of the same
-#				name, and page images. Corrected various 
-#				typos in the transcription of program 
-#				comments, and these should be back-ported  
-#				to Colossus249.
-#
-# The contents of the "Comanche055" files, in general, are transcribed 
-# from scanned documents. 
-#
-#       Assemble revision 055 of AGC program Comanche by NASA
-#       2021113-051.  April 1, 1969.  
-#
-#       This AGC program shall also be referred to as Colossus 2A
-#
-#       Prepared by
-#                       Massachusetts Institute of Technology
-#                       75 Cambridge Parkway
-#                       Cambridge, Massachusetts
-#
-#       under NASA contract NAS 9-4065.
-#
-# Refer directly to the online document mentioned above for further
-# information.  Please report any errors to info@sandroid.org.
+## Copyright:    Public domain.
+## Filename:     SERVICE_ROUTINES.agc
+## Purpose:      Part of the source code for Comanche, build 055. It
+##               is part of the source code for the Command Module's
+##               (CM) Apollo Guidance Computer (AGC), Apollo 11.
+## Assembler:    yaYUL
+## Reference:    pp. 1485-1492
+## Contact:      Ron Burkey <info@sandroid.org>
+## Website:      http://www.ibiblio.org/apollo.
+## Mod history:  2009-05-07 RSB	Adapted from Colossus249 file of the same
+##				name, and page images. Corrected various 
+##				typos in the transcription of program 
+##				comments, and these should be back-ported  
+##				to Colossus249.
+##
+## The contents of the "Comanche055" files, in general, are transcribed 
+## from scanned documents. 
+##
+##       Assemble revision 055 of AGC program Comanche by NASA
+##       2021113-051.  April 1, 1969.  
+##
+##       This AGC program shall also be referred to as Colossus 2A
+##
+##       Prepared by
+##                       Massachusetts Institute of Technology
+##                       75 Cambridge Parkway
+##                       Cambridge, Massachusetts
+##
+##       under NASA contract NAS 9-4065.
+##
+## Refer directly to the online document mentioned above for further
+## information.  Please report any errors to info@sandroid.org.
 
-# Page 1485
+## Page 1485
 		BLOCK	3
 		SETLOC	FFTAG6
 		BANK
@@ -76,7 +76,7 @@ DOWNENT2	TS	L		# WHICH FLAGWORD IS IT
 OCT7		EQUALS	SEVEN
 		BANK	10
 
-# Page 1486
+## Page 1486
 # UPFLAG AND DOWNFLAG ARE ENTIRELY GENERAL FLAG SETTING AND CLEARING SUBROUTINES.  USING THEM, WHETHER OR
 # NOT IN INTERRUPT, ONE MAY SET OR CLEAR ANY SINGLE, NAMED BIT IN ANY ERASABLE REGISTER, SUBJECT OF COURSE TO
 # EBANK SETTING.  A "NAMED" BIT, AS THE WORD IS USED HERE, IS ANY BIT WITH A NAME FORMALLY ASSIGNED BY THE YUL
@@ -122,7 +122,7 @@ DEBIT		AD	ONE		# CET DE BITS
 		CA	0 -1		# ADRES
 		TS	L
 		CA	ZERO
-# Page 1487
+## Page 1487
 		EXTEND
 		DV	ITEMP1		# A = FLAGWRD, L = (15 - BIT)
 		DXCH	ITEMP1
@@ -133,7 +133,7 @@ DEBIT		AD	ONE		# CET DE BITS
 		CS	BIT15		# -(15 - BIT)
 		TC	Q
 
-# Page 1488
+## Page 1488
 # DELAYJOB -- A GENERAL ROUTINE TO DELAY A JOB A SPECIFIC AMOUNT OF TIME BEFORE PICKING UP AGAIN.
 #
 # ENTRANCE REQUIREMENTS ...
@@ -184,7 +184,7 @@ TCGETCAD	TC	MAKECADR	# GET CALLER'S FCADR
 WAKER		CAF	ZERO
 		INDEX	BBANK
 		XCH	DELAYLOC	# MAKE DELAYLOC AVAILABLE
-# Page 1489
+## Page 1489
 		TC	JOBWAKE
 
 		TC	TASKOVER
@@ -192,7 +192,7 @@ WAKER		CAF	ZERO
 TCSLEEP		GENADR	TCGETCAD -2
 WAKECAD		GENADR	WAKER
 
-# Page 1490
+## Page 1490
 # GENTRAN, A BLOCK TRANSFER ROUTINE
 # WRITTEN BY D. EYLES
 # MOD 1 BY KERNAN				UTILITYM REV 17 11/18/67
@@ -235,7 +235,7 @@ GENTRAN		INHINT
 		TCF	GENTRAN +1
 		TCF	Q+2		# RETURN TO CALLER.
 
-# Page 1491
+## Page 1491
 # B5OFF		ZERO BIT 5 OF EXTVBACK, WHICH IS SET BY TESTXACT.
 # MAY BE USED AS NEEDED BY ANY EXTENDED VERB WHICH HAS DONE TESTXACT
 
@@ -246,7 +246,7 @@ B5OFF		CS	BIT5
 		TS	EXTVBACT
 		TC	ENDOFJOB
 
-# Page 1492
+## Page 1492
 # SUBROUTINES TO TURN OFF AND TURN ON TRACKER FAIL LIGHT.
 
 TRFAILOF	INHINT

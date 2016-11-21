@@ -1,35 +1,35 @@
 ### FILE="Main.annotation"
-# Copyright:	Public domain.
-# Filename:	TVCSTROKETEST.agc
-# Purpose:	Part of the source code for Colossus 2A, AKA Comanche 055.
-#		It is part of the source code for the Command Module's (CM)
-#		Apollo Guidance Computer (AGC), for Apollo 11.
-# Assembler:	yaYUL
-# Contact:	Ron Burkey <info@sandroid.org>.
-# Website:	www.ibiblio.org/apollo.
-# Pages:	979-983
-# Mod history:	2009-05-13 RSB	Adapted from the Colossus249/ file of the
-#				same name, using Comanche055 page images.
-#		2010-08-24 JL	Fixed page 983 number. Fixed some indentation.
-#
-# This source code has been transcribed or otherwise adapted from digitized
-# images of a hardcopy from the MIT Museum.  The digitization was performed
-# by Paul Fjeld, and arranged for by Deborah Douglas of the Museum.  Many
-# thanks to both.  The images (with suitable reduction in storage size and
-# consequent reduction in image quality as well) are available online at
-# www.ibiblio.org/apollo.  If for some reason you find that the images are
-# illegible, contact me at info@sandroid.org about getting access to the 
-# (much) higher-quality images which Paul actually created.
-#
-# Notations on the hardcopy document read, in part:
-#
-#	Assemble revision 055 of AGC program Comanche by NASA
-#	2021113-051.  10:28 APR. 1, 1969  
-#
-#	This AGC program shall also be referred to as
-#			Colossus 2A
+## Copyright:	Public domain.
+## Filename:	TVCSTROKETEST.agc
+## Purpose:	Part of the source code for Colossus 2A, AKA Comanche 055.
+##		It is part of the source code for the Command Module's (CM)
+##		Apollo Guidance Computer (AGC), for Apollo 11.
+## Assembler:	yaYUL
+## Contact:	Ron Burkey <info@sandroid.org>.
+## Website:	www.ibiblio.org/apollo.
+## Pages:	979-983
+## Mod history:	2009-05-13 RSB	Adapted from the Colossus249/ file of the
+##				same name, using Comanche055 page images.
+##		2010-08-24 JL	Fixed page 983 number. Fixed some indentation.
+##
+## This source code has been transcribed or otherwise adapted from digitized
+## images of a hardcopy from the MIT Museum.  The digitization was performed
+## by Paul Fjeld, and arranged for by Deborah Douglas of the Museum.  Many
+## thanks to both.  The images (with suitable reduction in storage size and
+## consequent reduction in image quality as well) are available online at
+## www.ibiblio.org/apollo.  If for some reason you find that the images are
+## illegible, contact me at info@sandroid.org about getting access to the 
+## (much) higher-quality images which Paul actually created.
+##
+## Notations on the hardcopy document read, in part:
+##
+##	Assemble revision 055 of AGC program Comanche by NASA
+##	2021113-051.  10:28 APR. 1, 1969  
+##
+##	This AGC program shall also be referred to as
+##			Colossus 2A
 
-# Page 979
+## Page 979
 # NAME		STROKE TEST PACKAGE		(INCLUDING INITIALIZATION PACKAGE)
 # LOG SECTION...TVCSTROKETEST			SUBROUTINE...DAPCSM
 # MODIFIED BY SCHLUNDT				21 OCTOBER 1968
@@ -82,7 +82,7 @@
 # DEBRIS....
 #	N = CADDY = +0, CARD = -0, REVS = -1
 #	BUNKER
-# Page 980
+## Page 980
 #
 # EXAMPLE STROKE TEST WAVE FORM, DEMONSTRATING PARAMETER SELECTION
 
@@ -132,7 +132,7 @@
 #		FCARD3	= +0	(NUMBER OF REVERSALS MINUS 1)
 #		FCARD6	= +0	(NUMBER OF PULSE BURSTS IN 1/2 AMPLUTUDE)
 
-# Page 981
+## Page 981
 # STROKE TEST INITIALIZATION PACKAGE (AS A JOB, FROM VERB 68)
 
 		BANK	17
@@ -169,7 +169,7 @@ TSTINIT		CS	FCADDY		# NORMAL ENTRY FROM STRKTSTI
 		
 		TC	Q		# RETURN TO STRKTSTI+1 (OR CHKSTRK+2 OR +4)
 
-# Page 982
+## Page 982
 # THE OFFICIAL STROKE TEST WAVEFORM (3 JAN, 1967) CONSISTS OF FOUR STROKE SETS, AS FOLLOWS....
 #
 #	SET 1...10 BURSTS IN 1/2 AMP,   4 REVERSALS
@@ -220,7 +220,7 @@ HACKWLST	CAF	TCTSKOVR	# ENTRY FROM WAITLIST
 		EXTEND
 		WOR	CHAN14
 		INCR	CADDY		# COUNT DOWN THE NO. BURSTS, THIS SLOPE
-# Page 983
+## Page 983
 		CS	CADDY
 		EXTEND
 		BZMF	+2

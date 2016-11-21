@@ -1,21 +1,21 @@
 ### FILE="Main.annotation"
-# Copyright:	Public domain.
-# Filename:	INTER-BANK_COMMUNICATION.agc
-# Purpose:	A section of Luminary 1C, revision 131.
-#		It is part of the source code for the Lunar Module's (LM)
-#		Apollo Guidance Computer (AGC) for Apollo 13 and Apollo 14.
-#		This file is intended to be a faithful transcription, except
-#		that the code format has been changed to conform to the
-#		requirements of the yaYUL assembler rather than the
-#		original YUL assembler.
-# Reference:	pp. 997-1000 of 1729.pdf.
-# Contact:	Ron Burkey <info@sandroid.org>.
-# Website:	www.ibiblio.org/apollo/index.html
-# Mod history:	05/30/03 RSB.	Began transcribing.
-#		05/14/05 RSB	Corrected website reference above.
-#		2011-05-07 JL	Removed workaround.
+## Copyright:	Public domain.
+## Filename:	INTER-BANK_COMMUNICATION.agc
+## Purpose:	A section of Luminary 1C, revision 131.
+##		It is part of the source code for the Lunar Module's (LM)
+##		Apollo Guidance Computer (AGC) for Apollo 13.
+##		This file is intended to be a faithful transcription, except
+##		that the code format has been changed to conform to the
+##		requirements of the yaYUL assembler rather than the
+##		original YUL assembler.
+## Reference:	pp. 997-1000 of 1729.pdf.
+## Contact:	Ron Burkey <info@sandroid.org>.
+## Website:	www.ibiblio.org/apollo/index.html
+## Mod history:	05/30/03 RSB.	Began transcribing.
+##		05/14/05 RSB	Corrected website reference above.
+##		2011-05-07 JL	Removed workaround.
 
-# Page 997
+## Page 997
 # THE FOLLOWING ROUTINE CAN BE USED TO CALL A SUBROUTINE IN ANOTHER BANK. IN THE BANKCALL VERSION, THE
 # CADR OF THE SUBROUTINE IMMEDIATELY FOLLOWS THE TC BANKCALL INSTRUCTION, WITH C(A) AND C(L) PRESERVED.
 
@@ -56,7 +56,7 @@ BANKJUMP	TS	FBANK
 Q+10000		INDEX	Q		# POSTJUMP.
 PRIO12		TCF	10000		# PRIO12 = TCF	10000 = 12000
 
-# Page 998
+## Page 998
 # THE FOLLOWING ROUTINE GETS THE RETURN CADR SAVED BY SWCALL OR BANKCALL AND LEAVES IT IN A.
 
 MAKECADR	CAF	LOW10
@@ -84,7 +84,7 @@ SUPDACAL	TS	MPTEMP
 		CA	MPTEMP		# RECOVER FIRST WORD OF DATA.
 		RETURN			# 24 WDS. DATACALL 516 MU, SUPDACAL 432 MU
 
-# Page 999
+## Page 999
 # THE FOLLOWING ROUTINES ARE IDENTICAL TO BANKCALL AND SWCALL EXCEPT THAT THEY ARE USED IN INTERRUPT.
 
 IBNKCALL	DXCH	RUPTREG3	# USES RUPTREG3,4 FOR DP RETURN ADDRESS.
@@ -123,7 +123,7 @@ USPRCADR	TS	LOC		# SAVE A
 		XCH	LOC		# L+1 TO LOC, RETRIEVING ORIGINAL A
 		TCF	Q+10000
 
-# Page 1000
+## Page 1000
 # THERE ARE FOUR POSSIBLE SETTINGS FOR CHANNEL 07.  (CHANNEL 07 CONTAINS SUPERBANK SETTING.)
 #
 #					PSEUDO-FIXED	OCTAL PSEUDO

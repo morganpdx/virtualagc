@@ -1,40 +1,40 @@
 ### FILE="Main.annotation"
-# Copyright:	Public domain.
-# Filename:	PLANETARY_INERTIAL_ORIENTATION.agc
-# Purpose:	Part of the source code for Colossus, build 249.
-#		It is part of the source code for the Command Module's (CM)
-#		Apollo Guidance Computer (AGC), possibly for Apollo 8 and 9.
-# Assembler:	yaYUL
-# Reference:	Starts on p. 1225 of 1701.pdf.
-# Contact:	Ron Burkey <info@sandroid.org>.
-# Website:	www.ibiblio.org/apollo.
-# Mod history:	08/28/04 RSB.	Adapted from corresponding Luminary131 file.
-#
-# The contents of the "Colossus249" files, in general, are transcribed 
-# from a scanned document obtained from MIT's website,
-# http://hrst.mit.edu/hrs/apollo/public/archive/1701.pdf.  Notations on this
-# document read, in part:
-#
-#	Assemble revision 249 of AGC program Colossus by NASA
-#	2021111-041.  October 28, 1968.  
-#
-#	This AGC program shall also be referred to as
-#				Colossus 1A
-#
-#	Prepared by
-#			Massachusetts Institute of Technology
-#			75 Cambridge Parkway
-#			Cambridge, Massachusetts
-#	under NASA contract NAS 9-4065.
-#
-# Refer directly to the online document mentioned above for further information.
-# Please report any errors (relative to 1701.pdf) to info@sandroid.org.
-#
-# In some cases, where the source code for Luminary 131 overlaps that of 
-# Colossus 249, this code is instead copied from the corresponding Luminary 131
-# source file, and then is proofed to incorporate any changes.
+## Copyright:	Public domain.
+## Filename:	PLANETARY_INERTIAL_ORIENTATION.agc
+## Purpose:	Part of the source code for Colossus, build 249.
+##		It is part of the source code for the Command Module's (CM)
+##		Apollo Guidance Computer (AGC), for Apollo 9.
+## Assembler:	yaYUL
+## Reference:	Starts on p. 1225 of 1701.pdf.
+## Contact:	Ron Burkey <info@sandroid.org>.
+## Website:	www.ibiblio.org/apollo.
+## Mod history:	08/28/04 RSB.	Adapted from corresponding Luminary131 file.
+##
+## The contents of the "Colossus249" files, in general, are transcribed 
+## from a scanned document obtained from MIT's website,
+## http://hrst.mit.edu/hrs/apollo/public/archive/1701.pdf.  Notations on this
+## document read, in part:
+##
+##	Assemble revision 249 of AGC program Colossus by NASA
+##	2021111-041.  October 28, 1968.  
+##
+##	This AGC program shall also be referred to as
+##				Colossus 1A
+##
+##	Prepared by
+##			Massachusetts Institute of Technology
+##			75 Cambridge Parkway
+##			Cambridge, Massachusetts
+##	under NASA contract NAS 9-4065.
+##
+## Refer directly to the online document mentioned above for further information.
+## Please report any errors (relative to 1701.pdf) to info@sandroid.org.
+##
+## In some cases, where the source code for Luminary 131 overlaps that of 
+## Colossus 249, this code is instead copied from the corresponding Luminary 131
+## source file, and then is proofed to incorporate any changes.
 
-# Page 1225
+## Page 1225
 # PLANETARY INERTIAL ORIENTATION
 #
 # ***** RP-TO-R SUBROUTINE *****
@@ -87,11 +87,11 @@ RPTORA		CALL			# EARTH COMPUTATIONS
 			EARTHL		# L VECTOR RADIANS B0
 		MXV	VSL1		# LP=M(T)*L 	RAD B-0
 			MMATRIX
-# Page 1226
+## Page 1226
 		GOTO
 			RPTORB
 
-# Page 1227
+## Page 1227
 # ***** R-TO-RP SUBROUTINE *****
 # SUBROUTINE TO CONVERT R (VECTOR IN REFERENCE COORD. SYSTEM) TO RP
 # (VECTOR IN PLANETARY COORD SYSTEM) EITHER EARTH-FIXED OR MOON-FIXED
@@ -143,7 +143,7 @@ RTORPA		CALL			# EARTH COMPUTATIONS
 		GOTO			# MPAC=L=(-AX,-AY,0) 	RAD B-0
 			RTORPB
 
-# Page 1228
+## Page 1228
 # ***** MOONMX SUBROUTINE *****
 # SUBROUTINE TO COMPUTE THE TRANSFORMATION MATRIX M FOR THE MOON
 #
@@ -195,7 +195,7 @@ MOONMX		STQ	SETPD
 		AXT,1	CALL		# NODE REQUIRES SL 0, SL 5 IN NEWANGLE
 			5
 			NEWANGLE	# EXIT WITH PD 8D AND MPAC= NODI REVS B0
-# Page 1229
+## Page 1229
 		PUSH	COS		# PD 10D	8-9D= NODI REVS B0
 		PUSH			# PD 12D	10-11D= COS(NODI) B-1
 		STORE	AVECTR
@@ -246,7 +246,7 @@ MOONMX		STQ	SETPD
 		VSL1
 		STODL	MMATRIX +6	# M1= AVECTR*SINF-DVECTR*COSF B-1
 			504F
-# Page 1230
+## Page 1230
 		SIN	VXSC		# PD 8D
 		PDDL	COS		# PD 14D  8-13D=DVECTR*SINF B-2
 			504F
@@ -286,7 +286,7 @@ NEWANGLE	DLOAD	SR		# ENTER PD 12D
 			+1		# INSTRUCTION BEFORE EXITING.
 		RVQ			# MPAC=X= X0+(XDOT)(T+T0)	REVS B0
 
-# Page 1231
+## Page 1231
 # ***** EARTHMX SUBROUTINE *****
 # SUBROUTINE TO COMPUTE THE TRANSFORMATION MATRIX M FOR THE EARTH
 #
@@ -332,7 +332,7 @@ EARTHMX		STQ	SETPD		# SET 8-9D=AZO
 		GOTO
 			EARTHMXX
 
-# Page 1232
+## Page 1232
 # ***** EARTH SUBROUTINE *****
 # SUBROUTINE TO COMPUTE L VECTOR FOR EARTH
 #
@@ -358,7 +358,7 @@ EARTHL		DLOAD	DCOMP
 			504LPL
 		RVQ
 
-# Page 1233
+## Page 1233
 # CONSTANTS AND ERASABLE ASSIGNMENTS
 
 1B1		=	DP1/2		# 1 SCALED B-1

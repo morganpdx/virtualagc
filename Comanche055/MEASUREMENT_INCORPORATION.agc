@@ -1,35 +1,35 @@
 ### FILE="Main.annotation"
-# Copyright:	Public domain.
-# Filename:	MEASUREMENT_INCORPORATION.agc
-# Purpose:	Part of the source code for Colossus 2A, AKA Comanche 055.
-#		It is part of the source code for the Command Module's (CM)
-#		Apollo Guidance Computer (AGC), for Apollo 11.
-# Assembler:	yaYUL
-# Contact:	Ron Burkey <info@sandroid.org>.
-# Website:	www.ibiblio.org/apollo.
-# Pages:	1252-1261
-# Mod history:	2009-05-14 RSB	Adapted from the Colossus249/ file of the
-#				same name, using Comanche055 page images.
-#		2010-08-24 JL	Fixed some indentation.
-#
-# This source code has been transcribed or otherwise adapted from digitized
-# images of a hardcopy from the MIT Museum.  The digitization was performed
-# by Paul Fjeld, and arranged for by Deborah Douglas of the Museum.  Many
-# thanks to both.  The images (with suitable reduction in storage size and
-# consequent reduction in image quality as well) are available online at
-# www.ibiblio.org/apollo.  If for some reason you find that the images are
-# illegible, contact me at info@sandroid.org about getting access to the 
-# (much) higher-quality images which Paul actually created.
-#
-# Notations on the hardcopy document read, in part:
-#
-#	Assemble revision 055 of AGC program Comanche by NASA
-#	2021113-051.  10:28 APR. 1, 1969  
-#
-#	This AGC program shall also be referred to as
-#			Colossus 2A
+## Copyright:	Public domain.
+## Filename:	MEASUREMENT_INCORPORATION.agc
+## Purpose:	Part of the source code for Colossus 2A, AKA Comanche 055.
+##		It is part of the source code for the Command Module's (CM)
+##		Apollo Guidance Computer (AGC), for Apollo 11.
+## Assembler:	yaYUL
+## Contact:	Ron Burkey <info@sandroid.org>.
+## Website:	www.ibiblio.org/apollo.
+## Pages:	1252-1261
+## Mod history:	2009-05-14 RSB	Adapted from the Colossus249/ file of the
+##				same name, using Comanche055 page images.
+##		2010-08-24 JL	Fixed some indentation.
+##
+## This source code has been transcribed or otherwise adapted from digitized
+## images of a hardcopy from the MIT Museum.  The digitization was performed
+## by Paul Fjeld, and arranged for by Deborah Douglas of the Museum.  Many
+## thanks to both.  The images (with suitable reduction in storage size and
+## consequent reduction in image quality as well) are available online at
+## www.ibiblio.org/apollo.  If for some reason you find that the images are
+## illegible, contact me at info@sandroid.org about getting access to the 
+## (much) higher-quality images which Paul actually created.
+##
+## Notations on the hardcopy document read, in part:
+##
+##	Assemble revision 055 of AGC program Comanche by NASA
+##	2021113-051.  10:28 APR. 1, 1969  
+##
+##	This AGC program shall also be referred to as
+##			Colossus 2A
 
-# Page 1252
+## Page 1252
 # INCORP1 -- PERFORMS THE SIX DIMENSIONAL STATE VECTOR DEVIATION FOR POSITION
 # AND VELOCITY OR THE NINE-DIMENSIONAL DEVIATION OF POSITION, VELOCITY, AND
 # RADAR OR LANDMARK BIAS.  THE OUTPUT OF THE BVECTOR ROUTINE ALONG WITH THE
@@ -81,7 +81,7 @@ Z123		VLOAD	MXV*
 		STORE	ZI 	+18D,2
 		VLOAD
 			BVECTOR +6	# BVECTOR (1)
-# Page 1253
+## Page 1253
 		MXV*	VAD*
 			W +108D,1
 			ZI +18D,2
@@ -132,7 +132,7 @@ INCOR1B		SL2	BOV
 			INCOR1B
 INCOR1C		TLOAD	ROUND
 			TRIPA
-# Page 1254
+## Page 1254
 		DMP	SQRT
 			TEMPVAR
 		SL*	TAD
@@ -183,7 +183,7 @@ INCOR2		VLOAD	VXM*		# COMPUT OMEGA1,2,3
 		STORE	OMEGA 	+6
 		VLOAD	STADR
 		STORE	OMEGA
-# Page 1255
+## Page 1255
 		BON	VLOAD
 			DMENFLG
 			INCOR2AB
@@ -207,7 +207,7 @@ INCOR3		VLOAD*
 		GOTO
 			EGRESS
 
-# Page 1256
+## Page 1256
 # INCORP2 -- INCORPORATES THE COMPUTED STATE VECTOR DEVIATIONS INTO THE
 # ESTIMATED STATE VECTOR.  THE STATE VECTOR UPDATED MAY BE FOR EITHER THE
 # LEM OR THE CSM.  DETERMINED BY FLAG VEHUPFLG.  (ZERO = LEM) (1 = CSM)
@@ -260,7 +260,7 @@ INCORP2		STQ	CALL
 		TS	ZIXA		# INITIAL IX 2 SETTING FOR Z COMPONENT
 		TS	ZIXB
 FAZA		TC	PHASCHNG
-# Page 1257
+## Page 1257
 		OCT	04022
 		TC	UPFLAG
 		ADRES	REINTFLG
@@ -311,7 +311,7 @@ FAZA1		CA	WIXB		# START FIRST PHASE OF INCORP2
 		DLOAD*	DCOMP		# CALC LOWER 3X9 PARTITION OF W MATRIX
 			ZI,2
 		NORM	VXSC
-# Page 1258
+## Page 1258
 			S2
 			OMEGAM3
 		XCHX,2	LXC,2
@@ -362,7 +362,7 @@ FAZB5		SLOAD	DAD
 			FAZB2
 FAZC		CALL
 			GRP2PC
-# Page 1259
+## Page 1259
 		VLOAD	VAD		# START 3RD PHASE OF INCORP2
 			X789		# 7TH, 8TH, 9TH COMPONENTN OF STATE VECTOR
 			DELTAX 	+12D	# INCORPORATION FOR X789
@@ -413,7 +413,7 @@ FAZAB3		CALL
 		CALL
 			SVDWN2		# STORE DOWNLINK STATE VECTOR
 FAZAB4		CALL
-# Page 1260
+## Page 1260
 			GRP2PC		# PHASE CHANGE
 		BOFF	VLOAD
 			DMENFLG
@@ -465,7 +465,7 @@ NEWZCOMP	VLOAD	ABVAL
 		SETLOC	MEASINC3
 		BANK
 
-# Page 1261
+## Page 1261
 NEWZCMP1	DLOAD	SXA,1
 			NORMZI
 			NORMZI		# SAVE X1

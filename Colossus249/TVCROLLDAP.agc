@@ -1,43 +1,43 @@
 ### FILE="Main.annotation"
-# Copyright:	Public domain.
-# Filename:	TVCROLLDAP.agc
-# Purpose:	Part of the source code for Colossus, build 249.
-#		It is part of the source code for the Command Module's (CM)
-#		Apollo Guidance Computer (AGC), possibly for Apollo 8 and 9.
-# Assembler:	yaYUL
-# Reference:	Starts at p. 952 of 1701.pdf.
-# Contact:	Ron Burkey <info@sandroid.org>.
-# Website:	www.ibiblio.org/apollo/index.html
-# Mod history:	08/24/04   RSB	Began transcribing.
-#		05/14/05   RSB	Corrected website reference above.
-#		2010-10-25 JL	Fixed page numbers.
-#		2011-05-07 JL	Removed workarounds.
+## Copyright:	Public domain.
+## Filename:	TVCROLLDAP.agc
+## Purpose:	Part of the source code for Colossus, build 249.
+##		It is part of the source code for the Command Module's (CM)
+##		Apollo Guidance Computer (AGC), for Apollo 9.
+## Assembler:	yaYUL
+## Reference:	Starts at p. 952 of 1701.pdf.
+## Contact:	Ron Burkey <info@sandroid.org>.
+## Website:	www.ibiblio.org/apollo/index.html
+## Mod history:	08/24/04   RSB	Began transcribing.
+##		05/14/05   RSB	Corrected website reference above.
+##		2010-10-25 JL	Fixed page numbers.
+##		2011-05-07 JL	Removed workarounds.
 
-# The contents of the "Colossus249" files, in general, are transcribed 
-# from a scanned document obtained from MIT's website,
-# http://hrst.mit.edu/hrs/apollo/public/archive/1701.pdf.  Notations on this
-# document read, in part:
-#
-#	Assemble revision 249 of AGC program Colossus by NASA
-#	2021111-041.  October 28, 1968.  
-#
-#	This AGC program shall also be referred to as
-#				Colossus 1A
-#
-#	Prepared by
-#			Massachusetts Institute of Technology
-#			75 Cambridge Parkway
-#			Cambridge, Massachusetts
-#	under NASA contract NAS 9-4065.
-#
-# Refer directly to the online document mentioned above for further information.
-# Please report any errors (relative to 1701.pdf) to info@sandroid.org.
-#
-# In some cases, where the source code for Luminary 131 overlaps that of 
-# Colossus 249, this code is instead copied from the corresponding Luminary 131
-# source file, and then is proofed to incorporate any changes.
+## The contents of the "Colossus249" files, in general, are transcribed 
+## from a scanned document obtained from MIT's website,
+## http://hrst.mit.edu/hrs/apollo/public/archive/1701.pdf.  Notations on this
+## document read, in part:
+##
+##	Assemble revision 249 of AGC program Colossus by NASA
+##	2021111-041.  October 28, 1968.  
+##
+##	This AGC program shall also be referred to as
+##				Colossus 1A
+##
+##	Prepared by
+##			Massachusetts Institute of Technology
+##			75 Cambridge Parkway
+##			Cambridge, Massachusetts
+##	under NASA contract NAS 9-4065.
+##
+## Refer directly to the online document mentioned above for further information.
+## Please report any errors (relative to 1701.pdf) to info@sandroid.org.
+##
+## In some cases, where the source code for Luminary 131 overlaps that of 
+## Colossus 249, this code is instead copied from the corresponding Luminary 131
+## source file, and then is proofed to incorporate any changes.
 
-# Page 952
+## Page 952
 # PROGRAM NAME....ROLL AUTOPILOT, CONSISTING OF ROLLDAP, DURATION, NOROLL1, ETC.
 # ORIGINAL CODING BY F.W.MARTIN, 1965 (SUNDIAL)
 # LOC SECTION....ROLL AUTOPILOT			SUBROUTINE....DAPCSM
@@ -103,7 +103,7 @@
 #      *ROLL JET PAIR FIRINGS
 #
 # DEBRIS.... MISCELLANEOUS, SHAREABLE WITH RCS/ENTRY, IN EBANK6 ONLY
-# Page 953
+## Page 953
 #
 # SOME NOTES ON THE ROLL AUTOPILOT, AND IN PARTICULAR, ON ITS SWITCHING
 # LOGIC.  SEE SECTION THREE OF THE GSOP (SUNDISK/COLOSSUS) FOR DETAILS.
@@ -151,7 +151,7 @@
 # THE THREE CONTROL REGIONS  (+, -, AND ZERO TORQUE) ARE COMPRISED OF
 #	TWELVE SUBSET REGIONS  ( 1...6, AND THE CORRESPONDING 1-PRIME...
 #	5-PRIME )  SEE SECTION 3 OF THE GSOP  (SUNDISK OR COLOSSUS)
-# Page 954
+## Page 954
 #
 # GIVEN THE OPERATING POINT NOT IN THE COAST REGION, THE DESIRED OGARATE
 #	IS AT THE POINT OF PENETRATION OF THE COAST REGION BY THE CONTROL
@@ -200,7 +200,7 @@
 #	SOGARATE = -(-SLOPE)(SOGAERROR) - SGN(SOGARATE) INTERCEP
 #
 #		WHERE  INTERCEP = DB(-SLOPE) - LMCRATE
-# Page 955
+## Page 955
 #
 # EQUATION FOR INTERSECTION, CONTROL PARABOLA, AND STRAIGHT SWITCH LINE....
 #
@@ -226,7 +226,7 @@
 # NOTE, OGAERROR = OGA - OGAD  USES DUMMY REGISTER  OGA  IN ROLL DAP CODING
 #	ALSO, AT POINT WHERE DOGADOT IS COMPUTED, REGISTER DELOGA IS USED
 #	AS A DUMMY REGISTER FOR THE OGAERROR IN THE NUM EQUATION ABOVE.
-# Page 956
+## Page 956
 
 # ROLLDAP CODING....
 
@@ -282,7 +282,7 @@ ROLLOGIC	CS	OGARATE		# SCALED AT 2(-4) REV/SEC
 # CALCULATE DISTANCE FROM SWITCH PARABOLA,DELOGA
 		EXTEND
 		MP	TEMREG		# SGN(OGARATE) TEMREG NOW IN L	
-# Page 957
+## Page 957
 		CS	L	
 		AD	OGA		# SCALED AT 2(+0) REV
 DELOGAC		TS	DELOGA		# SC.AT B+0 REV, PLUS TO RIGHT OF C-PARAB	
@@ -338,7 +338,7 @@ REG2TST		BZMF	NOROLL		# IP REGION 2 (COAST SIDE OF STRT LINE)
 
 		CA	IOGARATE	# ALWAYS NEGATIVE
 		AD	MINLIM		# SCALED AT 2(-4) REV/SEC.
-# Page 958
+## Page 958
 		EXTEND
 REG4TST		BZMF	NOROLL		# IF REGION 4 (COAST SIDE OF MINLIM)
 
@@ -442,7 +442,7 @@ ROLLSET		TS	TEMREG		# STORE DESIRED OGARATE (SCALED B-4)
 		EXTEND
 		MP	T6SCALE		# T6SCALE = 8/10.24
 		EXTEND
-# Page 959
+## Page 959
 		MP	1/CONACC	# SCALED AT 2(+9) SECSQ/REV
 		DDOUBL
 		DDOUBL
@@ -497,7 +497,7 @@ MAXTST		BZF	NOMXFIRE	# IF LESS THAN TMAXFIRE
 		CS	TMAXFIRE	# USE MAXIMUM
 		TS	TEMREG
 
-# Page 960
+## Page 960
 # SET UP SIGN OF REQUIRED TORQUE
 
 NOMXFIRE	CCS	TEMREG		# FOR TORQUE SIGN
@@ -551,7 +551,7 @@ SAMEJETS	BZF	TASKOVER	# IF JETS ON KEEP SAME JETS.  EXIT ROLL DAP
 		EXTEND
 		BZF	NO.9-11		# NOT 9-11, SO USE IT THIS TIME
 
-# Page 961
+## Page 961
 NO.13-15	CS	BIT1
 		MASK	ROLLWORD
 		TS	ROLLWORD	# CHANGE BIT 1 TO ZERO
@@ -591,7 +591,7 @@ T6ENABL		CAF	BIT15
 		WOR	CHAN13
 RDAPEND		TCF	TASKOVER	# EXIT ROLL DAP
 
-# Page 962
+## Page 962
 # THIS T6 TASK SHUTS OFF ALL ROLL JETS
 
 NOROLL1		LXCH	BANKRUPT	# SHUT OFF ALL (ROLL) JETS, (A T6 TASK
@@ -601,7 +601,7 @@ NOROLL1		LXCH	BANKRUPT	# SHUT OFF ALL (ROLL) JETS, (A T6 TASK
 KILLJETS	WRITE	CHAN6
 		TCF	NOQRSM
 
-# Page 963
+## Page 963
 # CONSTANTS FOR ROLL AUTOPILOT
 
 		EBANK=	BZERO

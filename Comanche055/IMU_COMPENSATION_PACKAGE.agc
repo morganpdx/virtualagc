@@ -1,36 +1,36 @@
 ### FILE="Main.annotation"
-# Copyright:	Public domain.
-# Filename:	IMU_COMPENSATION_PACKAGE.agc
-# Purpose:	Part of the source code for Colossus 2A, AKA Comanche 055.
-#		It is part of the source code for the Command Module's (CM)
-#		Apollo Guidance Computer (AGC), for Apollo 11.
-# Assembler:	yaYUL
-# Contact:	Ron Burkey <info@sandroid.org>.
-# Website:	www.ibiblio.org/apollo.
-# Pages:	297-306
-# Mod history:	2009-05-08 RSB	Adapted from the Colossus249/ file of the
-#				same name, using Comanche055 page images/
-#		2009-05-21 RSB	In IRIGZ, PRIO17 corrected to PRIO21.
-#		2010-08-24 JL	Fixed page 306 number.
-#
-# This source code has been transcribed or otherwise adapted from digitized
-# images of a hardcopy from the MIT Museum.  The digitization was performed
-# by Paul Fjeld, and arranged for by Deborah Douglas of the Museum.  Many
-# thanks to both.  The images (with suitable reduction in storage size and
-# consequent reduction in image quality as well) are available online at
-# www.ibiblio.org/apollo.  If for some reason you find that the images are
-# illegible, contact me at info@sandroid.org about getting access to the 
-# (much) higher-quality images which Paul actually created.
-#
-# Notations on the hardcopy document read, in part:
-#
-#	Assemble revision 055 of AGC program Comanche by NASA
-#	2021113-051.  10:28 APR. 1, 1969  
-#
-#	This AGC program shall also be referred to as
-#			Colossus 2A
+## Copyright:	Public domain.
+## Filename:	IMU_COMPENSATION_PACKAGE.agc
+## Purpose:	Part of the source code for Colossus 2A, AKA Comanche 055.
+##		It is part of the source code for the Command Module's (CM)
+##		Apollo Guidance Computer (AGC), for Apollo 11.
+## Assembler:	yaYUL
+## Contact:	Ron Burkey <info@sandroid.org>.
+## Website:	www.ibiblio.org/apollo.
+## Pages:	297-306
+## Mod history:	2009-05-08 RSB	Adapted from the Colossus249/ file of the
+##				same name, using Comanche055 page images/
+##		2009-05-21 RSB	In IRIGZ, PRIO17 corrected to PRIO21.
+##		2010-08-24 JL	Fixed page 306 number.
+##
+## This source code has been transcribed or otherwise adapted from digitized
+## images of a hardcopy from the MIT Museum.  The digitization was performed
+## by Paul Fjeld, and arranged for by Deborah Douglas of the Museum.  Many
+## thanks to both.  The images (with suitable reduction in storage size and
+## consequent reduction in image quality as well) are available online at
+## www.ibiblio.org/apollo.  If for some reason you find that the images are
+## illegible, contact me at info@sandroid.org about getting access to the 
+## (much) higher-quality images which Paul actually created.
+##
+## Notations on the hardcopy document read, in part:
+##
+##	Assemble revision 055 of AGC program Comanche by NASA
+##	2021113-051.  10:28 APR. 1, 1969  
+##
+##	This AGC program shall also be referred to as
+##			Colossus 2A
 
-# Page 297
+## Page 297
 		BANK	7
 		SETLOC	IMUCOMP
 		BANK	
@@ -82,12 +82,12 @@
 		DAS	DELVX		# (PIPAI) + (PIPAI)(SFE) - (BIAS)(DELTAT)
 		
 		CCS	BUF +2		# PIPAZ, PIPAY, PIPAX
-# Page 298
+## Page 298
 		AD	NEG1
 		TCF	1/PIPA1 +1
 		NOOP			# LESS THAN ZERO IMPOSSIBLE
 		RELINT
-# Page 299
+## Page 299
 
 IRIGCOMP	TS	GCOMPSW		# INDICATE COMMANDS 2 PULSES OR LESS.
 		TS	BUF		# INDEX COUNTER.  IRIGX, IRIGY, IRIGZ.
@@ -138,7 +138,7 @@ IRIGZ		EXTEND
 		DCS	DELVY		# (PIPA PULSES) X 2(-14)
 		DXCH	MPAC
 		CA	ADSRAZ		# (GYRO PULSES)/(PIPA PULSE) X 2(-3)		*
-# Page 300
+## Page 300
 		TC	GCOMPSUB	# -(ADSRAZ)(PIPAY)	(GYRO PULSES) X 2(+14)
 		
 		EXTEND
@@ -156,7 +156,7 @@ IRIGZ		EXTEND
 		CA	NBDZ		#	(GYRO PULSES)/(CS) X 2(-5)
 		TC	DRIFTSUB	#	+(NBDZ)(DELTAT)	(GYRO PULSES) X 2(+14)
 
-# Page 301
+## Page 301
 		CCS	GCOMPSW		# ARE GYRO COMMANDS GREATER THAN 2 PULSES
 		TCF	+2		# YES	
 		TCF	IRIG1		# NO	
@@ -199,7 +199,7 @@ GCOMPSUB	XCH	MPAC		# ADIA OR ADSRA COEFFICIENT ARRIVES IN A
 
 		TC	Q
 
-# Page 302
+## Page 302
 DRIFTSUB	EXTEND
 		QXCH	BUF +1
 
@@ -232,7 +232,7 @@ DRFTSUB2	CAF	TWO		# PIPAX, PIPAY, PIPAZ
 		TS	GCOMPSW		# YES -- SET GCOMPSW POSITIVE
 		TC	BUF +1		# NO
 		
-# Page 303
+## Page 303
 1/GYRO		CAF	FOUR		# PIPAZ, PIPAY, PIPAX
 		TS	BUF
 		
@@ -280,7 +280,7 @@ GCOMP1		CAF	FOUR		# PIPAZ, PIPAY, PIPAX
 V06N30S		VN	0630
 		TCF	ENDOFJOB
 
-# Page 304		
+## Page 304		
 NBDONLY		CCS	GCOMPSW		# BYPASS IF GCOMPSW NEGATIVE
 		TCF	+3
 		TCF	+2
@@ -331,12 +331,12 @@ NBD3		EXTEND			# C(A) = DELTAT		(CS) X 2(+14)
 		DXCH	MPAC		# DELTAT SCALED (CS) X 2(+19)
 		CS	NBDZ		# (GYRO PULSES)/(CS) X 2(-5)
 		TC	FBIASSUB	# +(NBDZ)(DELTAT)	(GYRO PULSES) X 2(+14)
-# Page 305		
+## Page 305		
 		CCS	GCOMPSW		# ARE GYRO COMMANDS GREATER THAN 2 PULSES
 		TCF	1/GYRO		# YES
 		TCF	ENDOFJOB	# NO
 
-# Page 306
+## Page 306
 FBIASSUB	XCH	Q
 		TS	BUF +1
 		

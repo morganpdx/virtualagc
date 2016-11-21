@@ -1,32 +1,32 @@
 ### FILE="Main.annotation"
-# Copyright:	Public domain.
-# Filename:	LATITUDE_LONGITUDE_SUBROUTINES.agc
-# Purpose:	Part of the source code for Luminary 1A build 099.
-#		It is part of the source code for the Lunar Module's (LM)
-#		Apollo Guidance Computer (AGC), for Apollo 11.
-#
-# Assembler:	yaYUL
-# Contact:	Jim Lawton <jim DOT lawton AT gmail DOT com>
-# Website:	www.ibiblio.org/apollo.
-# Pages:	1133-1139
-# Mod history:	2009-05-28 JL	Updated from page images.
-#		2011-01-06 JL	Fixed interpretive indentation.
-#
-# This source code has been transcribed or otherwise adapted from digitized
-# images of a hardcopy from the MIT Museum.  The digitization was performed
-# by Paul Fjeld, and arranged for by Deborah Douglas of the Museum.  Many
-# thanks to both.  The images (with suitable reduction in storage size and
-# consequent reduction in image quality as well) are available online at
-# www.ibiblio.org/apollo.  If for some reason you find that the images are
-# illegible, contact me at info@sandroid.org about getting access to the
-# (much) higher-quality images which Paul actually created.
-#
-# Notations on the hardcopy document read, in part:
-#
-#    Assemble revision 001 of AGC program LMY99 by NASA 2021112-061
-#    16:27 JULY 14, 1969
+## Copyright:	Public domain.
+## Filename:	LATITUDE_LONGITUDE_SUBROUTINES.agc
+## Purpose:	Part of the source code for Luminary 1A build 099.
+##		It is part of the source code for the Lunar Module's (LM)
+##		Apollo Guidance Computer (AGC), for Apollo 11.
+##
+## Assembler:	yaYUL
+## Contact:	Jim Lawton <jim DOT lawton AT gmail DOT com>
+## Website:	www.ibiblio.org/apollo.
+## Pages:	1133-1139
+## Mod history:	2009-05-28 JL	Updated from page images.
+##		2011-01-06 JL	Fixed interpretive indentation.
+##
+## This source code has been transcribed or otherwise adapted from digitized
+## images of a hardcopy from the MIT Museum.  The digitization was performed
+## by Paul Fjeld, and arranged for by Deborah Douglas of the Museum.  Many
+## thanks to both.  The images (with suitable reduction in storage size and
+## consequent reduction in image quality as well) are available online at
+## www.ibiblio.org/apollo.  If for some reason you find that the images are
+## illegible, contact me at info@sandroid.org about getting access to the
+## (much) higher-quality images which Paul actually created.
+##
+## Notations on the hardcopy document read, in part:
+##
+##    Assemble revision 001 of AGC program LMY99 by NASA 2021112-061
+##    16:27 JULY 14, 1969
 
-# Page 1133
+## Page 1133
 # SUBROUTINE TO CONVERT RAD VECTOR AT GIVEN TIME TO LAT,LONG AND ALT
 #
 # CALLING SEQUENCE
@@ -77,7 +77,7 @@ CALLRTRP	CALL
 		PDDL	DSQ
 			ALPHAV +2
 		DAD	SQRT
-# Page 1134
+## Page 1134
 		DMP	SL1R
 			GAMRP
 		STODL	COSTH		# COS(LAT) B-1
@@ -96,7 +96,7 @@ CALLRTRP	CALL
 			ERADM
 		STCALL	ALT		# EXIT WITH ALT METERS B-29
 			INCORPEX
-# Page 1135
+## Page 1135
 # SUBROUTINE TO CONVERT LAT,LONG.ALT AT GIVEN TIME TO RADIUS VECTOR
 #
 # CALLING SEQUENCE
@@ -148,7 +148,7 @@ CALLRPRT	CALL
 			RP-TO-R		# EXIT WITH UNIT R VECTOR IN MPAC
 		STODL	ALPHAV
 			ERADM
-# Page 1136
+## Page 1136
 		DAD	VXSC		# (RE + ALT)(UNIT R) METERS B-30
 			ALT
 			ALPHAV
@@ -187,7 +187,7 @@ DP1/2		=	XUNIT
 B2/A2		2DEC	.9933064884 B-1	# GAMMA= B**2/A**2 B-1
 EE		2DEC	6.6935116 E-3	# (1-B**2/A**2) B-0
 
-# Page 1137
+## Page 1137
 # ARCTAN SUBROUTINE
 #
 # CALLING SEQUENCE
@@ -234,7 +234,7 @@ ATAN=90		DLOAD	SIGN
 
 2DZERO		=	DPZERO
 
-# Page 1138
+## Page 1138
 # ***** SETGAMMA SUBROUTINE *****
 # SUBROUTINE TO SET GAMMA FOR THE LAT-LONG AND LALOTORV SUBROUTINES
 #
@@ -261,7 +261,7 @@ SETGMEX		STORE	GAMRP
 		RVQ
 GAMRP		=	8D
 
-# Page 1139
+## Page 1139
 # ***** SETRE SUBROUTINE *****
 # SUBROUTINE TO SET RE (EARTH OR MOON RADIUS)
 #

@@ -1,44 +1,44 @@
 ### FILE="Main.annotation"
-# Copyright:	Public domain.
-# Filename:	TVCINITIALIZE.agc
-# Purpose:	Part of the source code for Colossus 2A, AKA Comanche 055.
-#		It is part of the source code for the Command Module's (CM)
-#		Apollo Guidance Computer (AGC), for Apollo 11.
-# Assembler:	yaYUL
-# Contact:	Jim Lawton <jim.lawton@gmail.com>.
-# Website:	www.ibiblio.org/apollo.
-# Pages:	936-944
-# Mod history:	2009-05-11 JVL	Adapted from the Colossus249/ file
-#				of the same name, using Comanche055 page
-#				images.
-#		2009-05-20 RSB	Corrections:  +80 -> +8D, added 4 missing 
-#				lines in TVCINIT1, changed the capitalization
-#				of a couple of the "Page N" comments, 
-#				corrected a couple of lines in LOADCOEFF.
-#		2009-05-22 RSB	In LOADCOEF, DXCH N10 +14D corrected to
-#				TS N10 +14D.  Also, various comment-marks
-#				were added to comments following this
-#				change.
-#		2010-08-28 JL	Fixed indentation.
-#
-# This source code has been transcribed or otherwise adapted from digitized
-# images of a hardcopy from the MIT Museum.  The digitization was performed
-# by Paul Fjeld, and arranged for by Deborah Douglas of the Museum.  Many
-# thanks to both.  The images (with suitable reduction in storage size and
-# consequent reduction in image quality as well) are available online at
-# www.ibiblio.org/apollo.  If for some reason you find that the images are
-# illegible, contact me at info@sandroid.org about getting access to the
-# (much) higher-quality images which Paul actually created.
-#
-# Notations on the hardcopy document read, in part:
-#
-#    Assemble revision 055 of AGC program Comanche by NASA
-#    2021113-051.  10:28 APR. 1, 1969 
-#
-#    This AGC program shall also be referred to as
-#            Colossus 2A
+## Copyright:	Public domain.
+## Filename:	TVCINITIALIZE.agc
+## Purpose:	Part of the source code for Colossus 2A, AKA Comanche 055.
+##		It is part of the source code for the Command Module's (CM)
+##		Apollo Guidance Computer (AGC), for Apollo 11.
+## Assembler:	yaYUL
+## Contact:	Jim Lawton <jim.lawton@gmail.com>.
+## Website:	www.ibiblio.org/apollo.
+## Pages:	936-944
+## Mod history:	2009-05-11 JVL	Adapted from the Colossus249/ file
+##				of the same name, using Comanche055 page
+##				images.
+##		2009-05-20 RSB	Corrections:  +80 -> +8D, added 4 missing 
+##				lines in TVCINIT1, changed the capitalization
+##				of a couple of the "Page N" comments, 
+##				corrected a couple of lines in LOADCOEFF.
+##		2009-05-22 RSB	In LOADCOEF, DXCH N10 +14D corrected to
+##				TS N10 +14D.  Also, various comment-marks
+##				were added to comments following this
+##				change.
+##		2010-08-28 JL	Fixed indentation.
+##
+## This source code has been transcribed or otherwise adapted from digitized
+## images of a hardcopy from the MIT Museum.  The digitization was performed
+## by Paul Fjeld, and arranged for by Deborah Douglas of the Museum.  Many
+## thanks to both.  The images (with suitable reduction in storage size and
+## consequent reduction in image quality as well) are available online at
+## www.ibiblio.org/apollo.  If for some reason you find that the images are
+## illegible, contact me at info@sandroid.org about getting access to the
+## (much) higher-quality images which Paul actually created.
+##
+## Notations on the hardcopy document read, in part:
+##
+##    Assemble revision 055 of AGC program Comanche by NASA
+##    2021113-051.  10:28 APR. 1, 1969 
+##
+##    This AGC program shall also be referred to as
+##            Colossus 2A
 
-# Page 937
+## Page 937
 # NAME		TVCDAPON (TVC DAP INITIALIZATION AND STARTUP CALL)
 # LOG SECTION...TVCINITIALIZE			SUBROUTINE...DAPCSM
 # MODIFIED BY SCHLUNDT				21 OCTOBER 1968
@@ -89,7 +89,7 @@ MRCLEAN		CAF	NZERO		# NUMBER TO ZERO, LESS ONE  (MUST BE ODD)
 		DXCH	OMEGAYC		# FIRST (LAST) TWO LOCATIONS
 		CCS	CNTR
 		TCF	MRCLEAN +1
-# Page 938
+## Page 938
 		EXTEND			# SET UP ANOTHER T5 RUPT TO CONTINUE
 		DCA	INITLOC2	#	INITIALIZATION AT TVCINIT1
 		DXCH	T5LOC		# THE PHSCHK2 ENTRY (REDOTVC) AT TVCDAPON
@@ -140,7 +140,7 @@ TVCINIT2	CS	CNTR		# PICK LM-OFF,-ON VALUE FOR FILTER PERIOD
 		TS	T5TVCDT
 		
 		CS	BIT15		# RESET SWTOVER FLAG
-# Page 939		
+## Page 939		
 		MASK	FLAGWRD9
 		TS	FLAGWRD9
 		
@@ -191,7 +191,7 @@ ATTINIT		CAE	DAPDATR1	# ATTITUDE-ERROR INITIALIZATION LOGIC
 		EXTEND
 		BZF	+8D		#	|ERROR| LESS THAN 1.5 DEG
 		EXTEND
-# Page 940
+## Page 940
 		BZMF	+3		#	|ERROR| > 1.5 DEG, AND NEG
 		CA	ATTLIM		#	|ERROR| > 1.5 DEG, AND POS
 		TCF	+2
@@ -239,7 +239,7 @@ TVCINIT4	CAF	ZERO		# SET TVCPHASE TO INDICATE TVCDAPON-THRU-
 		DXCH	T5LOC
 		CAE	T5TVCDT		# (ALLOW TIME FOR RESTART COMPUTATIONS)
 		TS	TIME5
-# Page 941
+## Page 941
 ENDTVCIN	TCF	RESUME
 
 PRESWTCH	TCR	SWICHOVR	# ENTRY FROM V46
@@ -289,7 +289,7 @@ MCLEANJR	CA	ZERO
 		DXCH	YDELOFF
 		
 		CA	LBCFADR
-# Page 942
+## Page 942
 		TS	COEFFADR
 		TC	LOADCOEF
 
@@ -339,7 +339,7 @@ LOADCOEF	EXTEND			# LOAD DAP FILTER COEFFICIENTS
 		TS	N10 	+14D
 
 		TC	Q
-# Page 943
+## Page 943
 S40.15		CAE	IXX		# GAIN COMPUTATIONS (1/CONACC, VARK)
 		EXTEND			# ENTERED FROM TVCINITIALIZE AND TVCEXEC
 		MP	2PI/M		#	2PI/M SCALED 1/(B+8 N M)
@@ -388,7 +388,7 @@ LBN10		DEC	+.99999		# N10	LOW BANDWIDTH FILTER COEFFICIENTS
 
 CSMCFADR	GENADR	CSMN10		# CSM ONLY COEFFICIENTS ADDRESS
 HBCFADR		GENADR	HBN10		# HIGH BANDWIDTH COEFFICIENTS ADDRESS
-# Page 944
+## Page 944
 LBCFADR		GENADR	LBN10		# LOW BANDWIDTH COEFFICIENTS ADDRESS
 
 NZERO		DEC	51		# MUST BE ODD FOR MRCLEAN

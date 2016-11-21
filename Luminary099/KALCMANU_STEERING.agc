@@ -1,34 +1,34 @@
 ### FILE="Main.annotation"
-# Copyright:	Public domain.
-# Filename:	KALCMANU_STEERING.agc
-# Purpose: 	Part of the source code for Luminary 1A build 099.
-#		It is part of the source code for the Lunar Module's (LM)
-#		Apollo Guidance Computer (AGC), for Apollo 11.
-# Assembler:	yaYUL
-# Contact:	Ron Burkey <info@sandroid.org>.
-# Website:	www.ibiblio.org/apollo.
-# Pages:	365-369
-# Mod history:	2009-05-17 RSB	Adapted from the corresponding 
-#				Luminary131 file, using page 
-#				images from Luminary 1A.
-#		2011-01-06 JL	Added missing comment characters.
-#
-# This source code has been transcribed or otherwise adapted from
-# digitized images of a hardcopy from the MIT Museum.  The digitization
-# was performed by Paul Fjeld, and arranged for by Deborah Douglas of
-# the Museum.  Many thanks to both.  The images (with suitable reduction
-# in storage size and consequent reduction in image quality as well) are
-# available online at www.ibiblio.org/apollo.  If for some reason you
-# find that the images are illegible, contact me at info@sandroid.org
-# about getting access to the (much) higher-quality images which Paul
-# actually created.
-#
-# Notations on the hardcopy document read, in part:
-#
-#	Assemble revision 001 of AGC program LMY99 by NASA 2021112-61
-#	16:27 JULY 14, 1969 
+## Copyright:	Public domain.
+## Filename:	KALCMANU_STEERING.agc
+## Purpose: 	Part of the source code for Luminary 1A build 099.
+##		It is part of the source code for the Lunar Module's (LM)
+##		Apollo Guidance Computer (AGC), for Apollo 11.
+## Assembler:	yaYUL
+## Contact:	Ron Burkey <info@sandroid.org>.
+## Website:	www.ibiblio.org/apollo.
+## Pages:	365-369
+## Mod history:	2009-05-17 RSB	Adapted from the corresponding 
+##				Luminary131 file, using page 
+##				images from Luminary 1A.
+##		2011-01-06 JL	Added missing comment characters.
+##
+## This source code has been transcribed or otherwise adapted from
+## digitized images of a hardcopy from the MIT Museum.  The digitization
+## was performed by Paul Fjeld, and arranged for by Deborah Douglas of
+## the Museum.  Many thanks to both.  The images (with suitable reduction
+## in storage size and consequent reduction in image quality as well) are
+## available online at www.ibiblio.org/apollo.  If for some reason you
+## find that the images are illegible, contact me at info@sandroid.org
+## about getting access to the (much) higher-quality images which Paul
+## actually created.
+##
+## Notations on the hardcopy document read, in part:
+##
+##	Assemble revision 001 of AGC program LMY99 by NASA 2021112-61
+##	16:27 JULY 14, 1969 
 
-# Page 365
+## Page 365
 # GENERATION OF STEERING COMMANDS FOR DIGITAL AUTOPILOT FREE FALL MANEUVERS
 #
 # NEW COMMANDS WILL BE GENERATED EVERY ONE SECOND DURING THE MANEUVER
@@ -84,7 +84,7 @@ INCRDCDU	TS	SPNDX
 		INDEX	SPNDX
 		TS	DELDCDU		# ANGLE INCREMENTS TO BE ADDED TO
 		INDEX	SPNDX		# CDUXD, CDUYD, CDUZD EVERY TENTH SECOND
-# Page 366
+## Page 366
 		CA	NCDU		# BY LEM DAP
 		INDEX	SPNDX
 		XCH	BCDU
@@ -134,7 +134,7 @@ DT/TAU		DEC	.1
 MANUSTAT	EXIT			# INITIALIZATION ROUTINE
 		EXTEND			# FOR AUTOMATIC MANEUVERS
 		DCA	TIME2
-# Page 367
+## Page 367
 		DAS	TM		# TM+TO		MANEUVER COMPLETION TIME
 		EXTEND
 		DCS	ONESEK
@@ -185,7 +185,7 @@ MANUCALL	INHINT			# CALL FOR NEXT UPDATE VIA WAITLIST
 		TC	WAITLIST
 		EBANK=	TTEMP
 		2CADR	UPDTCALL
-# Page 368
+## Page 368
 		CAF	ONESEK 	+1	# INCREMENT TIME FOR NEXT UPDATE
 		ADS	NEXTIME
 		TCF	ENDOFJOB
@@ -197,7 +197,7 @@ UPDTCALL	CAF	PRIO26		# SATELLITE PROGRAM TO CALL FOR UPDATE
 
 		TC	TASKOVER
 		
-# Page 369
+## Page 369
 # ROUTINE FOR TERMINATING AUTOMATIC MANEUVERS
 
 MANUSTOP	CAF	ZERO		# ZERO MANEUVER RATES

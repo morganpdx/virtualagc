@@ -1,19 +1,19 @@
 ### FILE="Main.annotation"
-# Copyright:	Public domain.
-# Filename:	P70-P71.agc
-# Purpose:	A section of Luminary 1C, revision 131.
-#		It is part of the source code for the Lunar Module's (LM)
-#		Apollo Guidance Computer (AGC) for Apollo 13 and Apollo 14.
-#		This file is intended to be a faithful transcription, except
-#		that the code format has been changed to conform to the
-#		requirements of the yaYUL assembler rather than the
-#		original YUL assembler.
-# Reference:	pp. 828-835 of 1729.pdf.
-# Contact:	Ron Burkey <info@sandroid.org>.
-# Website:	www.ibiblio.org/apollo
-# Mod history:	05/26/03 RSB.	Began transcribing.
+## Copyright:	Public domain.
+## Filename:	P70-P71.agc
+## Purpose:	A section of Luminary 1C, revision 131.
+##		It is part of the source code for the Lunar Module's (LM)
+##		Apollo Guidance Computer (AGC) for Apollo 13.
+##		This file is intended to be a faithful transcription, except
+##		that the code format has been changed to conform to the
+##		requirements of the yaYUL assembler rather than the
+##		original YUL assembler.
+## Reference:	pp. 828-835 of 1729.pdf.
+## Contact:	Ron Burkey <info@sandroid.org>.
+## Website:	www.ibiblio.org/apollo
+## Mod history:	05/26/03 RSB.	Began transcribing.
 
-# Page 828
+## Page 828
 		BANK	21
 		SETLOC	R11
 		BANK
@@ -62,7 +62,7 @@ P71NOW?		CS	MODREG		# YES.  ARE WE IN P71 NOW?
 		AD	1DEC71
 		EXTEND
 		BZF	LANDISP		# YES.  PROCEED TO R10.
-# Page 829
+## Page 829
 		EXTEND			# NO. IS AN ABORT STAGE COMMANDED?
 		READ	CHAN30
 		COM
@@ -113,7 +113,7 @@ CONTABRT	CAF	ABRTJADR
 ABRTJADR	TCF	ABRTJASK
 ABRTJASK	CAF	OCTAL27
 
-# Page 830
+## Page 830
 		AD	Q
 		TS	L
 		COM
@@ -163,7 +163,7 @@ ABRTJASK	CAF	OCTAL27
 		DXCH	AVGEXIT
 
 		TC	ABTKLEAN	# KILL GROUPS 1,3, AND 6.
-# Page 831
+## Page 831
 		CAF	THREE		# SET UP 4.3SPOT FOR GOABORT
 		TS	L
 		COM
@@ -214,7 +214,7 @@ P70INIT		TC	INTPRET
 		CALL
 			TGOCOMP
 		DLOAD	SL
-# Page 832
+## Page 832
 			MDOTDPS
 			4D
 		BDDV
@@ -265,7 +265,7 @@ YOK		DLOAD	DSU
  			J2PARM		# ABORT TARGETING FLAG
 			ABTTGFLG
 STORPARM	STODL	JPARM
-# Page 833
+## Page 833
 			RCO
 		STORE	RP
 		SET	EXIT
@@ -316,7 +316,7 @@ OLDTIME		DLOAD	SL1		# IF FLAP=1,GTO=2 TGO
 		STORE	TGO1
 		EXIT
 
-# Page 834
+## Page 834
 		TC	PHASCHNG
 		OCT	04024
 
@@ -367,7 +367,7 @@ TGOCOMP		RTB	DSU
 		SL
 			11D
 		STORE	TGO
-# Page 835
+## Page 835
 		RVQ
 
 # ************************************************************************

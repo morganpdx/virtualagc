@@ -74,6 +74,8 @@
 #				on 64-bit Linux Mint and Ubuntu).  Neither the
 #				problem nor the fix presumably affects anybody 
 #				else's builds.
+#		2016-11-12 RSB	"Permanently" disabled READLINE.
+#		2016-11-18 RSB	Explicitly include socket library in Solaris.
 
 LIBS=${LIBS2}
 
@@ -90,6 +92,11 @@ default: yaAGC
 #	export NOREADLINE=yes
 #	make
 # instead of just 'make'. 
+# ... Later:  the line below just permanently disables it.  It's solely 
+# present for the convenience of people doing command-line debugging, and
+# Onno assures me that it acts weird and messes up debugging.  So why have
+# it at all?
+NOREADLINE=yes
 
 # Alberto Galdo's iPhone mod.
 ifdef IPHONE
@@ -109,11 +116,9 @@ ifdef MACOSX
 CFLAGS2 += -I/usr/local/include
 LIBS += /usr/local/lib/libreadline.a
 else # MACOSX
-#ifdef SOLARIS
-#LIBS += /usr/local/lib/libreadline.a
-#else # SOLARIS
-#LIBS += -lreadline
-#endif # SOLARIS
+ifdef SOLARIS
+LIBS += -lxnet
+endif # SOLARIS
 LIBS += -lreadline
 endif # MACOSX
 endif # NOREADLINE
@@ -205,7 +210,7 @@ checkdec.o: ../Tools/checkdec.c
 	${CC} ${CFLAGS} ${CFLAGS2} -O0 -DNVER=${NVER} -DINSTALLDIR="\"${PREFIX}/bin\"" -c -o $@ $<
 
 %.o:	%.c agc_engine.h
-	${CC} ${CFLAGS} ${CFLAGS2} -DNVER=${NVER} -DINSTALLDIR="\"${PREFIX}/bin\"" -c -o $@ $<
+	${CC} ${CFLAGS0} ${CFLAGS2} -DNVER=${NVER} -DINSTALLDIR="\"${PREFIX}/bin\"" -c -o $@ $<
 
 #----------------------------------------------------------------------------------
 # Building for multiple architectures, using IMCROSS. 

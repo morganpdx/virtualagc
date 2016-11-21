@@ -75,6 +75,9 @@ EXTRA_WIN_LIBS=-lwsock32
 endif
 endif
 
+ifndef WIN32
+LIBS2+=-lX11
+endif
 
 .PHONY:	default
 default: ${APP}
@@ -97,12 +100,11 @@ SOURCES:=${APP}.cpp \
 HEADERS:=${APP}.h
 
 ${APP}: ${SOURCES} ${HEADERS}
-	g++ -DNVER=${NVER} ${MACFLAG} -Wall \
-		-Wno-unused-local-typedefs -Wno-unused-but-set-variable \
+	g++ -DNVER=${NVER} ${MACFLAG} \
 		`wx-config --cxxflags` \
 		-o $@ ${SOURCES} \
 		`wx-config --libs` \
-		${LIBS2} -lX11
+		${LIBS2}
 	strip $@${EXT}
 
 ${APP}.exe: ${SOURCES} ${HEADERS}

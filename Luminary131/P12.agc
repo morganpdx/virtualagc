@@ -1,20 +1,20 @@
 ### FILE="Main.annotation"
-# Copyright:	Public domain.
-# Filename:	P12.agc
-# Purpose:	A section of Luminary 1C, revision 131.
-#		It is part of the source code for the Lunar Module's (LM)
-#		Apollo Guidance Computer (AGC) for Apollo 13 and Apollo 14.
-#		This file is intended to be a faithful transcription, except
-#		that the code format has been changed to conform to the
-#		requirements of the yaYUL assembler rather than the
-#		original YUL assembler.
-# Reference:	pp. 836-840 of 1729.pdf.
-# Contact:	Ron Burkey <info@sandroid.org>.
-# Website:	www.ibiblio.org/apollo/index.html
-# Mod history:	05/26/03 RSB.	Began transcribing.
-#		05/14/05 RSB	Corrected website reference above.
+## Copyright:	Public domain.
+## Filename:	P12.agc
+## Purpose:	A section of Luminary 1C, revision 131.
+##		It is part of the source code for the Lunar Module's (LM)
+##		Apollo Guidance Computer (AGC) for Apollo 13.
+##		This file is intended to be a faithful transcription, except
+##		that the code format has been changed to conform to the
+##		requirements of the yaYUL assembler rather than the
+##		original YUL assembler.
+## Reference:	pp. 836-840 of 1729.pdf.
+## Contact:	Ron Burkey <info@sandroid.org>.
+## Website:	www.ibiblio.org/apollo/index.html
+## Mod history:	05/26/03 RSB.	Began transcribing.
+##		05/14/05 RSB	Corrected website reference above.
 
-# Page 836
+## Page 836
 		BANK	24
 		SETLOC	P12
 		BANK
@@ -63,7 +63,7 @@ P12LM		TC	PHASCHNG
 P12LMB		DLOAD
 			(TGO)A		# SET TGO TO AN INITIAL NOMINAL VALUE.
 		STODL	TGO
-# Page 837
+## Page 837
 			TIG
 		STCALL	TDEC1
 			LEMPREC		# ROTATE THE STATE VECTORS TO THE
@@ -114,7 +114,7 @@ NEWLOAD		CAF	V06N76		# FLASH CROSS-RANGE, AND APOLUNE VALUES.
 			Y
 		STOVL	YCO
 			UNIT/R/
-# Page 838
+## Page 838
 		VXSC	VAD
 			49FPS
 			V1S
@@ -165,7 +165,7 @@ P12INIT		DLOAD			# INITIALIZE ENGINE DATA.  USED FOR P12 AND
 			(AT)A
 		STODL	AT
 			(TBUP)A
-# Page 839
+## Page 839
 		STODL	TBUP
 			ATDECAY
 		DCOMP	SL
@@ -216,7 +216,7 @@ GUIDINIT	STQ	SETPD
 			RLS
 		ABVAL	SL3
 		STCALL	/LAND/
-# Page 840
+## Page 840
 			TEMPR60
 
 49FPS		2DEC	.149352 B-6	# EXPECTED RDOT AT TIPOVER

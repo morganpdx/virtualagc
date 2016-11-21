@@ -1,33 +1,33 @@
 ### FILE="Main.annotation"
-# Copyright:	Public domain.
-# Filename:	DAPIDLER_PROGRAM.agc
-# Purpose: 	Part of the source code for Luminary 1A build 099.
-#		It is part of the source code for the Lunar Module's (LM)
-#		Apollo Guidance Computer (AGC), for Apollo 11.
-# Assembler:	yaYUL
-# Contact:	Ron Burkey <info@sandroid.org>.
-# Website:	www.ibiblio.org/apollo.
-# Pages:	1410-1420
-# Mod history:  2009-05-10 SN   (Sergio Navarro).  Started adapting
-#				from the Luminary131/ file of the same
-#				name, using Luminary099 page images.
-#
-# This source code has been transcribed or otherwise adapted from
-# digitized images of a hardcopy from the MIT Museum.  The digitization
-# was performed by Paul Fjeld, and arranged for by Deborah Douglas of
-# the Museum.  Many thanks to both.  The images (with suitable reduction
-# in storage size and consequent reduction in image quality as well) are
-# available online at www.ibiblio.org/apollo.  If for some reason you
-# find that the images are illegible, contact me at info@sandroid.org
-# about getting access to the (much) higher-quality images which Paul
-# actually created.
-#
-# Notations on the hardcopy document read, in part:
-#
-#	Assemble revision 001 of AGC program LMY99 by NASA 2021112-61
-#	16:27 JULY 14, 1969 
+## Copyright:	Public domain.
+## Filename:	DAPIDLER_PROGRAM.agc
+## Purpose: 	Part of the source code for Luminary 1A build 099.
+##		It is part of the source code for the Lunar Module's (LM)
+##		Apollo Guidance Computer (AGC), for Apollo 11.
+## Assembler:	yaYUL
+## Contact:	Ron Burkey <info@sandroid.org>.
+## Website:	www.ibiblio.org/apollo.
+## Pages:	1410-1420
+## Mod history:  2009-05-10 SN  (Sergio Navarro).  Started adapting
+##				from the Luminary131/ file of the same
+##				name, using Luminary099 page images.
+##
+## This source code has been transcribed or otherwise adapted from
+## digitized images of a hardcopy from the MIT Museum.  The digitization
+## was performed by Paul Fjeld, and arranged for by Deborah Douglas of
+## the Museum.  Many thanks to both.  The images (with suitable reduction
+## in storage size and consequent reduction in image quality as well) are
+## available online at www.ibiblio.org/apollo.  If for some reason you
+## find that the images are illegible, contact me at info@sandroid.org
+## about getting access to the (much) higher-quality images which Paul
+## actually created.
+##
+## Notations on the hardcopy document read, in part:
+##
+##	Assemble revision 001 of AGC program LMY99 by NASA 2021112-61
+##	16:27 JULY 14, 1969 
 
-# Page 1410
+## Page 1410
 # THE DAPIDLER PROGRAM IS STARTED BY FRESH START AND RESTART.  THE DAPIDLER PROGRAM IS DONE 10 TIMES
 # PER SECOND UNTIL THE ASTRONAUT DESIRES THE DAP TO WAKE UP, AND THE IMU AND CDUS ARE READY FOR USE BY THE DAP.
 # THE NECESSARY INITIALIZATION OF THE DAP IS DONE BY THE DAPIDLER PROGRAM.
@@ -64,7 +64,7 @@ CHEKMORE	CAF	BIT10		# BIT 10 OF 30 IS PGNCS CONTROL OF S/C
 
 		RETURN
 
-# Page 1411
+## Page 1411
 # DAPIDLER ENTRY.
 
 DAPIDLER	LXCH	BANKRUPT	# INTERRUPT LEAD INS (CONTINUED)
@@ -114,7 +114,7 @@ STARTDAP	TC	IBNKCALL	# ZERO ATTITUDE ERROR AND DESIRED RATES.
 		TS	AOSRTERM	# FILTER INITIALIZATION TERMS.
 		TS	QACCDOT		# DESCENT ACCELERATION DERIVATIVE EST.
 		TS	RACCDOT
-# Page 1412
+## Page 1412
 		TS	ALLOWGTS	# AOSTASK FLAG FOR QRAXIS RCS CONTROL USE.
 		TS	COTROLER	# DO TRYGTS ON FIRST PASS (WILL GO TO RCS)
 		TS	INGTS		# RECOGNIZE FIRST GTS PASS AS SUCH.
@@ -165,7 +165,7 @@ CALLGMBL	EQUALS	BIT5		# RCSFLAGS INITIALIZATION.
 		DXCH	T5ADR
 SETTIME5	CAF	MS100
 		TS	TIME5
-# Page 1413
+## Page 1413
 		TCF	RESUME
 		EBANK=	AOSQ
 IDLERADR	2CADR	DAPIDLER
@@ -207,7 +207,7 @@ JUMPDSP		EXTEND			# TRANSFER TO BANK 20
 		EBANK=	AK
 DSPCADR		2CADR	ALTDSPLY
 
-# Page 1414
+## Page 1414
 		BANK	20
 		SETLOC	DAPS3
 		BANK
@@ -256,7 +256,7 @@ ALTDSPLY	CA	RCSFLAGS	# INVERT THE DISPLAY ALTERNATION BIT.
 		TCF	NEEDLER
 
 		CAE	FLAGWRD0	# NEEDLFLG WILL INDICATE TOTAL OR DAP AT-
-# Page 1415
+## Page 1415
 		MASK	NEEDLBIT	# TITUDE ERROR DISPLAY REQUEST.
 		CCS	A
 		TCF	DSPLYTOT	# TOTAL ERROR IS NEEDED IN AK, AK +1, AK +2
@@ -306,7 +306,7 @@ DSPLYTOT	EXTEND
 		TS	AK +2
 
 # NOW CALCULATE P ERROR.  (NOTE THAT M13 = 1, SCALED AT 1, SO THE MULTIPLICATION IS BY-PASSED.)
-# Page 1416
+## Page 1416
 		CA	AK		# Y-AXIS DIFFERENCE STORED BY Q AXIS CALC.
 		EXTEND
 		MP	M11		# (CTHETA-CDUY)*M11 SCALED AT PI RADIANS.
@@ -328,7 +328,7 @@ DSPLYTOT	EXTEND
 
 		TCF	RETNMORE	# DISPLAY THESE THE NEXT TIME THROUGH
 
-# Page 1417
+## Page 1417
 # FDAI ATTITUDE ERROR DISPLAY SUBROUTINE
 #
 # PROGRAM DESCRIPTION:		D. KEENE	5/24/67
@@ -369,7 +369,7 @@ DSPLYTOT	EXTEND
 #	EDRIVEX		A,L,Q
 #	EDRIVEY		T5TEMP
 #	EDRIVEZ		DINDX
-# Page 1418
+## Page 1418
 #
 # SWITCHES:		RCSFLAGS  BITS 3,2
 #
@@ -419,7 +419,7 @@ NEEDLER2	CAF	BIT6		# ENABLE IMU ERROR COUNTERS
 NEEDLES3	CAF	BIT6		# CHECK TO SEE IF IMU ERROR COUNTER
 		EXTEND			# IS ENABLED
 		RAND	CHAN12
-# Page 1419
+## Page 1419
 		CCS	A		# IF NOT, RE-INITIALIZE NEEDLER.
 		TCF	NEEDLES
 
@@ -469,7 +469,7 @@ DSPLYALT	EQUALS	BIT4		# 100 MS ALTERNATION BIT IN RCSFLAGS
 OVERSUB2	TS	7		# RETURNS A UNCHANGED OR LIMITED TO
 		TC	Q		# POSMAX OR NEGMAX IF A HAS OVERFLOW
 		INDEX	A
-# Page 1420
+## Page 1420
 		CS	LIMITS		# DUPLICATE CODING IN BANK 16
 		TC	Q
 

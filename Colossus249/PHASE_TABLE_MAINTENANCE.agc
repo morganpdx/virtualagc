@@ -1,42 +1,42 @@
 ### FILE="Main.annotation"
-# Copyright:	Public domain.
-# Filename:	PHASE_TABLE_MAINTENANCE.agc
-# Purpose:	Part of the source code for Colossus, build 249.
-#		It is part of the source code for the Command Module's (CM)
-#		Apollo Guidance Computer (AGC), possibly for Apollo 8 and 9.
-# Assembler:	yaYUL
-# Reference:	Starts on p. 1394 of 1701.pdf.
-# Contact:	Ron Burkey <info@sandroid.org>.
-# Website:	www.ibiblio.org/apollo.
-# Mod history:	08/30/04 RSB.	Adapted from corresponding Luminary131 file.
-# 		2011-05-07 JL	Flagged SBANK= workarounds for future removal. 
-# 				Removed workaround.
+## Copyright:	Public domain.
+## Filename:	PHASE_TABLE_MAINTENANCE.agc
+## Purpose:	Part of the source code for Colossus, build 249.
+##		It is part of the source code for the Command Module's (CM)
+##		Apollo Guidance Computer (AGC), for Apollo 9.
+## Assembler:	yaYUL
+## Reference:	Starts on p. 1394 of 1701.pdf.
+## Contact:	Ron Burkey <info@sandroid.org>.
+## Website:	www.ibiblio.org/apollo.
+## Mod history:	08/30/04 RSB.	Adapted from corresponding Luminary131 file.
+## 		2011-05-07 JL	Flagged SBANK= workarounds for future removal. 
+## 				Removed workaround.
 
-# The contents of the "Colossus249" files, in general, are transcribed 
-# from a scanned document obtained from MIT's website,
-# http://hrst.mit.edu/hrs/apollo/public/archive/1701.pdf.  Notations on this
-# document read, in part:
-#
-#	Assemble revision 249 of AGC program Colossus by NASA
-#	2021111-041.  October 28, 1968.  
-#
-#	This AGC program shall also be referred to as
-#				Colossus 1A
-#
-#	Prepared by
-#			Massachusetts Institute of Technology
-#			75 Cambridge Parkway
-#			Cambridge, Massachusetts
-#	under NASA contract NAS 9-4065.
-#
-# Refer directly to the online document mentioned above for further information.
-# Please report any errors (relative to 1701.pdf) to info@sandroid.org.
-#
-# In some cases, where the source code for Luminary 131 overlaps that of 
-# Colossus 249, this code is instead copied from the corresponding Luminary 131
-# source file, and then is proofed to incorporate any changes.
+## The contents of the "Colossus249" files, in general, are transcribed 
+## from a scanned document obtained from MIT's website,
+## http://hrst.mit.edu/hrs/apollo/public/archive/1701.pdf.  Notations on this
+## document read, in part:
+##
+##	Assemble revision 249 of AGC program Colossus by NASA
+##	2021111-041.  October 28, 1968.  
+##
+##	This AGC program shall also be referred to as
+##				Colossus 1A
+##
+##	Prepared by
+##			Massachusetts Institute of Technology
+##			75 Cambridge Parkway
+##			Cambridge, Massachusetts
+##	under NASA contract NAS 9-4065.
+##
+## Refer directly to the online document mentioned above for further information.
+## Please report any errors (relative to 1701.pdf) to info@sandroid.org.
+##
+## In some cases, where the source code for Luminary 131 overlaps that of 
+## Colossus 249, this code is instead copied from the corresponding Luminary 131
+## source file, and then is proofed to incorporate any changes.
 
-# Page 1394
+## Page 1394
 # SUBROUTINE TO UPDATE THE PROGRAM NUMBER DISPLAY ON THE DSKY.
 
 		COUNT	02/PHASE
@@ -85,11 +85,11 @@ SETUPDSP	INHINT
 DSPMMJOB	EQUALS	DSPMMJB
 
 		BLOCK	02
-# Page 1395
+## Page 1395
 		SETLOC	FFTAG1
 		BANK
 
-# Page 1396
+## Page 1396
 # PHASCHNG IS THE MAIN WAY OF MAKING PHASE CHANGES FOR RESTARTS.  THERE ARE THREE FORMS OF PHASCHNG, KNOWN AS TYPE
 # A, TYPE B, AND TYPE C.  THEY ARE ALL CALLED AS FOLLOWS, WHERE OCT XXXXX CONTAINS THE PHASE INFORMATION,
 #		TC	PHASCHNG
@@ -134,7 +134,7 @@ DSPMMJOB	EQUALS	DSPMMJB
 # WHERE EACH LETTER OR NUMBER STANDS FOR A BIT.  THE G'S STAND FOR THE GROUP, OCTAL 1 - 7.  IF THE RESTART IS TO
 # BE BY WAITLIST, W IS SET TO 1, IF IT IS A JOB, J IS SET TO 1, IF IT IS A LONGCALL, C IS SET TO 1.  ONLY ONE OF
 # THESE THREE BITS MAY BE SET.  X'S ARE IGNORED, 1 MUST BE 1, AND 0 MUST BE 0.  AGAIN T STANDS FOR THE TBASE,
-# Page 1397
+## Page 1397
 # AND L FOR LONGBASE.  THE BITS A AND D ARE CONCERNED WITH THE VARIABLE INFORMATION.  IF D IS SET TO 1, A PRIORITY
 # OR DELTA TIME WILL BE READ FROM THE NEXT LOCATION AFTER THE OCTAL INFORMATION., IF THIS IS TO BE INDIRECT, THAT
 # IS, THE NAME OF A LOCATION CONTAINING THE INFORMATION (DELTA TIME ONLY), THEN THIS IS GIVEN AS THE -GENADR OF
@@ -179,7 +179,7 @@ DSPMMJOB	EQUALS	DSPMMJB
 #	AD+1	OCT	10015		# RESTARTED AND A JOB WITH THE PREVIOUSLY
 #	AD+2				# STORED PRIORITY WOULD BE BEGUN AT AD+2
 #					# BY MEANS OF GROUP 5
-# Page 1398
+## Page 1398
 # THE NOVAC-FINDVAC CHOICE FOR JOBS HOLDS HERE ALSO -- NEGATIVE PRIORITY CAUSES A NOVAC CALL, POSITIVE A FINDVAC.
 
 # SUMMARY OF BITS:
@@ -187,7 +187,7 @@ DSPMMJOB	EQUALS	DSPMMJB
 #	TYPE B		TL1 DAP PPP PPP GGG
 #	TYPE C		TL0 1AD XXX CJW GGG
 
-# Page 1399
+## Page 1399
 # 2PHSCHNG IS USED WHEN ONE WISHES TO START UP A GROUP OR CHANGE A GROUP WHILE UNDER THE CONTROL OF A DIFFERENT
 # GROUP.  FOR EXAMPLE, CHANGE THE PHASE OF GROUP 3 WHILE THE PORTION OF THE PROGRAM IS UNDER GROUP 5.  ALL 2PHSCHNG
 # CALLS ARE MADE IN THE FOLLOWING MANNER,
@@ -237,7 +237,7 @@ PHASCHNG	INHINT			# NORMAL PHASCHNG ENTRY POINT.
 		CA	0
 		INCR	Q
 		TS	TEMPSW
-# Page 1400
+## Page 1400
 		EXTEND
 		DCA	ADRPCHN2	# OFF TO SWITCHED BANK
 		DTCB
@@ -286,7 +286,7 @@ GETPRIO		NDX	Q		# DON'T CARE IF DIRECT OR INDIRECT
 		TCF	CON1 -1
 
 GETNEWNM	EXTEND
-# Page 1401
+## Page 1401
 		INDEX	Q
 		DCA	0
 		DXCH	TEMPNM
@@ -335,7 +335,7 @@ PHSCHNG2	LXCH	TEMPBBCN
 		CCS	A
 		TCF	ONEORTWO
 
-# Page 1402
+## Page 1402
 		CA	TEMPP		# START STORING THE PHASE INFORMATION
 		NDX	TEMPG
 		TS	PHASE1 -2
@@ -385,7 +385,7 @@ BELOW4		CS	TEMPP		# AND STORE THE FINAL PART OF THE PHASE
 		RELINT
 		DTCB
 CON2		LXCH	TEMPBBCN
-# Page 1403
+## Page 1403
 		CA	TEMPP
 		NDX	TEMPG
 		TS	PHASE1 -2

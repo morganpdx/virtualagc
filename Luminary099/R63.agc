@@ -1,33 +1,33 @@
 ### FILE="Main.annotation"
-# Copyright:	Public domain.
-# Filename:	R63.agc
-# Purpose: 	Part of the source code for Luminary 1A build 099.
-#		It is part of the source code for the Lunar Module's (LM)
-#		Apollo Guidance Computer (AGC), for Apollo 11.
-# Assembler:	yaYUL
-# Contact:	Ron Burkey <info@sandroid.org>.
-# Website:	www.ibiblio.org/apollo.
-# Pages:	338-341
-# Mod history:	2009-05-16 RSB	Adapted from the corresponding 
-#				Luminary131 file, using page 
-#				images from Luminary 1A.
-#
-# This source code has been transcribed or otherwise adapted from
-# digitized images of a hardcopy from the MIT Museum.  The digitization
-# was performed by Paul Fjeld, and arranged for by Deborah Douglas of
-# the Museum.  Many thanks to both.  The images (with suitable reduction
-# in storage size and consequent reduction in image quality as well) are
-# available online at www.ibiblio.org/apollo.  If for some reason you
-# find that the images are illegible, contact me at info@sandroid.org
-# about getting access to the (much) higher-quality images which Paul
-# actually created.
-#
-# Notations on the hardcopy document read, in part:
-#
-#	Assemble revision 001 of AGC program LMY99 by NASA 2021112-61
-#	16:27 JULY 14, 1969 
+## Copyright:	Public domain.
+## Filename:	R63.agc
+## Purpose: 	Part of the source code for Luminary 1A build 099.
+##		It is part of the source code for the Lunar Module's (LM)
+##		Apollo Guidance Computer (AGC), for Apollo 11.
+## Assembler:	yaYUL
+## Contact:	Ron Burkey <info@sandroid.org>.
+## Website:	www.ibiblio.org/apollo.
+## Pages:	338-341
+## Mod history:	2009-05-16 RSB	Adapted from the corresponding 
+##				Luminary131 file, using page 
+##				images from Luminary 1A.
+##
+## This source code has been transcribed or otherwise adapted from
+## digitized images of a hardcopy from the MIT Museum.  The digitization
+## was performed by Paul Fjeld, and arranged for by Deborah Douglas of
+## the Museum.  Many thanks to both.  The images (with suitable reduction
+## in storage size and consequent reduction in image quality as well) are
+## available online at www.ibiblio.org/apollo.  If for some reason you
+## find that the images are illegible, contact me at info@sandroid.org
+## about getting access to the (much) higher-quality images which Paul
+## actually created.
+##
+## Notations on the hardcopy document read, in part:
+##
+##	Assemble revision 001 of AGC program LMY99 by NASA 2021112-61
+##	16:27 JULY 14, 1969 
 
-# Page 338
+## Page 338
 # SUBROUTINE NAME:	V89CALL
 # MOD NO:	0			DATE:		9 JAN 1968
 # MOD BY:	DIGITAL DEVEL GROUP	LOG SECTION:	R63
@@ -77,7 +77,7 @@
 # ERASABLE INITIALIZATION REQUIRED:  NONE
 #
 # DEBRIS:	OPTION1, +1, TDEC1, PCINTVSM, SCAXIS, CPHI, CTHETA, CPSI,
-# Page 339
+## Page 339
 #		3AXISFLAG.
 
 		EBANK=	RONE
@@ -126,7 +126,7 @@ V89RECL		TC	INTPRET		#			2 FOR X AXIS
 ALINEX		TC	INTPRET		# X AXIS ALIGNMENT
 		VLOAD
 			UNITX		# READ (.5, 0, 0)
-# Page 340
+## Page 340
 V89CALL1	STCALL	SCAXIS		# STORE SELECTED ALIGNMENT AXIS
 			VECPOINT	# PUTS DESIRED GIM ANG (OG,IG,MG) IN TMPAC
 		STORE	CPHI		# STOR GIMBAL ANGLES FOR BALLANGS CALL
@@ -152,6 +152,6 @@ ALINEZ		TC	INTPRET		# Z AXIS ALIGNMENT
 			
 VB04N12		VN	412
 VB06N18		VN	0618
-# Page 341
+## Page 341
 DP1MIN		2DEC	6000
 

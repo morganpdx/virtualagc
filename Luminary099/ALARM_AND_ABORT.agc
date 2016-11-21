@@ -1,35 +1,35 @@
 ### FILE="Main.annotation"
-# Copyright:	Public domain.
-# Filename:	ALARM_AND_ABORT.agc
-# Purpose: 	Part of the source code for Luminary 1A build 099.
-#		It is part of the source code for the Lunar Module's (LM)
-#		Apollo Guidance Computer (AGC), for Apollo 11.
-# Assembler:	yaYUL
-# Contact:	Ron Burkey <info@sandroid.org>.
-# Website:	www.ibiblio.org/apollo.
-# Pages:	1381-1385
-# Mod history:  2009-05-10 SN   (Sergio Navarro).  Started adapting
-#				from the Luminary131/ file of the same
-#				name, using Luminary099 page images.
-#		2009-06-05 RSB	Fixed a type.
-#		2011-01-06 JL	Fixed pseudo-label indentation.
-#
-# This source code has been transcribed or otherwise adapted from
-# digitized images of a hardcopy from the MIT Museum.  The digitization
-# was performed by Paul Fjeld, and arranged for by Deborah Douglas of
-# the Museum.  Many thanks to both.  The images (with suitable reduction
-# in storage size and consequent reduction in image quality as well) are
-# available online at www.ibiblio.org/apollo.  If for some reason you
-# find that the images are illegible, contact me at info@sandroid.org
-# about getting access to the (much) higher-quality images which Paul
-# actually created.
-#
-# Notations on the hardcopy document read, in part:
-#
-#	Assemble revision 001 of AGC program LMY99 by NASA 2021112-61
-#	16:27 JULY 14, 1969 
+## Copyright:	Public domain.
+## Filename:	ALARM_AND_ABORT.agc
+## Purpose: 	Part of the source code for Luminary 1A build 099.
+##		It is part of the source code for the Lunar Module's (LM)
+##		Apollo Guidance Computer (AGC), for Apollo 11.
+## Assembler:	yaYUL
+## Contact:	Ron Burkey <info@sandroid.org>.
+## Website:	www.ibiblio.org/apollo.
+## Pages:	1381-1385
+## Mod history: 2009-05-10 SN   (Sergio Navarro).  Started adapting
+##				from the Luminary131/ file of the same
+##				name, using Luminary099 page images.
+##		2009-06-05 RSB	Fixed a type.
+##		2011-01-06 JL	Fixed pseudo-label indentation.
+##
+## This source code has been transcribed or otherwise adapted from
+## digitized images of a hardcopy from the MIT Museum.  The digitization
+## was performed by Paul Fjeld, and arranged for by Deborah Douglas of
+## the Museum.  Many thanks to both.  The images (with suitable reduction
+## in storage size and consequent reduction in image quality as well) are
+## available online at www.ibiblio.org/apollo.  If for some reason you
+## find that the images are illegible, contact me at info@sandroid.org
+## about getting access to the (much) higher-quality images which Paul
+## actually created.
+##
+## Notations on the hardcopy document read, in part:
+##
+##	Assemble revision 001 of AGC program LMY99 by NASA 2021112-61
+##	16:27 JULY 14, 1969 
 
-# Page 1381
+## Page 1381
 # THE FOLLOWING SUBROUTINE MAY BE CALLED TO DISPLAY A NON-ABORTIVE ALARM CONDITION.  IT MAY BE CALLED
 # EITHER IN INTERRUPT OR UNDER EXECUTIVE CONTROL.
 #
@@ -81,7 +81,7 @@ FAIL3		CA	FAILREG +2
 		LXCH	FAILREG +2
 		TCF	MULTEXIT
 
-# Page 1382
+## Page 1382
 
 PROGLARM	CS	DSPTAB +11D
 		MASK	OCT40400
@@ -133,7 +133,7 @@ PRIOLARM	INHINT			# * * * KEEP IN DISPLAY ROUTINES BANK
 		COUNT*	$$/ALARM
 BAILOUT		INHINT
 		CA	Q
-# Page 1383
+## Page 1383
 		TS	ALMCADR
 
 		INDEX	Q
@@ -184,7 +184,7 @@ CURTAINS	INHINT
 		CA	Q
 		TC	ALARM2
 OCT217		OCT	00217
-# Page 1384
+## Page 1384
 		TC	ALMCADR		# RETURN TO USER
 
 BAILOUT1	INHINT
@@ -236,7 +236,7 @@ ABORT		EQUALS	WHIMPER
 		BANK	13
 		SETLOC	ABTFLGS
 		BANK
-# Page 1385
+## Page 1385
 		COUNT*	$$/ALARM
 
 FLAGS		CS	STATEBIT

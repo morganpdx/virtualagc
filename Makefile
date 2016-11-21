@@ -20,7 +20,7 @@
 # Purpose:	This makefile is used (recursively) to build all
 #		components of the Virtual AGC project, for Linux and
 #		similar targets.
-# Mods:		10/22/03 RSB	Wrote.
+# Mods:		10/22/03 RSB	Wrote. 
 #		11/02/03 RSB	Added Luminary131.
 #		11/13/03 RSB	Added Colossus249.
 #		05/01/04 RSB	Now provide yadsky also as yaDSKY, after install.
@@ -140,16 +140,30 @@
 #				were included in the installer.
 #		2016-08-29 RSB	Mods related to my personal-build situation, which
 #				shouldn't affect anyone else.
+#		2016-10-04 JL	Added 'format-missions' rukle to reformat all 
+#				mission sources using yaYUL.
+#		2016-10-21 RSB	Added AURORA12 to the missions.
+#		2016-11-03 RSB	Added SUNBURST120 to the missions.
+#		2016-11-08 RSB	Merged in block1 branch.
+#		2016-11-16 RSB	Certain resources needed only by the "standard"
+#				32-bit Linux VirtualAGC VM I'm now creating are
+#				added to the installation bundle.  These are
+#				related to debugging on Code::blocks. 
+#		2016-11-17 RSB	Fixed a "sed --in-place ..." that doesn't work on
+#				systems with non-GNU sed, such as FreeBSD or
+#				Solaris.  Other fixes of a similar nature, for those
+#				same operating systems.
+#		2016-11-18 RSB	Removed yaACA2 from FreeBSD build.
 #
 # The build box is always Linux for cross-compiles.  For native compiles:
 #	Use "make MACOSX=yes" for Mac OS X.
-#	Use "make SOLARIS=yes" for Solaris.
+#	Use "gmake SOLARIS=yes" for Solaris.
 #	Use "make WIN32=yes" for Windows.
 #	Use "gmake FREEBSD=yes" for FreeBSD.
 #	Use "make" for Linux.
 
 # NVER is the overall version code for the release.
-NVER:=\\\"2016-08-21-working\\\"
+NVER:=\\\"2016-11-08-working\\\"
 DATE:=`date +%Y%m%d`
 
 # DON'T CHANGE THE FOLLOWING SWITCH *********************************
@@ -201,6 +215,7 @@ ifdef SOLARIS
 LIBS+=-L/usr/local/lib
 LIBS+=-lsocket
 LIBS+=-lnsl
+export CC=gcc
 endif
 
 # Some adjustments for building in Mac OS X
@@ -235,36 +250,51 @@ endif
 # to catch every possible problem before sending it out into the world.
 ifeq ($(USER),rburkey)
 WEBSITE=../sandroid.org/public_html/apollo
-CFLAGS=-Wall -Werror -DALLOW_BSUB -g -O0
+CFLAGS0=-Werror -DALLOW_BSUB -g -O0
+CFLAGS=-Wall $(CFLAGS0)
 yaACA=
 else 
 ifdef DEV_BUILD
-CFLAGS=-Wall -Werror -DALLOW_BSUB -g -O0
+CFLAGS0=-Werror -DALLOW_BSUB -g -O0
+CFLAGS=-Wall $(CFLAGS0)
 yaACA=
 else 
 ifdef DEBUG_BUILD
-CFLAGS=-DALLOW_BSUB -g -O0
+CFLAGS0=-DALLOW_BSUB -g -O0
+CFLAGS=$(CFLAGS0)
 yaACA=-
 else
-CFLAGS=-DALLOW_BSUB
+CFLAGS0=-DALLOW_BSUB
+CFLAGS=$(CFLAGS0)
 yaACA=-
 endif
 endif
 WEBSITE=..
+endif
+ifdef MACOSX
+yaACA=-
 endif
 
 # Note:  The CURSES variable is misnamed.  It really is just any special libraries
 # for yaAGC, yaAGS, or yaACA3 that depend on Win32 vs. non-Win32 native builds.
 ifdef WIN32
 EXT=.exe
+CFLAGS0+=-I/usr/local/include
 CFLAGS+=-I/usr/local/include
 LIBS+=-L/usr/local/lib
+LIBS+=-L/usr/lib
 LIBS+=-lkernel32
 LIBS+=-lwsock32
 CURSES=../yaAGC/random.c
 CURSES+=-lregex
+export CC=gcc
 else
 CURSES=-lcurses
+endif
+
+ifdef MACOSX
+CFLAGS0+=-I/opt/local/include -I/opt/local/include/allegro
+CFLAGS+=-I/opt/local/include -I/opt/local/include/allegro
 endif
 
 # We assume a *nix build environment.
@@ -277,10 +307,19 @@ endif
 BUILD = $(MAKE) PREFIX=$(PREFIX) NVER=$(NVER) CFLAGS="$(CFLAGS)" CURSES="$(CURSES)" LIBS2="$(LIBS)" NOREADLINE=$(NOREADLINE) ReadlineForWin32=$(ReadlineForWin32) $(ARCHS) EXT=$(EXT)
 
 # List of mission software directories to be built.
-MISSIONS = Validation Luminary131 Colossus249 Comanche055 Luminary099 Artemis072 Colossus237 Solarium055
+MISSIONS = Validation Luminary131 Colossus249 Comanche055 
+MISSIONS += Luminary099 Artemis072 Colossus237 Solarium055
+MISSIONS += Aurora12 Sunburst120
+export MISSIONS
+
+# Missions needing code::blocks project files.
+cbMISSIONS = Validation Luminary131 Colossus249 Comanche055 
+cbMISSIONS += Luminary099 Artemis072 Colossus237 Aurora12 Sunburst120
+cbMISSIONS := $(patsubst %,%.cbp,$(cbMISSIONS))
 
 # The base set of targets to be built always.
 SUBDIRS = Tools yaLEMAP yaAGC yaAGS yaYUL ControlPulseSim yaUniverse
+SUBDIRS += yaAGC-Block1-Pultorak yaAGCb1 yaUplinkBlock1 Validation-Block1
 SUBDIRS += $(MISSIONS)
 
 ifndef NOGUI
@@ -297,10 +336,13 @@ endif
 ifndef WIN32
 SUBDIRS += yaACA
 endif
+ifndef FREEBSD
 SUBDIRS += yaACA2
+endif
 SUBDIRS += yaACA3
 SUBDIRS += yaTelemetry 
 SUBDIRS += jWiz
+SUBDIRS += yaDSKYb1
 SUBDIRS += VirtualAGC
 endif # NOGUI
 
@@ -309,30 +351,33 @@ endif # NOGUI
 .PHONY: default
 default: all
 
-.PHONY: missions $(MISSIONS) clean-missions
+.PHONY: $(MISSIONS) clean-missions format-missions
 missions: $(MISSIONS)
 
 $(MISSIONS): yaYUL Tools
 	$(BUILD) -C $@
 
 clean-missions:
-	for subdir in $(MISSIONS) ; do make -C $$subdir clean ; done
+	for subdir in $(MISSIONS) ; do $(BUILD) -C $$subdir clean ; done
+
+format-missions:
+	for subdir in $(MISSIONS) ; do REFORMAT=no make -C $$subdir format ; done
 
 .PHONY: corediffs
 corediffs: yaYUL Tools
-	for subdir in $(MISSIONS) ; do make -C $$subdir corediff.txt ; done
+	for subdir in $(MISSIONS) ; do $(BUILD) -C $$subdir corediff.txt ; done
 
 .PHONY: all all-archs
 all: ARCHS=default
 all-archs: ARCHS=all-archs
-all all-archs: $(SUBDIRS)
+all all-archs: $(cbMISSIONS) $(SUBDIRS)
 
-.PHONY: Tools yaLEMAP yaAGC yaAGS yaYUL yaUniverse yaACA2 yaACA ControlPulseSim
-Tools yaLEMAP yaAGC yaAGS yaYUL yaUniverse yaACA2 yaACA yaACA3 ControlPulseSim:
+.PHONY: Tools yaLEMAP yaAGC yaAGS yaYUL yaUniverse ControlPulseSim
+Tools yaLEMAP yaAGC yaAGS yaYUL yaUniverse ControlPulseSim:
 	$(BUILD) -C $@ 
 
-.PHONY: yaACA3
-yaACA3:
+.PHONY: yaACA yaACA2 yaACA3
+yaACA yaACA2 yaACA3:
 	${yaACA}$(BUILD) -C $@ 
 
 .PHONY: yaDEDA
@@ -364,6 +409,9 @@ yaTelemetry:
 .PHONY: jWiz
 jWiz:
 	$(BUILD) -C $@ $(ISMACOSX) $(DEV_STATIC)
+
+yaAGC-Block1-Pultorak yaAGCb1 yaDSKYb1 yaUplinkBlock1 yaValidation-Block1:
+	$(BUILD) -C $@ $(DEV_STATIC)
 
 .PHONY: VirtualAGC
 VirtualAGC:
@@ -438,6 +486,30 @@ snapshot-ephemeris:
 	cd .. ; tar --bzip2 -cvf $(WEBSITE)/Downloads/yaAGC-ephemeris.tar.bz2 yaAGC/yaUniverse/*.txt
 	ls -l $(WEBSITE)/Downloads
 
+# Code::blocks project file ... for using code::blocks on Linux only.  The 
+# cbp file produced needs slight mods to the directory structure for Windows
+# or Mac.  However, these files are fine for the standard VirtualAGC VM I'm
+# creating.
+Validation.cbp:
+	sed -e "s/@name@/Validation/" -e 's/MAIN[.]agc[.]bin/Validation.agc.bin/' templateAGC-top.cbp >Validation/temp.txt
+	cd Validation ; \
+	for n in *.agc ; \
+	do \
+		echo '                <Unit filename="'$$n'" />'; \
+	done >>temp.txt
+	cat templateAGC-bottom.cbp >>Validation/temp.txt
+	mv Validation/temp.txt Validation/$@
+
+%.cbp:
+	sed "s/@name@/"$*"/" templateAGC-top.cbp >$*/temp.txt
+	cd $* ; \
+	for n in *.agc ; \
+	do \
+		echo '                <Unit filename="'$$n'" />'; \
+	done >>temp.txt
+	cat templateAGC-bottom.cbp >>$*/temp.txt
+	mv $*/temp.txt $*/$@
+
 clean: clean-missions
 	$(MAKE) -C yaLEMAP clean
 	$(MAKE) -C yaASM clean
@@ -459,6 +531,11 @@ clean: clean-missions
 	$(MAKE) -C yaDEDA2 clean
 	$(MAKE) -C yaACA2 clean
 	$(MAKE) -C Tools clean
+	$(MAKE) -C yaAGC-Block1-Pultorak clean
+	$(MAKE) -C yaAGCb1 clean
+	$(MAKE) -C yaDSKYb1 clean
+	$(MAKE) -C yaUplinkBlock1 clean
+	$(MAKE) -C Validation-Block1 clean
 	-rm -f `find . -name "core"` FP6/*.aea.html FP8/*.aea.html
 
 autogen:

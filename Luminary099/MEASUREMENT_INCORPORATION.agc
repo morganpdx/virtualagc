@@ -1,32 +1,32 @@
 ### FILE="Main.annotation"
-# Copyright:	Public domain.
-# Filename:	MEASUREMENT_INCORPORATION.agc
-# Purpose:	Part of the source code for Luminary 1A build 099.
-#		It is part of the source code for the Lunar Module's (LM)
-#		Apollo Guidance Computer (AGC), for Apollo 11.
-#
-# Assembler:	yaYUL
-# Contact:	Jim Lawton <jim DOT lawton AT gmail DOT com>
-# Website:	www.ibiblio.org/apollo.
-# Pages:	1149-1158
-# Mod history:	2009-05-28 JL	Updated from page images.
-#		2011-01-06 JL	Fixed pseudo-label indentation.
-#
-# This source code has been transcribed or otherwise adapted from digitized
-# images of a hardcopy from the MIT Museum.  The digitization was performed
-# by Paul Fjeld, and arranged for by Deborah Douglas of the Museum.  Many
-# thanks to both.  The images (with suitable reduction in storage size and
-# consequent reduction in image quality as well) are available online at
-# www.ibiblio.org/apollo.  If for some reason you find that the images are
-# illegible, contact me at info@sandroid.org about getting access to the
-# (much) higher-quality images which Paul actually created.
-#
-# Notations on the hardcopy document read, in part:
-#
-#    Assemble revision 001 of AGC program LMY99 by NASA 2021112-061
-#    16:27 JULY 14, 1969
+## Copyright:	Public domain.
+## Filename:	MEASUREMENT_INCORPORATION.agc
+## Purpose:	Part of the source code for Luminary 1A build 099.
+##		It is part of the source code for the Lunar Module's (LM)
+##		Apollo Guidance Computer (AGC), for Apollo 11.
+##
+## Assembler:	yaYUL
+## Contact:	Jim Lawton <jim DOT lawton AT gmail DOT com>
+## Website:	www.ibiblio.org/apollo.
+## Pages:	1149-1158
+## Mod history:	2009-05-28 JL	Updated from page images.
+##		2011-01-06 JL	Fixed pseudo-label indentation.
+##
+## This source code has been transcribed or otherwise adapted from digitized
+## images of a hardcopy from the MIT Museum.  The digitization was performed
+## by Paul Fjeld, and arranged for by Deborah Douglas of the Museum.  Many
+## thanks to both.  The images (with suitable reduction in storage size and
+## consequent reduction in image quality as well) are available online at
+## www.ibiblio.org/apollo.  If for some reason you find that the images are
+## illegible, contact me at info@sandroid.org about getting access to the
+## (much) higher-quality images which Paul actually created.
+##
+## Notations on the hardcopy document read, in part:
+##
+##    Assemble revision 001 of AGC program LMY99 by NASA 2021112-061
+##    16:27 JULY 14, 1969
 
-# Page 1149
+## Page 1149
 # INCORP1 -- PERFORMS THE SIX DIMENSIONAL STATE VECTOR DEVIATION FOR POSITION
 # AND VELOCITY OR THE NINE-DIMENSIONAL DEVIATION OF POSITION, VELOCITY, AND
 # RADAR OR LANDMARK BIAS. THE OUTPUT OF THE BVECTOR ROUTINE ALONG WITH THE
@@ -78,7 +78,7 @@ Z123		VLOAD	MXV*
 		STORE	ZI +18D,2
 		VLOAD
 			BVECTOR +6	# BVECTOR (1)
-# Page 1150
+## Page 1150
 		MXV*	VAD*
 			W +108D,1
 			ZI +18D,2
@@ -129,7 +129,7 @@ INCOR1B		SL2	BOV
 			INCOR1B
 INCOR1C		TLOAD	ROUND
 			TRIPA
-# Page 1151
+## Page 1151
 		DMP	SQRT
 			TEMPVAR
 		SL*	TAD
@@ -180,7 +180,7 @@ INCOR2		VLOAD	VXM*		# COMPUT OMEGA1,2,3
 		STORE	OMEGA +6
 		VLOAD	STADR
 		STORE	OMEGA
-# Page 1152
+## Page 1152
 		BON	VLOAD
 			DMENFLG
 			INCOR2AB
@@ -204,7 +204,7 @@ INCOR3		VLOAD*
 		GOTO
 			EGRESS
 
-# Page 1153
+## Page 1153
 # INCORP2 - INCORPORATES THE COMPUTED STATE VECTOR DEVIATIONS INTO THE
 # ESTIMATED STATE VECTOR. THE STATE VECTOR UPDATED MAY BE FOR EITHER THE
 # LEM OR THE CSM. DETERMINED BY FLAG VEHUPFLG. (ZERO = LEM) (1 = CSM)
@@ -257,7 +257,7 @@ INCORP2		STQ	CALL
 		TS	ZIXA		# INITIAL IX 2 SETTING FOR Z COMPONENT
 		TS	ZIXB
 FAZA		TC	PHASCHNG
-# Page 1154
+## Page 1154
 		OCT	04022
 		TC	UPFLAG
 		ADRES	REINTFLG
@@ -308,7 +308,7 @@ FAZA1		CA	WIXB		# START FIRST PHASE OF INCORP2
 		DLOAD*	DCOMP		# CALC LOWER 3X9 PARTITION OF W MATRIX
 			ZI,2
 		NORM	VXSC
-# Page 1155
+## Page 1155
 			S2
 			OMEGAM3
 		XCHX,2	LXC,2
@@ -359,7 +359,7 @@ FAZB5		SLOAD	DAD
 			FAZB2
 FAZC		CALL
 			GRP2PC
-# Page 1156
+## Page 1156
 		VLOAD	VAD		# START 3RD PHASE OF INCORP2
 			X789		# 7TH, 8TH, 9TH COMPONENT OF STATE VECTOR
 			DELTAX +12D	# INCORPORATION FOR X789
@@ -410,7 +410,7 @@ FAZAB3		CALL
 		CALL
 			SVDWN2		# STORE DOWNLINK STATE VECTOR
 FAZAB4		CALL
-# Page 1157
+## Page 1157
 			GRP2PC		# PHASE CHANGE
 		BOFF	VLOAD
 			DMENFLG
@@ -462,7 +462,7 @@ NEWZCOMP	VLOAD	ABVAL
 			NORMZI
 			NORMZI		# SAVE X1
 		NORM	INCR,1
-# Page 1158
+## Page 1158
 			X1
 		DEC	2
 		VLOAD	VSL*

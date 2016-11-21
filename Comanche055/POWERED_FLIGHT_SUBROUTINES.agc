@@ -1,37 +1,37 @@
 ### FILE="Main.annotation"
-# Copyright:	Public domain.
-# Filename:	POWERED_FLIGHT_SUBROUTINES.agc
-# Purpose:	Part of the source code for Colossus 2A, AKA Comanche 055.
-#		It is part of the source code for the Command Module's (CM)
-#		Apollo Guidance Computer (AGC), for Apollo 11.
-# Assembler:	yaYUL
-# Contact:	Ron Burkey <info@sandroid.org>.
-# Website:	www.ibiblio.org/apollo.
-# Pages:	1365-1372 
-# Mod history:  2009-05-10 SN   (Sergio Navarro).  Started adapting
-#                               from the Colossus249/ file of the same
-#                               name, using Comanche055 page images.
-#		2010-08-29 JL	Fixed indentation.
-#
-# This source code has been transcribed or otherwise adapted from digitized
-# images of a hardcopy from the MIT Museum.  The digitization was performed
-# by Paul Fjeld, and arranged for by Deborah Douglas of the Museum.  Many
-# thanks to both.  The images (with suitable reduction in storage size and
-# consequent reduction in image quality as well) are available online at
-# www.ibiblio.org/apollo.  If for some reason you find that the images are
-# illegible, contact me at info@sandroid.org about getting access to the
-# (much) higher-quality images which Paul actually created.
-#
-# Notations on the hardcopy document read, in part:
-#
-#    Assemble revision 055 of AGC program Comanche by NASA
-#    2021113-051.  10:28 APR. 1, 1969 
-#
-#    This AGC program shall also be referred to as
-#            Colossus 2A
+## Copyright:	Public domain.
+## Filename:	POWERED_FLIGHT_SUBROUTINES.agc
+## Purpose:	Part of the source code for Colossus 2A, AKA Comanche 055.
+##		It is part of the source code for the Command Module's (CM)
+##		Apollo Guidance Computer (AGC), for Apollo 11.
+## Assembler:	yaYUL
+## Contact:	Ron Burkey <info@sandroid.org>.
+## Website:	www.ibiblio.org/apollo.
+## Pages:	1365-1372 
+## Mod history: 2009-05-10 SN   (Sergio Navarro).  Started adapting
+##                              from the Colossus249/ file of the same
+##                              name, using Comanche055 page images.
+##		2010-08-29 JL	Fixed indentation.
+##
+## This source code has been transcribed or otherwise adapted from digitized
+## images of a hardcopy from the MIT Museum.  The digitization was performed
+## by Paul Fjeld, and arranged for by Deborah Douglas of the Museum.  Many
+## thanks to both.  The images (with suitable reduction in storage size and
+## consequent reduction in image quality as well) are available online at
+## www.ibiblio.org/apollo.  If for some reason you find that the images are
+## illegible, contact me at info@sandroid.org about getting access to the
+## (much) higher-quality images which Paul actually created.
+##
+## Notations on the hardcopy document read, in part:
+##
+##    Assemble revision 055 of AGC program Comanche by NASA
+##    2021113-051.  10:28 APR. 1, 1969 
+##
+##    This AGC program shall also be referred to as
+##            Colossus 2A
 
 
-# Page 1365
+## Page 1365
 		BANK	14		# SAME FBANK AS THE FINDCDUD SUB-PROGRAM
 		SETLOC	POWFLITE
 		BANK
@@ -82,7 +82,7 @@ CDUTRIGS	CA	CDUX
 		TS	CDUSPOT +4
 		CA	CDUY
 		TS	CDUSPOT
-# Page 1366
+## Page 1366
 		CA	CDUZ
 		TS	CDUSPOT +2
 
@@ -118,7 +118,7 @@ TR*GL**P	MASK	SIX		# MAKE IT EVEN AND SMALLER
 		CCS	TEM3
 		TCF	TR*GL**P
 		TC	TEM2
-# Page 1367
+## Page 1367
 # *******************************************************************************************************
 # QUICTRIG, INTENDED FOR QUIDANCE CYCLE USE WHERE TIME IS CRITICAL, IS A MUCH FASTER VERSION OF CD*TR*GS.
 # QUICTRIG COMPUTES AND STORES THE SINES AND COSINES OF THE 2'S COMPLEMENT ANGLES AT CDUSPOT, CDUSPOT +2,
@@ -151,7 +151,7 @@ QUICTRIG	INHINT			# INHINT SINCE DAP USES THE SAME TEMPS
 		CA	ITEMP1
 		RELINT
 		TC	A
-# Page 1368
+## Page 1368
 #****************************************************************************
 # THESE INTERFACE ROUTINES MAKE IT POSSIBLE TO CALL AX*SR*T, ETC., IN
 # INTERPRETIVE.  LATER, WHERE POSSIBLE, THEY WILL BE ELIMINATED.
@@ -201,7 +201,7 @@ C*MM*N2		TC	AX*SR*T
 CDU*NBSM	EXIT
 		TC	CDUTRIGS
 
-# Page 1369
+## Page 1369
 
 		TCF	C*MM*N3
 
@@ -251,7 +251,7 @@ AX*SR*T		TS	DEXDEX		# WHERE IT BECOMES THE INDEX OF INDEXES.
 R*TL**P		CCS	DEXDEX		#       	+3 --> 0	-3 --> 2
 		CS	DEXDEX		# THUS:		+2 --> 1	-2 --> 1
 		AD	THREE		#		+1 --> 2	-1 --> 0
-# Page 1370
+## Page 1370
 		EXTEND
 		INDEX	A
 		DCA	INDEXI
@@ -302,7 +302,7 @@ LOOP1		DXCH	MPAC
 		EXTEND
 		DIM	DEXDEX		# DECREMENT MAGNITUDE PRESERVING SIGN
 
-# Page 1371
+## Page 1371
 TSTPOINT	CCS	DEXDEX		# ONLY THE BRANCHING FUNCTION IS USED
 		TCF	R*TL**P
 		TC	RTNSAVER
@@ -317,7 +317,7 @@ INDEXI		DEC	4		# **********   DON'T   ***********
 		DEC	4		# ********** CONSTANTS ***********
 
 # ******************************************************************************
-# Page 1372
+## Page 1372
 # THIS SUBROUTINE COMPUTES INCREMENTAL CHANGES IN CDU(GIMBAL) ANGLES FROM INCREMENTAL CHANGES ABOUT SM AXES.  IT
 # REQUIRES SM INCREMENTS AS A DP VECTOR SCALED AT ONE REVOLUTION(DTHETASM,+2,+4).  SIN,COS(CDUY,Z,X) ARE IN
 # SINCDU,+2,+4 AND COSCDU,+2,+4 RESPECTIVELY, SCALED TO ONE HALF.  CDU INCREMENTS ARE PLACED IN DCDU,+2,+4 SCALED TO

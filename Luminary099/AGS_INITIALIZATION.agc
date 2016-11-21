@@ -1,31 +1,31 @@
 ### FILE="Main.annotation"
-# Copyright:	Public domain.
-# Filename:	AGS_INITIALIZATION.agc
-# Purpose: 	Part of the source code for Luminary 1A build 099.
-#		It is part of the source code for the Lunar Module's (LM)
-#		Apollo Guidance Computer (AGC), for Apollo 11.
-# Assembler:	yaYUL
-# Contact:	Hartmuth Gutsche <hgutsche@xplornet.com>.
-# Website:	www.ibiblio.org/apollo.
-# Pages:	206-210
-# Mod history:	2009-05-19 HG	Transcribed from page images.
-#
-# This source code has been transcribed or otherwise adapted from
-# digitized images of a hardcopy from the MIT Museum.  The digitization
-# was performed by Paul Fjeld, and arranged for by Deborah Douglas of
-# the Museum.  Many thanks to both.  The images (with suitable reduction
-# in storage size and consequent reduction in image quality as well) are
-# available online at www.ibiblio.org/apollo.  If for some reason you
-# find that the images are illegible, contact me at info@sandroid.org
-# about getting access to the (much) higher-quality images which Paul
-# actually created.
-#
-# Notations on the hardcopy document read, in part:
-#
-#	Assemble revision 001 of AGC program LMY99 by NASA 2021112-61
-#	16:27 JULY 14, 1969 
+## Copyright:	Public domain.
+## Filename:	AGS_INITIALIZATION.agc
+## Purpose: 	Part of the source code for Luminary 1A build 099.
+##		It is part of the source code for the Lunar Module's (LM)
+##		Apollo Guidance Computer (AGC), for Apollo 11.
+## Assembler:	yaYUL
+## Contact:	Hartmuth Gutsche <hgutsche@xplornet.com>.
+## Website:	www.ibiblio.org/apollo.
+## Pages:	206-210
+## Mod history:	2009-05-19 HG	Transcribed from page images.
+##
+## This source code has been transcribed or otherwise adapted from
+## digitized images of a hardcopy from the MIT Museum.  The digitization
+## was performed by Paul Fjeld, and arranged for by Deborah Douglas of
+## the Museum.  Many thanks to both.  The images (with suitable reduction
+## in storage size and consequent reduction in image quality as well) are
+## available online at www.ibiblio.org/apollo.  If for some reason you
+## find that the images are illegible, contact me at info@sandroid.org
+## about getting access to the (much) higher-quality images which Paul
+## actually created.
+##
+## Notations on the hardcopy document read, in part:
+##
+##	Assemble revision 001 of AGC program LMY99 by NASA 2021112-61
+##	16:27 JULY 14, 1969 
 
-# Page 206
+## Page 206
 
 # PROGRAM NAME:  AGS INITIALIZIZATION (R47)
 #
@@ -78,7 +78,7 @@
 AGSINIT		CAF	REFSMBIT
 		MASK	FLAGWRD3			# CHECK REFSMFLG.
 		CCS	A
-# Page 207
+## Page 207
 		TC	REDSPTEM			# REFSMMAT IS OK
 		TC	ALARM				# REFSMMAT IS BAD
 		OCT	220
@@ -129,7 +129,7 @@ AGSVCALC	TC	INTPRET
 			CSMPREC				# CALCULATE CSM STATE VECTOR FOR SAME TIME
 		CALL
 			SCALEVEC
-# Page 208
+## Page 208
 		STODL	AGSBUFF +6
 			TAT
 		DSU	DDV				# CALCULATE AND STORE THE TIME
@@ -180,7 +180,7 @@ SCALEVEC	VLOAD	MXV
 			REFSMMAT
 		VXSC	VSL2
 			VSCALE
-# Page 209
+## Page 209
 		VAD	VAD				# THIS SECTION ROUNDS THE VECTOR, AND
 			AGSRND1				# CORRECTS FOR THE FACT THAT THE AGS
 			AGSRND2				# IS A 2'S COMPLEMENT MACHINE WHILE THE

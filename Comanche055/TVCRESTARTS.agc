@@ -1,40 +1,40 @@
 ### FILE="Main.annotation"
-# Copyright:	Public domain.
-# Filename:	TVCRESTARTS.agc
-# Purpose:	Part of the source code for Colossus 2A, AKA Comanche 055.
-#		It is part of the source code for the Command Module's (CM)
-#		Apollo Guidance Computer (AGC), for Apollo 11.
-# Assembler:	yaYUL
-# Contact:	Ron Burkey <info@sandroid.org>.
-# Website:	www.ibiblio.org/apollo.
-# Pages:	956-960
-# Mod history:	2009-05-13 RSB	Adapted from the Colossus249/ file of the
-#				same name, using Comanche055 page images.
-#		2009-05-20 RSB	Corrections:  TCF -> BZF in one place.
-#		2009-05-21 RSB	In PHSCHK2, CS TVCPHASE corrected to 
-#				CCS TVCPHASE and CCS 4 corrected to CCS A.
-#				Page 924 corrected to 961.  CORCOPY +2 
-#				corrected to CORCOPY +1.
-#		2010-08-24 JL	Fixed page 958 number. Fixed some indentation.
-#
-# This source code has been transcribed or otherwise adapted from digitized
-# images of a hardcopy from the MIT Museum.  The digitization was performed
-# by Paul Fjeld, and arranged for by Deborah Douglas of the Museum.  Many
-# thanks to both.  The images (with suitable reduction in storage size and
-# consequent reduction in image quality as well) are available online at
-# www.ibiblio.org/apollo.  If for some reason you find that the images are
-# illegible, contact me at info@sandroid.org about getting access to the 
-# (much) higher-quality images which Paul actually created.
-#
-# Notations on the hardcopy document read, in part:
-#
-#	Assemble revision 055 of AGC program Comanche by NASA
-#	2021113-051.  10:28 APR. 1, 1969  
-#
-#	This AGC program shall also be referred to as
-#			Colossus 2A
+## Copyright:	Public domain.
+## Filename:	TVCRESTARTS.agc
+## Purpose:	Part of the source code for Colossus 2A, AKA Comanche 055.
+##		It is part of the source code for the Command Module's (CM)
+##		Apollo Guidance Computer (AGC), for Apollo 11.
+## Assembler:	yaYUL
+## Contact:	Ron Burkey <info@sandroid.org>.
+## Website:	www.ibiblio.org/apollo.
+## Pages:	956-960
+## Mod history:	2009-05-13 RSB	Adapted from the Colossus249/ file of the
+##				same name, using Comanche055 page images.
+##		2009-05-20 RSB	Corrections:  TCF -> BZF in one place.
+##		2009-05-21 RSB	In PHSCHK2, CS TVCPHASE corrected to 
+##				CCS TVCPHASE and CCS 4 corrected to CCS A.
+## 				"Page 924" corrected to 961.  CORCOPY +2 
+##				corrected to CORCOPY +1.
+##		2010-08-24 JL	Fixed page 958 number. Fixed some indentation.
+##
+## This source code has been transcribed or otherwise adapted from digitized
+## images of a hardcopy from the MIT Museum.  The digitization was performed
+## by Paul Fjeld, and arranged for by Deborah Douglas of the Museum.  Many
+## thanks to both.  The images (with suitable reduction in storage size and
+## consequent reduction in image quality as well) are available online at
+## www.ibiblio.org/apollo.  If for some reason you find that the images are
+## illegible, contact me at info@sandroid.org about getting access to the 
+## (much) higher-quality images which Paul actually created.
+##
+## Notations on the hardcopy document read, in part:
+##
+##	Assemble revision 055 of AGC program Comanche by NASA
+##	2021113-051.  10:28 APR. 1, 1969  
+##
+##	This AGC program shall also be referred to as
+##			Colossus 2A
 
-# Page 956
+## Page 956
 # NAME....TVCRESTART PACKAGE, CONSISTING OF REDOTVC, ENABL1, 2, CMDSOUT, PHSCHK2, ETC.
 # LOG SECTION....TVCRESTARTS			SUBROUTINE....DAPCSM
 # MODIFIED BY SCHLUNDT				21 OCTOBER 1968
@@ -97,7 +97,7 @@
 #	ROLL DAP IS MERELY RESTARTED.
 #
 #      *RESTARTS DURING A STROKE TEST (STROKER IS NON-ZERO) WILL CAUSE THE
-# Page 957
+## Page 957
 #	STROKE TEST TO BE TERMINATED.  A NEW V68 ENTRY WILL BE REQUIRED
 #	TO GET IT GOING AGAIN (NO AUTOMATIC RESTART).
 #  
@@ -143,7 +143,7 @@
 #
 # DEBRIS....TVC TEMPORARIES IN EBANK6
 
-# Page 958
+## Page 958
 
 		BANK	16
 		SETLOC	DAPROLL
@@ -191,7 +191,7 @@ ENABL2		LXCH	BANKRUPT	# CONTINUE PREPARATION OF OUTCOUNTERS
 		CAF	BIT2		# OPTICS ERROR CNTR ENABLE, 4MS MIN WAIT
 		EXTEND
 		WOR	CHAN12
-# Page 959		
+## Page 959		
 		CAF	TVCADDR +2	# WAIT, CALLING CMDSOUT (BBCON THERE)
 		TS	T5LOC
 		CAF	OCT37776	# 	20MS
@@ -240,7 +240,7 @@ FINCOPY		INDEX	TVCPHASE	# PICK UP THE APPROPRIATE COPYCYCLE
 		TCF	ENABL1		# NOW PREPARE THE OUTCOUNTERS
 		
 TRIM/CMD	EXTEND			# TVCDAPON INITIALIZATION NOT COMPLETED,
-# Page 960
+## Page 960
 		DCA	PACTOFF		#	EG. P,YCMD MAY NOT BE SET.  SET...
 		DXCH	PCMD
 		TCF	ENABL1		# NOW PREPARE THE OUTCOUNTERS
@@ -255,7 +255,7 @@ EXRSTRT		INDEX	TVCEXPHS	# TVCEXECUTIVE RESTARTS....GO TO
 		INDEX	A
 		TCF	0
 
-# Page 961
+## Page 961
 # TVC RESTART TABLES.... ORDER IS REQUIRED.  HI-ORDER WORDS ONLY, OF 2CADRS, SINCE BBCON IS ALREADY THERE.
 
 TVCADDR		=	TVCCADR		# TABLE OF CADRS, UNUSED LOCS FOR GENADRS

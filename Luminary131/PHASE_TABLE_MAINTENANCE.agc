@@ -1,21 +1,21 @@
 ### FILE="Main.annotation"
-# Copyright:	Public domain.
-# Filename:	PHASE_TABLE_MAINTENANCE.agc
-# Purpose:	A section of Luminary 1C, revision 131.
-#		It is part of the source code for the Lunar Module's (LM)
-#		Apollo Guidance Computer (AGC) for Apollo 13 and Apollo 14.
-#		This file is intended to be a faithful transcription, except
-#		that the code format has been changed to conform to the
-#		requirements of the yaYUL assembler rather than the
-#		original YUL assembler.
-# Reference:	pp. 1291-1299 of 1729.pdf.
-# Contact:	Ron Burkey <info@sandroid.org>.
-# Website:	www.ibiblio.org/apollo
-# Mod history:	06/05/03 RSB.	Began transcribing.
-# 		2011-05-07 JL	Removed workaround. Flagged SBANK= workaround 
-# 				for future removal.
+## Copyright:	Public domain.
+## Filename:	PHASE_TABLE_MAINTENANCE.agc
+## Purpose:	A section of Luminary 1C, revision 131.
+##		It is part of the source code for the Lunar Module's (LM)
+##		Apollo Guidance Computer (AGC) for Apollo 13.
+##		This file is intended to be a faithful transcription, except
+##		that the code format has been changed to conform to the
+##		requirements of the yaYUL assembler rather than the
+##		original YUL assembler.
+## Reference:	pp. 1291-1299 of 1729.pdf.
+## Contact:	Ron Burkey <info@sandroid.org>.
+## Website:	www.ibiblio.org/apollo
+## Mod history:	06/05/03 RSB.	Began transcribing.
+## 		2011-05-07 JL	Removed workaround. Flagged SBANK= workaround 
+## 				for future removal.
 
-# Page 1291
+## Page 1291
 # SUBROUTINE TO UPDATE THE PROGRAM NUMBER DISPLAY ON THE DSKY.
 
 		COUNT*	$$/PHASE
@@ -65,7 +65,7 @@ DSPMMJOB	EQUALS	DSPMMJB
 		BLOCK	02
 		SETLOC	FFTAG1
 		BANK
-# Page 1292
+## Page 1292
 # PHASCHNG IS THE MAIN WAY OF MAKING PHASE CHANGES FOR RESTARTS.  THERE ARE THREE FORMS OF PHASCHNG, KNOWN AS TYPE
 # A, TYPE B, AND TYPE C.  THEY ARE ALL CALLED AS FOLLOWS, WHERE OCT XXXXX CONTAINS THE PHASE INFORMATION,
 #		TC	PHASCHNG
@@ -110,7 +110,7 @@ DSPMMJOB	EQUALS	DSPMMJB
 # WHERE EACH LETTER OR NUMBER STANDS FOR A BIT.  THE G'S STAND FOR THE GROUP, OCTAL 1 - 7.  IF THE RESTART IS TO
 # BE BY WAITLIST, W IS SET TO 1, IF IT IS A JOB, J IS SET TO 1, IF IT IS A LONGCALL, C IS SET TO 1.  ONLY ONE OF
 # THESE THREE BITS MAY BE SET.  X'S ARE IGNORED, 1 MUST BE 1, AND 0 MUST BE 0.  AGAIN T STANDS FOR THE TBASE,
-# Page 1293
+## Page 1293
 # AND L FOR LONGBASE.  THE BITS A AND D ARE CONCERNED WITH THE VARIABLE INFORMATION.  IF D IS SET TO 1, A PRIORITY
 # OR DELTA TIME WILL BE READ FROM THE NEXT LOCATION AFTER THE OCTAL INFORMATION., IF THIS IS TO BE INDIRECT, THAT
 # IS, THE NAME OF A LOCATION CONTAINING THE INFORMATION (DELTA TIME ONLY), THEN THIS IS GIVEN AS THE -GENADR OF
@@ -155,7 +155,7 @@ DSPMMJOB	EQUALS	DSPMMJB
 #	AD+1	OCT	10015		# RESTARTED AND A JOB WITH THE PREVIOUSLY
 #	AD+2				# STORED PRIORITY WOULD BE BEGUN AT AD+2
 #					# BY MEANS OF GROUP 5
-# Page 1294
+## Page 1294
 # THE NOVAC-FINDVAC CHOICE FOR JOBS HOLDS HERE ALSO -- NEGATIVE PRIORITY CAUSES A NOVAC CALL, POSITIVE A FINDVAC.
 
 # SUMMARY OF BITS:
@@ -163,7 +163,7 @@ DSPMMJOB	EQUALS	DSPMMJB
 #	TYPE B		TL1 DAP PPP PPP GGG
 #	TYPE C		TL0 1AD XXX CJW GGG
 
-# Page 1295
+## Page 1295
 # 2PHSCHNG IS USED WHEN ONE WISHES TO START UP A GROUP OR CHANGE A GROUP WHILE UNDER THE CONTROL OF A DIFFERENT
 # GROUP.  FOR EXAMPLE, CHANGE THE PHASE OF GROUP 3 WHILE THE PORTION OF THE PROGRAM IS UNDER GROUP 5.  ALL 2PHSCHNG
 # CALLS ARE MADE IN THE FOLLOWING MANNER,
@@ -215,7 +215,7 @@ PHASCHNG	INHINT			# NORMAL PHASCHNG ENTRY POINT.
 		CA	0
 		INCR	Q
 PHSCHNGA	INHINT			# FIRST OCTAL PARAMETER IN A.
-# Page 1296
+## Page 1296
 		TS	TEMPSW
 		CA	ONE
 		TS	TEMPSW2
@@ -264,7 +264,7 @@ CON2ADR		GENADR	CON2
 GETPRIO		NDX	Q		# DON'T CARE IF DIRECT OR INDIRECT
 		CA	0		# LEAVE THAT DECISION TO RESTARTS
 		INCR	Q		# OBTAIN RETURN ADDRESS
-# Page 1297
+## Page 1297
 		TCF	CON1 -1
 
 GETNEWNM	EXTEND
@@ -313,7 +313,7 @@ PHSCHNG2	LXCH	TEMPBBCN
 		XCH	TEMPSW
 		MASK	OCT14000
 		CCS	A
-# Page 1298
+## Page 1298
 		TCF	ONEORTWO
 
 		CA	TEMPP		# START STORING THE PHASE INFORMATION
@@ -364,7 +364,7 @@ BELOW4		CS	TEMPP		# AND STORE THE FINAL PART OF THE PHASE
 		LXCH	TEMPBBCN
 		RELINT
 		DTCB
-# Page 1299
+## Page 1299
 CON2		LXCH	TEMPBBCN
 
 		CA	TEMPP

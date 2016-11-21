@@ -1,20 +1,20 @@
 ### FILE="Main.annotation"
-# Copyright:	Public domain.
-# Filename:	S-BAND_ANTENNA_FOR_LM.agc
-# Purpose:	A section of Luminary 1C, revision 131.
-#		It is part of the source code for the Lunar Module's (LM)
-#		Apollo Guidance Computer (AGC) for Apollo 13 and Apollo 14.
-#		This file is intended to be a faithful transcription, except
-#		that the code format has been changed to conform to the
-#		requirements of the yaYUL assembler rather than the 
-#		original YUL assembler.
-# Reference:	pp. 495-498 of 1729.pdf.
-# Contact:	Ron Burkey <info@sandroid.org>.
-# Website:	www.ibiblio.org/apollo/index.html
-# Mod history:	05/14/03 RSB.	Began transcribing.
-#		05/14/05 RSB	Corrected website references above.
+## Copyright:	Public domain.
+## Filename:	S-BAND_ANTENNA_FOR_LM.agc
+## Purpose:	A section of Luminary 1C, revision 131.
+##		It is part of the source code for the Lunar Module's (LM)
+##		Apollo Guidance Computer (AGC) for Apollo 13.
+##		This file is intended to be a faithful transcription, except
+##		that the code format has been changed to conform to the
+##		requirements of the yaYUL assembler rather than the 
+##		original YUL assembler.
+## Reference:	pp. 495-498 of 1729.pdf.
+## Contact:	Ron Burkey <info@sandroid.org>.
+## Website:	www.ibiblio.org/apollo/index.html
+## Mod history:	05/14/03 RSB.	Began transcribing.
+##		05/14/05 RSB	Corrected website references above.
 
-# Page 495
+## Page 495
 # SUBROUTINE NAME: R05 -- S-BAND ANTENNA FOR LM
 #
 # MOD0 BY T. JAMES
@@ -62,7 +62,7 @@
 		EBANK=	WHOCARES
 		COUNT*	$$/R05
 SBANDANT	TC	INTPRET
-# Page 496
+## Page 496
 		SETPD	RTB
 			0D
 			LOADTIME	# PICK UP CURRENT TIME
@@ -113,7 +113,7 @@ CONV5		SETPD	UNIT		# UE = -UNIT(REM)(UEM)		MOON SPHERE
 		UNIT	PDVL
 			RLM
 		VPROJ	VSL2		# PROJECTION OF R ONTO LM XZ PLANE.
-# Page 497
+## Page 497
 			HIUNITY
 		BVSU	BOV		# CLEAR OVERFLOW INDICATOR IF ON
 			RLM
@@ -164,7 +164,7 @@ SBANDEX		EXIT
 		CAF	PRIO5
 		TC	PRIOCHNG
 		CAF	V06N51		# DISPLAY ANGLES
-# Page 498
+## Page 498
 		TC	BANKCALL
 		CADR	GOMARKFR
 		TC	B5OFF		# TERMINATE

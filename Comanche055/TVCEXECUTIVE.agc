@@ -1,39 +1,39 @@
 ### FILE="Main.annotation"
-# Copyright:	Public domain.
-# Filename:	TVCEXECUTIVE.agc
-# Purpose:	Part of the source code for Colossus 2A, AKA Comanche 055.
-#		It is part of the source code for the Command Module's (CM)
-#		Apollo Guidance Computer (AGC), for Apollo 11.
-# Assembler:	yaYUL
-# Contact:	Ron Burkey <info@sandroid.org>.
-# Website:	www.ibiblio.org/apollo.
-# Pages:	945-950
-# Mod history:	2009-05-12 RSB	Adapted from the Colossus249/ file of the
-#				same name, using Comanche055 page images.
-#		2009-05-20 RSB	Corrections:  CAE -> CAF in one place.
-#		2009-05-21 RSB	In 1SHOTCHK, a CAF SEVEN was corrected to 
-#				CAF SIX.
-#		2010-08-28 JL	Fixed indentation.
-#		2011-05-08 JL	Flagged workaround.
+## Copyright:	Public domain.
+## Filename:	TVCEXECUTIVE.agc
+## Purpose:	Part of the source code for Colossus 2A, AKA Comanche 055.
+##		It is part of the source code for the Command Module's (CM)
+##		Apollo Guidance Computer (AGC), for Apollo 11.
+## Assembler:	yaYUL
+## Contact:	Ron Burkey <info@sandroid.org>.
+## Website:	www.ibiblio.org/apollo.
+## Pages:	945-950
+## Mod history:	2009-05-12 RSB	Adapted from the Colossus249/ file of the
+##				same name, using Comanche055 page images.
+##		2009-05-20 RSB	Corrections:  CAE -> CAF in one place.
+##		2009-05-21 RSB	In 1SHOTCHK, a CAF SEVEN was corrected to 
+##				CAF SIX.
+##		2010-08-28 JL	Fixed indentation.
+##		2011-05-08 JL	Flagged workaround.
 
-# This source code has been transcribed or otherwise adapted from digitized
-# images of a hardcopy from the MIT Museum.  The digitization was performed
-# by Paul Fjeld, and arranged for by Deborah Douglas of the Museum.  Many
-# thanks to both.  The images (with suitable reduction in storage size and
-# consequent reduction in image quality as well) are available online at
-# www.ibiblio.org/apollo.  If for some reason you find that the images are
-# illegible, contact me at info@sandroid.org about getting access to the 
-# (much) higher-quality images which Paul actually created.
-#
-# Notations on the hardcopy document read, in part:
-#
-#	Assemble revision 055 of AGC program Comanche by NASA
-#	2021113-051.  10:28 APR. 1, 1969  
-#
-#	This AGC program shall also be referred to as
-#			Colossus 2A
+## This source code has been transcribed or otherwise adapted from digitized
+## images of a hardcopy from the MIT Museum.  The digitization was performed
+## by Paul Fjeld, and arranged for by Deborah Douglas of the Museum.  Many
+## thanks to both.  The images (with suitable reduction in storage size and
+## consequent reduction in image quality as well) are available online at
+## www.ibiblio.org/apollo.  If for some reason you find that the images are
+## illegible, contact me at info@sandroid.org about getting access to the 
+## (much) higher-quality images which Paul actually created.
+##
+## Notations on the hardcopy document read, in part:
+##
+##	Assemble revision 055 of AGC program Comanche by NASA
+##	2021113-051.  10:28 APR. 1, 1969  
+##
+##	This AGC program shall also be referred to as
+##			Colossus 2A
 
-# Page 945
+## Page 945
 # PROGRAM NAME....	TVCEXECUTIVE, CONSISTING OF TVCEXEC, NEEDLEUP, VARGAINS
 #			1SHOTCHK, REPCHEK, CG.CORR, COPYCYCLES, ETC.
 # LOG SECTION....	TVCEXECUTIVE		SUBROUTINE ....DAPCSM
@@ -82,7 +82,7 @@
 #
 # DEBRIS....	MUCH, BUT SHAREABLE WITH RCS/ENTRY, ALL IN EBANK6
 
-# Page 946
+## Page 946
 		BANK	16
 		SETLOC	DAPROLL
 		BANK
@@ -131,7 +131,7 @@ VARGAINS	CAF	BIT13		# CHECK ENGINE-ON BIT TO INHIBIT VARIABLE
 		TCF	1SHOTCHK	#		VCNTR = -0 (V97 R40 ENGFAIL)
 		CCS	VCNTR		# 	TEST FOR GAIN OF UPDATE TIME
 		TCF	+4		#		NOT YET
-# Page 947		
+## Page 947		
 		TCF	GAINCHNG	#		NOW
 		TCF	+0		#		NOT USED
 		TCF	VARGAINS +5	#		NO, LOTHRUST (S40.6 R40)
@@ -181,7 +181,7 @@ REPCHEK		CAE	REPFRAC		# CHECK FOR REPETITIVE UPDATES
 		CAF	FOUR		# SET UP TVCEXPHS FOR ENTRY AT CORSETUP
 		TS	TVCEXPHS
 		TCF	CORSETUP
-# Page 948		
+## Page 948		
 1SHOTOK		CAF	BIT13		# CHECK ENGINE-ON BIT, NOT PERMITTING
 		EXTEND			#	SWITCHOVER DURING ENGINE-SHUTDOWN
 		RAND	DSALMOUT
@@ -236,7 +236,7 @@ CG.CORR		EXTEND			# PITCH TMC LOOP
 		EXTEND
 		DCS	YDELOFF
 		DDOUBL
-# Page 949		
+## Page 949		
 		DDOUBL
 		DXCH	TTMP1
 		EXTEND
@@ -273,5 +273,5 @@ TVCEXFIN	CAF	ZERO		# RESET TVCEXPHS
 
 FCORFRAC	OCT	10000		# ONE-SHOT CORRECTION FRACTION	
 
-# Page 950 (page is empty)
+## Page 950 (page is empty)
 

@@ -114,6 +114,6 @@ install: default
 	
 
 %.o:	%.c ../yaYUL/yaYUL.h
-	gcc ${CFLAGS} -DNVER=${NVER} -DINSTALLDIR=${PREFIX} -Wall -c -o $@ $<
+	gcc ${CFLAGS0} -DNVER=${NVER} -DINSTALLDIR=${PREFIX} -c -o $@ $<
 	
 
